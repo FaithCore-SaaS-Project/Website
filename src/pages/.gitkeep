@@ -1,0 +1,5 @@
+# This file exists only to prevent Next.js dev-mode from throwing
+# an ENOENT error when scanning for the Pages Router directory.
+#
+# This project uses the App Router exclusively (src/app/).
+# Do NOT add any page files here.
