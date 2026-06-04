@@ -38,6 +38,9 @@ export default function Navbar() {
           <a href="/#about" className="font-medium hover:text-[#5B3DF5] transition-colors">
             About
           </a>
+          <a href="/#support" className="font-medium hover:text-[#5B3DF5] transition-colors">
+            Support
+          </a>
           <a href="/#contact" className="font-medium hover:text-[#5B3DF5] transition-colors">
             Contact
           </a>
@@ -100,6 +103,13 @@ export default function Navbar() {
             className="font-medium text-gray-700 hover:text-[#5B3DF5] transition-colors"
           >
             About
+          </a>
+          <a
+            href="/#support"
+            onClick={() => setMobileOpen(false)}
+            className="font-medium text-gray-700 hover:text-[#5B3DF5] transition-colors"
+          >
+            Support
           </a>
           <a
             href="/#contact"

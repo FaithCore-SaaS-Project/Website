@@ -7,6 +7,7 @@ import About from "@/components/home/About";
 import PricingSection from "@/components/pricing/PricingSection";
 import CTABanner from "@/components/home/CTABanner";
 import Contact from "@/components/home/Contact";
+import Support from "@/components/home/Support";
 
 export const metadata: Metadata = {
   title: "FaithCore – Church Management System",
@@ -35,10 +36,13 @@ export default function HomePage() {
       {/* 6. Pricing */}
       <PricingSection />
 
-      {/* 7. CTA banner */}
+      {/* 7. Support */}
+      <Support />
+
+      {/* 8. CTA banner */}
       <CTABanner />
 
-      {/* 8. Contact */}
+      {/* 9. Contact */}
       <Contact />
     </>
   );
