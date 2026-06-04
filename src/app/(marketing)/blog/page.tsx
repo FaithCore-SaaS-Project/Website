@@ -7,9 +7,9 @@ import BlogSidebar from "@/components/blog/BlogSidebar";
 // ─── Metadata ────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Blog & Updates – Kingdom Connect",
+  title: "Blog & Updates – FaithCore",
   description:
-    "Stay informed with the latest Kingdom Connect product updates, ministry news, tutorials, and guides to get the most out of your church management system.",
+    "Stay informed with the latest FaithCore product updates, ministry news, tutorials, and guides to get the most out of your church management system.",
 };
 
 // ─── Page ─────────────────────────────────────────────────────────────────────

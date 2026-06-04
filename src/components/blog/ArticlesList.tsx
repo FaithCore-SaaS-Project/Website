@@ -25,10 +25,10 @@ const articles = [
     tag: "Tutorial",
     date: "May 03, 2024",
     excerpt:
-      "A step-by-step walkthrough for setting up recurring services, special gatherings, and online registrations within Kingdom Connect.",
+      "A step-by-step walkthrough for setting up recurring services, special gatherings, and online registrations within FaithCore.",
   },
   {
-    title: "Kingdom Connect Community Summit 2024",
+    title: "FaithCore Community Summit 2024",
     image: "/images/blog/community.jpg",
     tag: "News",
     date: "Apr 20, 2024",
@@ -74,9 +74,8 @@ export default function ArticlesList() {
             <div className="flex flex-col justify-between lg:col-span-2">
               <div>
                 <span
-                  className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${
-                    tagColors[article.tag] ?? "bg-[#ede9fe] text-[#5B3DF5]"
-                  }`}
+                  className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${tagColors[article.tag] ?? "bg-[#ede9fe] text-[#5B3DF5]"
+                    }`}
                 >
                   {article.tag}
                 </span>

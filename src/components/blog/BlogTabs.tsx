@@ -13,7 +13,7 @@ const tabs = [
   {
     icon: Megaphone,
     label: "News & Announcements",
-    description: "Kingdom Connect milestones and community news.",
+    description: "FaithCore milestones and community news.",
   },
   {
     icon: BookOpen,

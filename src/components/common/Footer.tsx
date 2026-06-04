@@ -28,7 +28,7 @@ export default function Footer() {
                 </svg>
               </div>
               <div>
-                <p className="text-base font-bold text-white leading-tight">Kingdom Connect</p>
+                <p className="text-base font-bold text-white leading-tight">FaithCore</p>
                 <p className="text-xs text-gray-400">Church Management System</p>
               </div>
             </div>
@@ -105,11 +105,10 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className={`transition-colors ${
-                      link.highlight
+                    className={`transition-colors ${link.highlight
                         ? "text-[#7c5cff] hover:text-[#a084ff]"
                         : "hover:text-white"
-                    }`}
+                      }`}
                   >
                     {link.label}
                   </Link>
@@ -158,7 +157,7 @@ export default function Footer() {
 
         {/* ── Bottom Bar ─────────────────────────────────────────── */}
         <div className="mt-16 border-t border-white/10 pt-8 text-center text-sm">
-          © {new Date().getFullYear()} Kingdom Connect. All rights reserved.
+          © {new Date().getFullYear()} FaithCore. All rights reserved.
         </div>
       </div>
     </footer>

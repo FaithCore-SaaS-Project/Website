@@ -9,9 +9,9 @@ import WhatsAppBanner from "@/components/support/WhatsAppBanner";
 // ─── Metadata ────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Support Center – Kingdom Connect",
+  title: "Support Center – FaithCore",
   description:
-    "Find answers, browse our knowledge base, raise a ticket, or chat with our team on WhatsApp. Kingdom Connect support is here to help your ministry thrive.",
+    "Find answers, browse our knowledge base, raise a ticket, or chat with our team on WhatsApp. FaithCore support is here to help your ministry thrive.",
 };
 
 // ─── Page ─────────────────────────────────────────────────────────────────────

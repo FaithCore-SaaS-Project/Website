@@ -18,7 +18,7 @@ export default function BlogHero() {
         </h1>
         <p className="mt-6 max-w-2xl text-lg text-gray-600 leading-relaxed">
           Latest product updates, news and tutorials to help you get the most
-          out of Kingdom Connect.
+          out of FaithCore.
         </p>
         <div className="mt-10 flex max-w-xl overflow-hidden rounded-2xl border bg-white shadow-sm">
           <input

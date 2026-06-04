@@ -16,8 +16,7 @@ export default function SupportHero() {
           <span className="text-[#5B3DF5]">help you?</span>
         </h1>
         <p className="mt-6 max-w-2xl text-lg text-gray-600 leading-relaxed">
-          Find answers, solve issues and get the support you need for Kingdom
-          Connect.
+          Find answers, solve issues and get the support you need for FaithCore.
         </p>
 
         {/* Search */}
