@@ -151,6 +151,34 @@ function PricingCard({
 
       {/* CTA Button */}
       <button
+        onClick={async () => {
+          if (isFree || isCustom) {
+            window.location.href = "/register";
+            return;
+          }
+          try {
+            // Send the name of the plan (e.g. Basic, Standard) to map to plan_id in the backend later
+            const response = await fetch("https://api.faithcore.org/api/checkout/paypal", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                plan_name: plan.name,
+                is_annual: isAnnual,
+                success_url: window.location.origin + "/dashboard?payment=success",
+                cancel_url: window.location.origin + "/pricing?payment=cancel"
+              })
+            });
+            const data = await response.json();
+            if (data.url) {
+              window.location.href = data.url;
+            } else {
+              alert("Checkout failed. Please try again.");
+            }
+          } catch (err) {
+            console.error(err);
+            alert("Error connecting to payment server.");
+          }
+        }}
         className={`mt-8 w-full rounded-2xl py-4 font-semibold transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 ${
           plan.highlighted
             ? "bg-[#5B3DF5] text-white shadow-md shadow-[#5B3DF5]/30 hover:bg-[#4c30d9]"

@@ -17,7 +17,6 @@ import {
   UserCog,
   Settings,
   HelpCircle,
-  Crown,
   ChevronDown,
   ChevronRight,
   Church
@@ -90,18 +89,16 @@ export default function Sidebar() {
             <div key={item.name} className="space-y-1">
               <Link
                 href={item.submenu ? item.submenu[1].href : item.href}
-                className={`flex items-center justify-between px-3 py-3 rounded-xl transition-all duration-200 group ${
-                  isActive
+                className={`flex items-center justify-between px-3 py-3 rounded-xl transition-all duration-200 group ${isActive
                     ? "bg-[#5b3df5] text-white font-semibold shadow-lg shadow-[#5b3df5]/10"
                     : "hover:bg-[#181a30] hover:text-white"
-                }`}
+                  }`}
               >
                 <div className="flex items-center gap-3">
                   <Icon
                     size={20}
-                    className={`transition-colors duration-200 ${
-                      isActive ? "text-white" : "text-gray-500 group-hover:text-white"
-                    }`}
+                    className={`transition-colors duration-200 ${isActive ? "text-white" : "text-gray-500 group-hover:text-white"
+                      }`}
                   />
                   <span className="text-sm">{item.name}</span>
                 </div>
@@ -125,11 +122,10 @@ export default function Sidebar() {
                       <Link
                         key={sub.name}
                         href={sub.href}
-                        className={`flex items-center py-2 px-3 rounded-lg text-xs relative transition-all duration-200 ${
-                          isSubActive
+                        className={`flex items-center py-2 px-3 rounded-lg text-xs relative transition-all duration-200 ${isSubActive
                             ? "text-white font-semibold bg-[#1a1c38]"
                             : "text-gray-500 hover:text-white hover:bg-[#15172d]"
-                        }`}
+                          }`}
                       >
                         {/* Tree line connector */}
                         <div className="absolute left-[-24px] top-1/2 w-4 h-[1px] bg-[#232646]" />
@@ -146,18 +142,6 @@ export default function Sidebar() {
           );
         })}
       </nav>
-
-      {/* Premium Subscription Plan Box */}
-      <div className="p-4 m-4 rounded-2xl bg-gradient-to-br from-[#13152d] to-[#1a1c3e] border border-[#232646] flex flex-col items-center text-center">
-        <div className="h-10 w-10 rounded-full bg-[#ffaa00]/10 flex items-center justify-center text-[#ffaa00] mb-3">
-          <Crown size={20} />
-        </div>
-        <h4 className="text-white font-semibold text-sm">Premium Plan</h4>
-        <p className="text-[11px] text-gray-500 mt-1">Valid Until 31 Dec 2025</p>
-        <button className="mt-4 w-full bg-[#5b3df5]/10 hover:bg-[#5b3df5] text-[#8b7dfa] hover:text-white text-xs py-2.5 px-4 rounded-xl font-semibold transition-all duration-200">
-          View Plan Details
-        </button>
-      </div>
     </aside>
   );
 }
