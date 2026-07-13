@@ -16,7 +16,8 @@ import {
   Search,
   RefreshCw,
   LogOut,
-  CreditCard
+  CreditCard,
+  Lock
 } from "lucide-react";
 
 interface Analytics {
@@ -61,6 +62,10 @@ interface Payment {
 }
 
 export default function SuperAdminDashboard() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [passcodeInput, setPasscodeInput] = useState("");
+  const [authError, setAuthError] = useState("");
+
   const [activeTab, setActiveTab] = useState<"overview" | "churches" | "subscriptions" | "payments">("overview");
   const [analytics, setAnalytics] = useState<Analytics>({ total_churches: 0, active_subscriptions: 0, total_revenue: 0, mrr: 0 });
   const [churches, setChurches] = useState<Church[]>([]);
@@ -121,8 +126,31 @@ export default function SuperAdminDashboard() {
   };
 
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      const isAuth = sessionStorage.getItem("super_admin_auth") === "true";
+      if (isAuth) {
+        setIsAuthenticated(true);
+      }
+    }
     fetchData();
   }, []);
+
+  const handleVerifyPasscode = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (passcodeInput === "Admin@FaithCore") {
+      sessionStorage.setItem("super_admin_auth", "true");
+      setIsAuthenticated(true);
+      setAuthError("");
+    } else {
+      setAuthError("Invalid passcode. Access Denied.");
+    }
+  };
+
+  const handleLogout = () => {
+    sessionStorage.removeItem("super_admin_auth");
+    setIsAuthenticated(false);
+    setPasscodeInput("");
+  };
 
   const handleToggleStatus = async (id: number) => {
     try {
@@ -150,6 +178,69 @@ export default function SuperAdminDashboard() {
     c.pastor_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     c.registration_no.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  if (!isAuthenticated) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#070913] text-white overflow-hidden relative font-sans">
+        {/* Ambient background styling */}
+        <div className="absolute top-0 left-0 w-full h-[600px] opacity-35 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-violet-900/25 via-[#070B18] to-transparent pointer-events-none"></div>
+        <div className="absolute -bottom-1/6 -right-1/6 w-[550px] h-[550px] bg-violet-600/10 rounded-full blur-[110px] pointer-events-none"></div>
+        <div className="absolute -top-1/4 -left-1/4 w-[450px] h-[450px] bg-purple-600/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div className="relative z-10 w-full max-w-md p-6 flex flex-col justify-center">
+          <div className="w-full rounded-[2.5rem] border border-white/10 bg-[#0E1528]/85 p-8 sm:p-10 shadow-[0_20px_50px_rgba(4,6,15,0.7)] backdrop-blur-2xl text-center">
+            
+            <div className="flex justify-center mb-6">
+              <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-[#5B3DF5] to-[#8b5cf6] flex items-center justify-center text-white shadow-lg shadow-violet-500/20">
+                <Lock size={32} />
+              </div>
+            </div>
+
+            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white mb-2">
+              SaaS Portal Lock
+            </h1>
+            <p className="text-gray-400 text-xs sm:text-sm font-medium mb-6 leading-relaxed">
+              Enter the Super Admin passcode to monitor the platform database and logs.
+            </p>
+
+            <form onSubmit={handleVerifyPasscode} className="space-y-4">
+              {authError && (
+                <div className="rounded-xl border border-red-500/20 bg-red-500/10 p-3 text-xs text-red-400 font-semibold">
+                  {authError}
+                </div>
+              )}
+              
+              <div className="flex h-14 items-center rounded-xl border border-white/5 bg-[#090E1A]/85 px-4 focus-within:border-violet-500 focus-within:ring-2 focus-within:ring-violet-500/20 transition-all duration-300">
+                <Lock className="text-gray-500" size={18} />
+                <input
+                  type="password"
+                  value={passcodeInput}
+                  onChange={(e) => setPasscodeInput(e.target.value)}
+                  className="ml-3 flex-1 bg-transparent text-sm text-white placeholder:text-gray-500 outline-none"
+                  placeholder="Enter passcode"
+                  required
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="flex h-14 w-full items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#5B3DF5] to-[#8b5cf6] text-sm font-bold text-white shadow-lg shadow-violet-500/20 hover:from-violet-500 hover:to-purple-500 hover:scale-[1.01] active:scale-[0.98] transition-all duration-300"
+              >
+                Verify &amp; Enter
+              </button>
+
+              <Link
+                href="/"
+                className="flex w-full items-center justify-center gap-3 rounded-xl border border-white/5 bg-[#090E1A] h-14 hover:bg-white/5 hover:border-white/10 transition-all duration-300 text-xs font-bold text-gray-300"
+              >
+                Back to Marketing Site
+              </Link>
+            </form>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#070913] text-white selection:bg-[#5B3DF5] selection:text-white font-sans">
@@ -180,9 +271,12 @@ export default function SuperAdminDashboard() {
             >
               <RefreshCw size={16} className={loading ? "animate-spin text-violet-400" : ""} />
             </button>
-            <Link href="/" className="flex items-center gap-2 text-xs text-gray-400 hover:text-white transition-colors bg-white/5 hover:bg-white/10 px-4 py-2 rounded-xl border border-white/5">
+            <button 
+              onClick={handleLogout} 
+              className="flex items-center gap-2 text-xs text-gray-400 hover:text-white transition-colors bg-white/5 hover:bg-white/10 px-4 py-2 rounded-xl border border-white/5"
+            >
               <LogOut size={14} /> Exit Portal
-            </Link>
+            </button>
           </div>
         </div>
       </header>
