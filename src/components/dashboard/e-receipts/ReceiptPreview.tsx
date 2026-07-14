@@ -49,10 +49,10 @@ export default function ReceiptPreview({ receipt }: ReceiptPreviewProps) {
       <div className="border border-gray-100 rounded-xl p-5 bg-[#fafbff] flex-1 flex flex-col justify-between">
         {/* Church Header */}
         <div className="text-center">
-          <div className="inline-flex h-10 w-10 rounded-full bg-[#5b3df5]/10 items-center justify-center text-[#5b3df5] mb-2">
+          <div className="inline-flex h-10 w-10 rounded-full bg-[#1B2F5E]/10 items-center justify-center text-[#1B2F5E] mb-2">
             <Church size={20} />
           </div>
-          <h3 className="text-sm font-extrabold text-[#5b3df5] tracking-wide uppercase leading-tight">
+          <h3 className="text-sm font-extrabold text-[#1B2F5E] tracking-wide uppercase leading-tight">
             Kingdom Connect Church
           </h3>
           <p className="text-[9px] text-gray-400 mt-0.5 font-semibold italic">
@@ -110,7 +110,7 @@ export default function ReceiptPreview({ receipt }: ReceiptPreviewProps) {
         {/* Total amount */}
         <div className="flex justify-between items-center text-sm">
           <span className="font-bold text-gray-500">Total Amount</span>
-          <span className="font-black text-[#5b3df5] text-base">
+          <span className="font-black text-[#1B2F5E] text-base">
             Rs. {formatAmount(receipt.amount)}
           </span>
         </div>
@@ -140,7 +140,7 @@ export default function ReceiptPreview({ receipt }: ReceiptPreviewProps) {
           </p>
           <div className="mt-4 text-center">
             {/* Signature styled elegantly */}
-            <span className="font-serif italic text-lg text-[#5b3df5] tracking-wide block leading-none">
+            <span className="font-serif italic text-lg text-[#1B2F5E] tracking-wide block leading-none">
               {receipt.receivedBy}
             </span>
             <span className="text-[8px] text-gray-400 font-bold uppercase tracking-wider mt-1 block">
@@ -152,7 +152,7 @@ export default function ReceiptPreview({ receipt }: ReceiptPreviewProps) {
 
       {/* Card Buttons */}
       <div className="mt-5 space-y-3 shrink-0">
-        <button className="w-full bg-[#5b3df5] hover:bg-[#4d31db] text-white py-3 rounded-xl flex items-center justify-center gap-2 text-sm font-bold shadow-md shadow-[#5b3df5]/10 hover:shadow-lg transition-all duration-200">
+        <button className="w-full bg-[#1B2F5E] hover:bg-[#15254A] text-white py-3 rounded-xl flex items-center justify-center gap-2 text-sm font-bold shadow-md shadow-[#1B2F5E]/10 hover:shadow-lg transition-all duration-200">
           <Mail size={16} />
           Email Receipt
         </button>

@@ -37,10 +37,10 @@ export default function QuickLinks() {
             <a
               key={title}
               href={href}
-              className="group flex flex-col rounded-[30px] border bg-white p-8 shadow-sm transition-all hover:shadow-md hover:-translate-y-1 hover:border-[#5B3DF5]/20"
+              className="group flex flex-col rounded-[30px] border bg-white p-8 shadow-sm transition-all hover:shadow-md hover:-translate-y-1 hover:border-[#1B2F5E]/20"
             >
               {/* Icon */}
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#ede9fe] text-[#5B3DF5] transition-colors duration-300 group-hover:bg-[#5B3DF5] group-hover:text-white">
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#EEF2FB] text-[#1B2F5E] transition-colors duration-300 group-hover:bg-[#1B2F5E] group-hover:text-white">
                 <Icon size={30} />
               </div>
 
@@ -49,7 +49,7 @@ export default function QuickLinks() {
                 {description}
               </p>
 
-              <span className="mt-6 font-semibold text-[#5B3DF5] group-hover:underline transition-all">
+              <span className="mt-6 font-semibold text-[#1B2F5E] group-hover:underline transition-all">
                 {button} →
               </span>
             </a>

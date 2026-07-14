@@ -22,7 +22,7 @@ export default function PricingPage() {
           <div className="text-center">
 
             {/* Badge */}
-            <div className="inline-flex rounded-full bg-[#ede9fe] px-5 py-2 text-sm font-semibold text-[#5B3DF5]">
+            <div className="inline-flex rounded-full bg-[#EEF2FB] px-5 py-2 text-sm font-semibold text-[#1B2F5E]">
               SIMPLE, TRANSPARENT PRICING
             </div>
 
@@ -31,7 +31,7 @@ export default function PricingPage() {
               Choose the Perfect Plan
               <br />
               for{" "}
-              <span className="text-[#5B3DF5]">Your Church</span>
+              <span className="text-[#1B2F5E]">Your Church</span>
             </h1>
 
             {/* Description */}
@@ -47,7 +47,7 @@ export default function PricingPage() {
                   onClick={() => setIsAnnual(false)}
                   className={`rounded-xl px-8 py-4 text-sm font-semibold transition-all duration-200 ${
                     !isAnnual
-                      ? "bg-[#5B3DF5] text-white shadow-md"
+                      ? "bg-[#1B2F5E] text-white shadow-md"
                       : "text-gray-600 hover:bg-gray-50"
                   }`}
                 >
@@ -62,7 +62,7 @@ export default function PricingPage() {
                   onClick={() => setIsAnnual(true)}
                   className={`ml-2 rounded-xl px-8 py-4 text-sm font-semibold transition-all duration-200 ${
                     isAnnual
-                      ? "bg-[#5B3DF5] text-white shadow-md"
+                      ? "bg-[#1B2F5E] text-white shadow-md"
                       : "text-gray-600 hover:bg-gray-50"
                   }`}
                 >

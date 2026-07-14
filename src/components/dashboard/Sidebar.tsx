@@ -67,7 +67,7 @@ export default function Sidebar() {
     <aside className="w-64 bg-[#0d0f1e] text-gray-400 flex flex-col h-screen overflow-y-auto border-r border-[#1a1c30] shrink-0 scrollbar-thin scrollbar-thumb-gray-800">
       {/* Brand Header */}
       <div className="p-6 border-b border-[#1a1c30] flex items-center gap-3">
-        <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-[#5b3df5] to-[#8b5cf6] flex items-center justify-center text-white shrink-0">
+        <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-[#1B2F5E] to-[#8b5cf6] flex items-center justify-center text-white shrink-0">
           <Church size={22} />
         </div>
         <div className="min-w-0">
@@ -90,7 +90,7 @@ export default function Sidebar() {
               <Link
                 href={item.submenu ? item.submenu[1].href : item.href}
                 className={`flex items-center justify-between px-3 py-3 rounded-xl transition-all duration-200 group ${isActive
-                    ? "bg-[#5b3df5] text-white font-semibold shadow-lg shadow-[#5b3df5]/10"
+                    ? "bg-[#1B2F5E] text-white font-semibold shadow-lg shadow-[#1B2F5E]/10"
                     : "hover:bg-[#181a30] hover:text-white"
                   }`}
               >
@@ -130,7 +130,7 @@ export default function Sidebar() {
                         {/* Tree line connector */}
                         <div className="absolute left-[-24px] top-1/2 w-4 h-[1px] bg-[#232646]" />
                         {isSubActive && (
-                          <span className="absolute left-[-26px] top-[14px] w-1 h-1 rounded-full bg-[#5b3df5]" />
+                          <span className="absolute left-[-26px] top-[14px] w-1 h-1 rounded-full bg-[#1B2F5E]" />
                         )}
                         {sub.name}
                       </Link>

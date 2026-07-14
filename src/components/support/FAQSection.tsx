@@ -40,7 +40,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
   return (
     <div
       className={`rounded-2xl border bg-white shadow-sm transition-all duration-200 ${
-        open ? "border-[#5B3DF5]/30 shadow-md" : "hover:border-gray-300"
+        open ? "border-[#1B2F5E]/30 shadow-md" : "hover:border-gray-300"
       }`}
     >
       <button
@@ -51,7 +51,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
         <span className="font-semibold text-gray-900">{q}</span>
         <ChevronDown
           size={18}
-          className={`shrink-0 text-[#5B3DF5] transition-transform duration-300 ${
+          className={`shrink-0 text-[#1B2F5E] transition-transform duration-300 ${
             open ? "rotate-180" : ""
           }`}
         />
@@ -76,7 +76,7 @@ export default function FAQSection() {
 
           {/* Left — Heading */}
           <div className="flex flex-col justify-start">
-            <p className="font-semibold uppercase tracking-[0.2em] text-[#5B3DF5]">
+            <p className="font-semibold uppercase tracking-[0.2em] text-[#1B2F5E]">
               FAQ
             </p>
             <h2 className="mt-4 text-4xl font-extrabold text-gray-900 leading-tight md:text-5xl">

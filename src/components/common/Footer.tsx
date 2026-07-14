@@ -15,18 +15,11 @@ export default function Footer() {
           <div>
             {/* Logo */}
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#5B3DF5]">
-                {/* Church / house icon */}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="white"
-                  className="h-6 w-6"
-                >
-                  <path d="M11 2v2H9v2h2v1.09A7.001 7.001 0 0 0 5 14v6h14v-6a7.001 7.001 0 0 0-6-6.91V8h2V6h-2V2h-2zm1 8a5 5 0 1 1 0 10A5 5 0 0 1 12 10z" />
-                  <path d="M10 2h4v2h-4zM10 4h1v4h2V4h1v2h-4z" />
-                </svg>
-              </div>
+              <img
+                src="/images/logo.jpg"
+                alt="FaithCore Logo"
+                className="h-9 w-9 rounded-lg object-contain border border-[#C9A84C]"
+              />
               <div>
                 <p className="text-base font-bold text-white leading-tight">FaithCore</p>
                 <p className="text-xs text-gray-400">Church Management System</p>
@@ -106,7 +99,7 @@ export default function Footer() {
                   <Link
                     href={link.href}
                     className={`transition-colors ${link.highlight
-                        ? "text-[#7c5cff] hover:text-[#a084ff]"
+                        ? "text-[#C9A84C] hover:text-[#E2B056]"
                         : "hover:text-white"
                       }`}
                   >
@@ -148,7 +141,7 @@ export default function Footer() {
                 placeholder="Enter your email"
                 className="w-full bg-transparent px-4 py-3 text-sm text-white placeholder-gray-500 outline-none"
               />
-              <button className="bg-[#5B3DF5] px-5 text-sm font-medium text-white whitespace-nowrap hover:bg-[#4d31db] transition-colors">
+              <button className="bg-[#1B2F5E] px-5 text-sm font-medium text-white whitespace-nowrap hover:bg-[#15254A] transition-colors">
                 Subscribe
               </button>
             </div>

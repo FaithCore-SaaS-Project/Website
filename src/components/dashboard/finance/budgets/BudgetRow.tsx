@@ -121,7 +121,7 @@ export default function BudgetRow({ item }: BudgetRowProps) {
       {/* Actions */}
       <td className="p-4 align-middle">
         <div className="flex gap-2">
-          <button className="border border-gray-200 hover:border-[#5b3df5] hover:text-[#5b3df5] p-2 rounded-xl bg-white transition-all duration-200">
+          <button className="border border-gray-200 hover:border-[#1B2F5E] hover:text-[#1B2F5E] p-2 rounded-xl bg-white transition-all duration-200">
             <Pencil size={14} />
           </button>
           <button className="border border-gray-200 hover:border-gray-300 text-gray-400 hover:text-gray-600 p-2 rounded-xl bg-white transition-all duration-200">

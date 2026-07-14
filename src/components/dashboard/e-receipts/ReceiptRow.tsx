@@ -41,7 +41,7 @@ export default function ReceiptRow({ item, isSelected, onSelect }: ReceiptRowPro
   return (
     <tr
       className={`border-b border-gray-50 hover:bg-[#f8f9ff]/50 transition-colors duration-150 ${
-        isSelected ? "bg-[#5b3df5]/5" : ""
+        isSelected ? "bg-[#1B2F5E]/5" : ""
       }`}
     >
       {/* Receipt No */}
@@ -121,8 +121,8 @@ export default function ReceiptRow({ item, isSelected, onSelect }: ReceiptRowPro
             onClick={onSelect}
             className={`border p-2 rounded-xl transition-all duration-200 ${
               isSelected
-                ? "bg-[#5b3df5] border-[#5b3df5] text-white"
-                : "border-gray-200 hover:border-[#5b3df5] text-gray-400 hover:text-[#5b3df5] bg-white"
+                ? "bg-[#1B2F5E] border-[#1B2F5E] text-white"
+                : "border-gray-200 hover:border-[#1B2F5E] text-gray-400 hover:text-[#1B2F5E] bg-white"
             }`}
             title="Preview Receipt"
           >

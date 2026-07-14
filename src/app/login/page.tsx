@@ -41,7 +41,7 @@ export default function LoginPage() {
           
           {/* Logo & Header */}
           <div className="flex items-center gap-4">
-            <Link href="/" className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#5B3DF5] font-black text-white text-2xl shadow-lg shadow-[#5B3DF5]/30 hover:scale-105 transition-transform duration-200">
+            <Link href="/" className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#1B2F5E] font-black text-white text-2xl shadow-lg shadow-[#1B2F5E]/30 hover:scale-105 transition-transform duration-200">
               FC
             </Link>
             <div>
@@ -61,7 +61,7 @@ export default function LoginPage() {
               <br />
               Empower Your Ministry.
               <br />
-              <span className="bg-gradient-to-r from-[#5B3DF5] to-[#8066ff] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#1B2F5E] to-[#8066ff] bg-clip-text text-transparent">
                 Impact More Lives.
               </span>
             </h1>
@@ -101,9 +101,9 @@ export default function LoginPage() {
           </div>
 
           {/* Social Proof trust badge */}
-          <div className="max-w-md rounded-2xl bg-white/80 p-5 shadow-lg shadow-[#5b3df5]/5 backdrop-blur-md border border-white/50">
+          <div className="max-w-md rounded-2xl bg-white/80 p-5 shadow-lg shadow-[#1B2F5E]/5 backdrop-blur-md border border-white/50">
             <div className="flex items-center gap-4">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#ede9fe] text-[#5B3DF5]">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#EEF2FB] text-[#1B2F5E]">
                 <ShieldCheck size={24} />
               </div>
               <div>
@@ -137,7 +137,7 @@ export default function LoginPage() {
                 onClick={() => setLoginMethod("email")}
                 className={`pb-4 font-semibold text-sm transition-all duration-200 border-b-2 ${
                   loginMethod === "email"
-                    ? "border-[#5B3DF5] text-[#5B3DF5]"
+                    ? "border-[#1B2F5E] text-[#1B2F5E]"
                     : "border-transparent text-gray-400 hover:text-gray-600"
                 }`}
               >
@@ -147,7 +147,7 @@ export default function LoginPage() {
                 onClick={() => setLoginMethod("code")}
                 className={`pb-4 font-semibold text-sm transition-all duration-200 border-b-2 ${
                   loginMethod === "code"
-                    ? "border-[#5B3DF5] text-[#5B3DF5]"
+                    ? "border-[#1B2F5E] text-[#1B2F5E]"
                     : "border-transparent text-gray-400 hover:text-gray-600"
                 }`}
               >
@@ -163,7 +163,7 @@ export default function LoginPage() {
                     <label className="mb-2.5 block text-sm font-semibold text-gray-700">
                       Email Address
                     </label>
-                    <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 focus-within:border-[#5B3DF5] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#5B3DF5]/10 transition-all">
+                    <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 focus-within:border-[#1B2F5E] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1B2F5E]/10 transition-all">
                       <Mail size={18} className="text-gray-400 shrink-0" />
                       <input
                         type="email"
@@ -182,11 +182,11 @@ export default function LoginPage() {
                       <label className="text-sm font-semibold text-gray-700">
                         Password
                       </label>
-                      <button type="button" className="text-xs font-semibold text-[#5B3DF5] hover:text-[#4b30df] transition-colors">
+                      <button type="button" className="text-xs font-semibold text-[#1B2F5E] hover:text-[#4b30df] transition-colors">
                         Forgot Password?
                       </button>
                     </div>
-                    <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 focus-within:border-[#5B3DF5] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#5B3DF5]/10 transition-all">
+                    <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 focus-within:border-[#1B2F5E] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1B2F5E]/10 transition-all">
                       <Lock size={18} className="text-gray-400 shrink-0" />
                       <input
                         type={showPassword ? "text" : "password"}
@@ -214,7 +214,7 @@ export default function LoginPage() {
                     <label className="mb-2.5 block text-sm font-semibold text-gray-700">
                       Church Code
                     </label>
-                    <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 focus-within:border-[#5B3DF5] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#5B3DF5]/10 transition-all">
+                    <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 focus-within:border-[#1B2F5E] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1B2F5E]/10 transition-all">
                       <Hash size={18} className="text-gray-400 shrink-0" />
                       <input
                         type="text"
@@ -232,7 +232,7 @@ export default function LoginPage() {
                     <label className="mb-2.5 block text-sm font-semibold text-gray-700">
                       Passcode
                     </label>
-                    <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 focus-within:border-[#5B3DF5] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#5B3DF5]/10 transition-all">
+                    <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 focus-within:border-[#1B2F5E] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1B2F5E]/10 transition-all">
                       <Lock size={18} className="text-gray-400 shrink-0" />
                       <input
                         type={showPassword ? "text" : "password"}
@@ -259,7 +259,7 @@ export default function LoginPage() {
                 <label className="flex items-center gap-2.5 text-sm font-medium text-gray-600 select-none cursor-pointer">
                   <input
                     type="checkbox"
-                    className="h-4 w-4 rounded border-gray-300 text-[#5B3DF5] focus:ring-[#5B3DF5]/30 cursor-pointer"
+                    className="h-4 w-4 rounded border-gray-300 text-[#1B2F5E] focus:ring-[#1B2F5E]/30 cursor-pointer"
                   />
                   Remember me
                 </label>
@@ -271,7 +271,7 @@ export default function LoginPage() {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="group flex w-full items-center justify-center gap-2 rounded-2xl bg-[#5B3DF5] py-4 text-base font-semibold text-white shadow-md shadow-[#5B3DF5]/30 hover:bg-[#4b30df] hover:shadow-lg hover:shadow-[#5B3DF5]/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+                className="group flex w-full items-center justify-center gap-2 rounded-2xl bg-[#1B2F5E] py-4 text-base font-semibold text-white shadow-md shadow-[#1B2F5E]/30 hover:bg-[#4b30df] hover:shadow-lg hover:shadow-[#1B2F5E]/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
               >
                 Sign In
                 <ArrowRight size={18} className="transition-transform duration-200 group-hover:translate-x-0.5" />
@@ -309,7 +309,7 @@ export default function LoginPage() {
             {/* Footer Form link */}
             <p className="mt-8 text-center text-sm text-gray-500">
               Don&apos;t have an account?
-              <Link href="/register" className="ml-2 font-bold text-[#5B3DF5] hover:text-[#4b30df] hover:underline transition-all">
+              <Link href="/register" className="ml-2 font-bold text-[#1B2F5E] hover:text-[#4b30df] hover:underline transition-all">
                 Create Account
               </Link>
             </p>
@@ -331,7 +331,7 @@ function Feature({
 }) {
   return (
     <div className="flex items-start gap-4">
-      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#ede9fe] text-[#5B3DF5] shadow-sm">
+      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#EEF2FB] text-[#1B2F5E] shadow-sm">
         {icon}
       </div>
       <div>

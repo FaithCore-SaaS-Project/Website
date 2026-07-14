@@ -82,7 +82,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
   return (
     <div
       className={`rounded-2xl border bg-white shadow-sm transition-all duration-200 ${
-        open ? "border-[#5B3DF5]/30 shadow-md" : "hover:border-gray-300"
+        open ? "border-[#1B2F5E]/30 shadow-md" : "hover:border-gray-300"
       }`}
     >
       <button
@@ -93,7 +93,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
         <span className="font-semibold text-gray-900 text-sm md:text-base">{q}</span>
         <ChevronDown
           size={18}
-          className={`shrink-0 text-[#5B3DF5] transition-transform duration-300 ${
+          className={`shrink-0 text-[#1B2F5E] transition-transform duration-300 ${
             open ? "rotate-180" : ""
           }`}
         />
@@ -116,7 +116,7 @@ export default function Support() {
 
         {/* ── Section Header ──────────────────────────────────── */}
         <div className="text-center">
-          <p className="font-semibold uppercase tracking-[0.2em] text-[#5B3DF5]">
+          <p className="font-semibold uppercase tracking-[0.2em] text-[#1B2F5E]">
             Support
           </p>
           <h2 className="mt-4 text-4xl font-extrabold text-gray-900 md:text-5xl">
@@ -128,7 +128,7 @@ export default function Support() {
           </p>
           <Link
             href="/support"
-            className="mt-8 inline-flex items-center gap-2 rounded-2xl bg-[#5B3DF5] px-8 py-4 font-semibold text-white shadow-md shadow-[#5B3DF5]/30 hover:bg-[#4d31db] hover:shadow-lg transition-all hover:-translate-y-0.5 active:translate-y-0"
+            className="mt-8 inline-flex items-center gap-2 rounded-2xl bg-[#1B2F5E] px-8 py-4 font-semibold text-white shadow-md shadow-[#1B2F5E]/30 hover:bg-[#15254A] hover:shadow-lg transition-all hover:-translate-y-0.5 active:translate-y-0"
           >
             Visit Support Center →
           </Link>
@@ -140,10 +140,10 @@ export default function Support() {
             <a
               key={title}
               href={href}
-              className="group flex flex-col rounded-3xl border bg-white p-7 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-[#5B3DF5]/20"
+              className="group flex flex-col rounded-3xl border bg-white p-7 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-[#1B2F5E]/20"
             >
               {/* Icon */}
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#ede9fe] text-[#5B3DF5] transition-colors duration-300 group-hover:bg-[#5B3DF5] group-hover:text-white">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#EEF2FB] text-[#1B2F5E] transition-colors duration-300 group-hover:bg-[#1B2F5E] group-hover:text-white">
                 <Icon size={26} />
               </div>
 
@@ -157,7 +157,7 @@ export default function Support() {
                 {description}
               </p>
 
-              <span className="mt-5 text-sm font-semibold text-[#5B3DF5] group-hover:underline">
+              <span className="mt-5 text-sm font-semibold text-[#1B2F5E] group-hover:underline">
                 Get Help →
               </span>
             </a>
@@ -174,23 +174,23 @@ export default function Support() {
               <a
                 key={label}
                 href={href}
-                className="group flex items-center gap-5 rounded-2xl border bg-white p-5 shadow-sm transition-all hover:shadow-md hover:border-[#5B3DF5]/30 hover:-translate-y-0.5"
+                className="group flex items-center gap-5 rounded-2xl border bg-white p-5 shadow-sm transition-all hover:shadow-md hover:border-[#1B2F5E]/30 hover:-translate-y-0.5"
               >
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#ede9fe] text-[#5B3DF5] transition-colors group-hover:bg-[#5B3DF5] group-hover:text-white">
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#EEF2FB] text-[#1B2F5E] transition-colors group-hover:bg-[#1B2F5E] group-hover:text-white">
                   <Icon size={24} />
                 </div>
                 <div>
                   <p className="font-bold text-gray-900">{label}</p>
-                  <p className="text-sm font-semibold text-[#5B3DF5]">{count}</p>
+                  <p className="text-sm font-semibold text-[#1B2F5E]">{count}</p>
                 </div>
-                <span className="ml-auto text-gray-300 group-hover:text-[#5B3DF5] transition-colors text-xl">
+                <span className="ml-auto text-gray-300 group-hover:text-[#1B2F5E] transition-colors text-xl">
                   →
                 </span>
               </a>
             ))}
 
             {/* CTA Card */}
-            <div className="relative mt-2 overflow-hidden rounded-3xl bg-gradient-to-br from-[#5B3DF5] to-[#8066ff] p-7 text-white shadow-lg shadow-[#5B3DF5]/20">
+            <div className="relative mt-2 overflow-hidden rounded-3xl bg-gradient-to-br from-[#1B2F5E] to-[#8066ff] p-7 text-white shadow-lg shadow-[#1B2F5E]/20">
               <div className="absolute -right-6 -top-6 h-32 w-32 rounded-full bg-white/10 blur-2xl pointer-events-none" />
               <p className="text-lg font-bold">Still need help?</p>
               <p className="mt-2 text-sm text-white/80">
@@ -198,7 +198,7 @@ export default function Support() {
               </p>
               <a
                 href="mailto:support@faithcore.app"
-                className="mt-5 inline-block rounded-xl bg-white px-6 py-2.5 text-sm font-semibold text-[#5B3DF5] hover:bg-gray-100 transition-colors"
+                className="mt-5 inline-block rounded-xl bg-white px-6 py-2.5 text-sm font-semibold text-[#1B2F5E] hover:bg-gray-100 transition-colors"
               >
                 Contact Support
               </a>

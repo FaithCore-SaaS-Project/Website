@@ -12,7 +12,7 @@ export default function WhatsAppBanner() {
 
           {/* Left — Icon + Text */}
           <div className="flex items-center gap-5">
-            <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white shadow-sm text-[#5B3DF5]">
+            <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white shadow-sm text-[#1B2F5E]">
               <ShieldCheck size={28} />
             </div>
             <div>

@@ -45,7 +45,7 @@ export default function StatsSection() {
               key={index}
               className="p-6 md:p-8 text-center transition-all hover:bg-gray-50/50 group"
             >
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#ede9fe] text-[#5B3DF5] transition-transform duration-300 group-hover:scale-110">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#EEF2FB] text-[#1B2F5E] transition-transform duration-300 group-hover:scale-110">
                 <item.icon size={26} />
               </div>
               <h3 className="mt-5 text-3xl font-extrabold text-gray-900 md:text-4xl">

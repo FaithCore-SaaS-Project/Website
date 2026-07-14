@@ -54,7 +54,7 @@ export default function ArticlesList() {
         >
           <div className="grid gap-6 lg:grid-cols-3">
             {/* Thumbnail */}
-            <div className="relative h-52 w-full overflow-hidden rounded-2xl bg-[#ede9fe]">
+            <div className="relative h-52 w-full overflow-hidden rounded-2xl bg-[#EEF2FB]">
               <img
                 src={article.image}
                 alt={article.title}
@@ -74,7 +74,7 @@ export default function ArticlesList() {
             <div className="flex flex-col justify-between lg:col-span-2">
               <div>
                 <span
-                  className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${tagColors[article.tag] ?? "bg-[#ede9fe] text-[#5B3DF5]"
+                  className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${tagColors[article.tag] ?? "bg-[#EEF2FB] text-[#1B2F5E]"
                     }`}
                 >
                   {article.tag}
@@ -88,7 +88,7 @@ export default function ArticlesList() {
               </div>
               <div className="mt-6 flex items-center justify-between text-sm text-gray-400">
                 <span>{article.date}</span>
-                <button className="font-semibold text-[#5B3DF5] hover:text-[#4d31db] transition-colors">
+                <button className="font-semibold text-[#1B2F5E] hover:text-[#15254A] transition-colors">
                   Read More →
                 </button>
               </div>

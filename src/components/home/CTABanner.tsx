@@ -14,7 +14,7 @@ export default function CTABanner() {
           </p>
         </div>
 
-        <button className="flex shrink-0 items-center gap-2 rounded-2xl bg-[#5B3DF5] px-8 py-4 font-semibold hover:bg-[#4d31db] transition-colors">
+        <button className="flex shrink-0 items-center gap-2 rounded-2xl bg-[#1B2F5E] px-8 py-4 font-semibold hover:bg-[#15254A] transition-colors">
           Start Free Trial
           <ArrowRight size={18} />
         </button>

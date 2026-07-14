@@ -28,10 +28,10 @@ export default function BlogSidebar() {
           {categories.map(({ label, count }) => (
             <li
               key={label}
-              className="flex cursor-pointer items-center justify-between rounded-xl px-3 py-2 text-sm text-gray-600 transition hover:bg-[#f7f5ff] hover:text-[#5B3DF5]"
+              className="flex cursor-pointer items-center justify-between rounded-xl px-3 py-2 text-sm text-gray-600 transition hover:bg-[#f7f5ff] hover:text-[#1B2F5E]"
             >
               <span>{label}</span>
-              <span className="rounded-full bg-[#ede9fe] px-2.5 py-0.5 text-xs font-semibold text-[#5B3DF5]">
+              <span className="rounded-full bg-[#EEF2FB] px-2.5 py-0.5 text-xs font-semibold text-[#1B2F5E]">
                 {count}
               </span>
             </li>
@@ -46,9 +46,9 @@ export default function BlogSidebar() {
           {popularArticles.map((item, i) => (
             <li
               key={item}
-              className="flex cursor-pointer items-start gap-3 border-b pb-4 last:border-b-0 last:pb-0 text-sm text-gray-600 hover:text-[#5B3DF5] transition-colors"
+              className="flex cursor-pointer items-start gap-3 border-b pb-4 last:border-b-0 last:pb-0 text-sm text-gray-600 hover:text-[#1B2F5E] transition-colors"
             >
-              <span className="mt-0.5 text-xs font-bold text-[#5B3DF5]">
+              <span className="mt-0.5 text-xs font-bold text-[#1B2F5E]">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <span>{item}</span>

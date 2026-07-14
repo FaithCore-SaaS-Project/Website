@@ -54,7 +54,7 @@ export default function ReviewCreatePage() {
               Your FaithCore organization tenant and administrator accounts have been initialized successfully. Redirecting you to your admin dashboard...
             </p>
             <div className="mt-8 flex justify-center">
-              <div className="h-6 w-6 animate-spin rounded-full border-2 border-[#5B3DF5] border-t-transparent" />
+              <div className="h-6 w-6 animate-spin rounded-full border-2 border-[#1B2F5E] border-t-transparent" />
             </div>
           </div>
         </div>
@@ -65,7 +65,7 @@ export default function ReviewCreatePage() {
           
           {/* Header */}
           <div className="text-center">
-            <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[#ede9fe] text-[#5B3DF5]">
+            <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[#EEF2FB] text-[#1B2F5E]">
               <CheckCircle size={40} />
             </div>
             <h1 className="mt-5 text-4xl font-extrabold tracking-tight text-gray-900 md:text-5xl">
@@ -91,7 +91,7 @@ export default function ReviewCreatePage() {
             {/* Church Information review block */}
             <div className="rounded-3xl border border-gray-200 bg-white p-6 md:p-8 shadow-sm">
               <div className="mb-6 flex items-center gap-3 border-b pb-4">
-                <Building2 className="text-[#5B3DF5]" size={24} />
+                <Building2 className="text-[#1B2F5E]" size={24} />
                 <h2 className="text-xl font-bold text-gray-900">
                   Church Information
                 </h2>
@@ -111,7 +111,7 @@ export default function ReviewCreatePage() {
             {/* Admin Information review block */}
             <div className="rounded-3xl border border-gray-200 bg-white p-6 md:p-8 shadow-sm">
               <div className="mb-6 flex items-center gap-3 border-b pb-4">
-                <User className="text-[#5B3DF5]" size={24} />
+                <User className="text-[#1B2F5E]" size={24} />
                 <h2 className="text-xl font-bold text-gray-900">
                   Administrator Details
                 </h2>
@@ -125,16 +125,16 @@ export default function ReviewCreatePage() {
             </div>
 
             {/* Subscription Plan selection card */}
-            <div className="rounded-3xl border border-[#5B3DF5]/20 bg-[#faf9ff] p-6 md:p-8 shadow-sm">
+            <div className="rounded-3xl border border-[#1B2F5E]/20 bg-[#faf9ff] p-6 md:p-8 shadow-sm">
               <div className="flex items-center gap-3">
-                <ShieldCheck className="text-[#5B3DF5]" size={24} />
+                <ShieldCheck className="text-[#1B2F5E]" size={24} />
                 <h2 className="text-xl font-bold text-gray-900">
                   Selected Plan
                 </h2>
               </div>
               <div className="mt-6 flex flex-col justify-between rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:flex-row sm:items-center">
                 <div>
-                  <h3 className="text-lg font-bold text-[#5B3DF5]">
+                  <h3 className="text-lg font-bold text-[#1B2F5E]">
                     Standard Plan
                   </h3>
                   <p className="mt-1 text-xs text-gray-500">
@@ -159,7 +159,7 @@ export default function ReviewCreatePage() {
                   type="checkbox"
                   checked={agreed}
                   onChange={(e) => setAgreed(e.target.checked)}
-                  className="mt-1 h-5 w-5 rounded border-gray-300 text-[#5B3DF5] focus:ring-[#5B3DF5]/30 cursor-pointer"
+                  className="mt-1 h-5 w-5 rounded border-gray-300 text-[#1B2F5E] focus:ring-[#1B2F5E]/30 cursor-pointer"
                 />
                 <span className="text-sm text-gray-600 leading-relaxed">
                   I agree to the FaithCore Terms of Service, Privacy Policy, automated billing subscription terms, and database security guidelines.
@@ -181,7 +181,7 @@ export default function ReviewCreatePage() {
                 disabled={!agreed || isSubmitting}
                 className={`rounded-2xl px-12 py-4 font-bold text-white shadow-md transition-all duration-200 ${
                   agreed && !isSubmitting
-                    ? "bg-[#5B3DF5] shadow-[#5B3DF5]/30 hover:bg-[#4c30df] hover:shadow-lg hover:shadow-[#5B3DF5]/40 hover:-translate-y-0.5 active:translate-y-0"
+                    ? "bg-[#1B2F5E] shadow-[#1B2F5E]/30 hover:bg-[#4c30df] hover:shadow-lg hover:shadow-[#1B2F5E]/40 hover:-translate-y-0.5 active:translate-y-0"
                     : "bg-gray-300 cursor-not-allowed text-gray-500 shadow-none"
                 }`}
               >
@@ -219,7 +219,7 @@ function Step({
       <div
         className={`flex h-11 w-11 items-center justify-center rounded-full font-bold text-sm shadow-sm transition-all ${
           active
-            ? "bg-[#5B3DF5] text-white shadow-[#5B3DF5]/30"
+            ? "bg-[#1B2F5E] text-white shadow-[#1B2F5E]/30"
             : completed
             ? "bg-green-500 text-white shadow-green-500/30"
             : "border border-gray-200 bg-white text-gray-400"
@@ -227,7 +227,7 @@ function Step({
       >
         {number}
       </div>
-      <span className={`mt-2 hidden text-xs font-semibold md:block ${active ? "text-[#5B3DF5]" : completed ? "text-green-600" : "text-gray-400"}`}>
+      <span className={`mt-2 hidden text-xs font-semibold md:block ${active ? "text-[#1B2F5E]" : completed ? "text-green-600" : "text-gray-400"}`}>
         {title}
       </span>
     </div>

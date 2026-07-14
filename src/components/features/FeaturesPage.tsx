@@ -150,7 +150,7 @@ function PrimaryButton({
   return (
     <button
       id={id}
-      className="group inline-flex items-center gap-2 rounded-2xl bg-[#5B3DF5] px-7 py-3.5 font-semibold text-white shadow-md shadow-[#5B3DF5]/30 transition-all duration-200 hover:bg-[#4d31db] hover:shadow-lg hover:shadow-[#5B3DF5]/40 hover:-translate-y-0.5 active:translate-y-0"
+      className="group inline-flex items-center gap-2 rounded-2xl bg-[#1B2F5E] px-7 py-3.5 font-semibold text-white shadow-md shadow-[#1B2F5E]/30 transition-all duration-200 hover:bg-[#15254A] hover:shadow-lg hover:shadow-[#1B2F5E]/40 hover:-translate-y-0.5 active:translate-y-0"
     >
       {children}
       {icon ?? (
@@ -175,7 +175,7 @@ function OutlineButton({
   return (
     <button
       id={id}
-      className="group inline-flex items-center gap-2 rounded-2xl border-2 border-[#5B3DF5] px-7 py-3.5 font-semibold text-[#5B3DF5] transition-all duration-200 hover:bg-[#5B3DF5] hover:text-white hover:-translate-y-0.5 active:translate-y-0"
+      className="group inline-flex items-center gap-2 rounded-2xl border-2 border-[#1B2F5E] px-7 py-3.5 font-semibold text-[#1B2F5E] transition-all duration-200 hover:bg-[#1B2F5E] hover:text-white hover:-translate-y-0.5 active:translate-y-0"
     >
       {children}
       {icon ?? (
@@ -200,7 +200,7 @@ function WhiteButton({
   return (
     <button
       id={id}
-      className="group inline-flex items-center gap-2 rounded-2xl bg-white px-7 py-3.5 font-semibold text-[#5B3DF5] shadow-md transition-all duration-200 hover:bg-gray-50 hover:-translate-y-0.5 active:translate-y-0"
+      className="group inline-flex items-center gap-2 rounded-2xl bg-white px-7 py-3.5 font-semibold text-[#1B2F5E] shadow-md transition-all duration-200 hover:bg-gray-50 hover:-translate-y-0.5 active:translate-y-0"
     >
       {icon}
       {children}
@@ -213,7 +213,7 @@ function WhiteButton({
 function StatCard({ value, label }: { value: string; label: string }) {
   return (
     <div className="flex flex-col items-center gap-1 rounded-3xl border bg-white px-8 py-6 shadow-sm">
-      <span className="text-3xl font-extrabold text-[#5B3DF5]">{value}</span>
+      <span className="text-3xl font-extrabold text-[#1B2F5E]">{value}</span>
       <span className="text-sm font-medium text-gray-500">{label}</span>
     </div>
   );
@@ -242,14 +242,14 @@ function FeatureRow({
             {feature.number}
           </span>
           {feature.badge && (
-            <span className="rounded-full bg-[#5B3DF5] px-3 py-1 text-xs font-semibold text-white">
+            <span className="rounded-full bg-[#1B2F5E] px-3 py-1 text-xs font-semibold text-white">
               {feature.badge}
             </span>
           )}
         </div>
 
         {/* Icon */}
-        <div className="mt-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#ede9fe] text-[#5B3DF5]">
+        <div className="mt-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#EEF2FB] text-[#1B2F5E]">
           {feature.icon}
         </div>
 
@@ -267,7 +267,7 @@ function FeatureRow({
         <ul className="mt-7 space-y-3">
           {feature.points.map((item) => (
             <li key={item} className="flex items-center gap-3">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#ede9fe] text-[#5B3DF5]">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#EEF2FB] text-[#1B2F5E]">
                 <Check size={13} strokeWidth={3} />
               </span>
               <span className="font-medium text-gray-700">{item}</span>
@@ -308,12 +308,12 @@ export default function FeaturesPage() {
       ════════════════════════════════════════ */}
       <section className="relative overflow-hidden border-b bg-white">
         {/* Background orb */}
-        <div className="pointer-events-none absolute right-0 top-0 h-[600px] w-[600px] rounded-full bg-[#5B3DF5]/8 blur-3xl" />
+        <div className="pointer-events-none absolute right-0 top-0 h-[600px] w-[600px] rounded-full bg-[#1B2F5E]/8 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-20 left-1/2 h-[400px] w-[400px] -translate-x-1/2 rounded-full bg-cyan-400/10 blur-3xl" />
 
         <div className="relative mx-auto max-w-7xl px-6 py-28">
           {/* Pill badge */}
-          <div className="inline-flex items-center gap-2 rounded-full bg-[#ede9fe] px-5 py-2 text-sm font-semibold text-[#5B3DF5]">
+          <div className="inline-flex items-center gap-2 rounded-full bg-[#EEF2FB] px-5 py-2 text-sm font-semibold text-[#1B2F5E]">
             <Sparkles size={14} />
             Powerful Features
           </div>
@@ -322,7 +322,7 @@ export default function FeaturesPage() {
             Everything You Need
             <br />
             To{" "}
-            <span className="text-[#5B3DF5]">Manage Your Church</span>
+            <span className="text-[#1B2F5E]">Manage Your Church</span>
           </h1>
 
           <p className="mt-7 max-w-2xl text-lg leading-8 text-gray-600">
@@ -360,7 +360,7 @@ export default function FeaturesPage() {
         <div className="mx-auto max-w-7xl space-y-10 px-6">
           {/* Section label */}
           <div className="text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#5B3DF5]/20 bg-[#ede9fe]/70 px-4 py-1.5 text-sm font-medium text-[#5B3DF5]">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#1B2F5E]/20 bg-[#EEF2FB]/70 px-4 py-1.5 text-sm font-medium text-[#1B2F5E]">
               <Zap size={13} />
               Core Capabilities
             </div>
@@ -388,7 +388,7 @@ export default function FeaturesPage() {
       ════════════════════════════════════════ */}
       <section className="py-24">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="grid items-center gap-12 rounded-[40px] bg-gradient-to-br from-[#5B3DF5] via-[#6a4fff] to-[#7c5cff] px-10 py-16 text-white shadow-2xl shadow-[#5B3DF5]/30 lg:grid-cols-2">
+          <div className="grid items-center gap-12 rounded-[40px] bg-gradient-to-br from-[#1B2F5E] via-[#6a4fff] to-[#7c5cff] px-10 py-16 text-white shadow-2xl shadow-[#1B2F5E]/30 lg:grid-cols-2">
 
             {/* Left */}
             <div>
@@ -488,8 +488,8 @@ export default function FeaturesPage() {
               <div className="flex items-center justify-center">
                 <div className="relative">
                   {/* Outer glow ring */}
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#5B3DF5]/20 to-[#8b5cf6]/20 blur-3xl" />
-                  <div className="relative flex h-72 w-72 items-center justify-center rounded-full bg-gradient-to-br from-[#5B3DF5] to-[#8b5cf6] shadow-2xl shadow-[#5B3DF5]/40 lg:h-80 lg:w-80">
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#1B2F5E]/20 to-[#8b5cf6]/20 blur-3xl" />
+                  <div className="relative flex h-72 w-72 items-center justify-center rounded-full bg-gradient-to-br from-[#1B2F5E] to-[#8b5cf6] shadow-2xl shadow-[#1B2F5E]/40 lg:h-80 lg:w-80">
                     <ShieldCheck size={90} className="text-white" />
                   </div>
                   {/* Floating badges */}
@@ -531,7 +531,7 @@ export default function FeaturesPage() {
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <button
               id="cta-start-trial"
-              className="group inline-flex items-center gap-2 rounded-2xl bg-[#5B3DF5] px-8 py-4 font-semibold text-white shadow-lg shadow-[#5B3DF5]/40 transition-all duration-200 hover:bg-[#4d31db] hover:-translate-y-0.5 active:translate-y-0"
+              className="group inline-flex items-center gap-2 rounded-2xl bg-[#1B2F5E] px-8 py-4 font-semibold text-white shadow-lg shadow-[#1B2F5E]/40 transition-all duration-200 hover:bg-[#15254A] hover:-translate-y-0.5 active:translate-y-0"
             >
               Start Free Trial
               <ArrowRight

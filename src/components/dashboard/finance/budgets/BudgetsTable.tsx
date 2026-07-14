@@ -102,7 +102,7 @@ export default function BudgetsTable({
                 onClick={() => setCurrentPage(page)}
                 className={`h-10 w-10 rounded-xl text-sm font-bold transition-all duration-200 ${
                   currentPage === page
-                    ? "bg-[#5b3df5] text-white shadow-md shadow-[#5b3df5]/10"
+                    ? "bg-[#1B2F5E] text-white shadow-md shadow-[#1B2F5E]/10"
                     : "border border-gray-200 hover:border-gray-300 text-gray-500 hover:text-gray-700 bg-white"
                 }`}
               >
@@ -124,7 +124,7 @@ export default function BudgetsTable({
       {/* Info Help Banner underneath the table */}
       <div className="bg-[#f8f9ff] border border-gray-100 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm">
         <div className="flex gap-3 items-center min-w-0">
-          <div className="text-[#5b3df5] shrink-0">
+          <div className="text-[#1B2F5E] shrink-0">
             <Info size={20} />
           </div>
           <div className="text-xs font-semibold text-gray-500 leading-normal">
@@ -133,7 +133,7 @@ export default function BudgetsTable({
         </div>
         <Link
           href="/dashboard/finance/budgets/help"
-          className="text-xs font-bold text-[#5b3df5] hover:text-[#4d31db] flex items-center gap-1 shrink-0 group transition-colors duration-200"
+          className="text-xs font-bold text-[#1B2F5E] hover:text-[#15254A] flex items-center gap-1 shrink-0 group transition-colors duration-200"
         >
           <span>Learn more about budgeting</span>
           <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform duration-200" />

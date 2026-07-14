@@ -40,7 +40,7 @@ const FEATURES: Feature[] = [
 function FeatureCard({ icon, title, description }: Feature) {
   return (
     <div className="rounded-3xl border bg-white p-8 shadow-sm transition-all hover:-translate-y-2 hover:shadow-xl">
-      <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#ede9fe] text-[#5B3DF5]">
+      <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#EEF2FB] text-[#1B2F5E]">
         {icon}
       </div>
       <h3 className="mt-8 text-2xl font-bold">{title}</h3>
@@ -58,7 +58,7 @@ export default function FeatureSection() {
 
         {/* Header */}
         <div className="text-center">
-          <p className="font-semibold uppercase tracking-[0.2em] text-[#5B3DF5]">
+          <p className="font-semibold uppercase tracking-[0.2em] text-[#1B2F5E]">
             Powerful Features
           </p>
           <h2 className="mt-4 text-5xl font-bold">
@@ -82,7 +82,7 @@ export default function FeatureSection() {
           <Link
             href="/features"
             id="feature-section-view-all"
-            className="group inline-flex items-center gap-2 rounded-2xl bg-[#5B3DF5] px-8 py-4 font-semibold text-white shadow-md shadow-[#5B3DF5]/30 transition-all duration-200 hover:bg-[#4d31db] hover:shadow-lg hover:shadow-[#5B3DF5]/40 hover:-translate-y-0.5 active:translate-y-0"
+            className="group inline-flex items-center gap-2 rounded-2xl bg-[#1B2F5E] px-8 py-4 font-semibold text-white shadow-md shadow-[#1B2F5E]/30 transition-all duration-200 hover:bg-[#15254A] hover:shadow-lg hover:shadow-[#1B2F5E]/40 hover:-translate-y-0.5 active:translate-y-0"
           >
             View All Features
             <ArrowRight

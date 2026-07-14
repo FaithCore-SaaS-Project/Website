@@ -150,7 +150,7 @@ export default function BudgetSidebar() {
           </div>
           <div className="flex justify-between items-center">
             <span className="text-gray-400">Overall Progress</span>
-            <span className="text-[#5b3df5] font-black">{progressPercent.toFixed(1)}%</span>
+            <span className="text-[#1B2F5E] font-black">{progressPercent.toFixed(1)}%</span>
           </div>
         </div>
 
@@ -158,7 +158,7 @@ export default function BudgetSidebar() {
         <div className="mt-5">
           <div className="w-full bg-gray-100 rounded-full h-2 overflow-hidden">
             <div
-              className="bg-[#5b3df5] h-full rounded-full transition-all duration-500"
+              className="bg-[#1B2F5E] h-full rounded-full transition-all duration-500"
               style={{ width: `${progressPercent}%` }}
             />
           </div>
@@ -169,13 +169,13 @@ export default function BudgetSidebar() {
       <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
         <div className="flex justify-between items-center mb-4">
           <h3 className="font-bold text-gray-800 text-sm">Recent Activities</h3>
-          <button className="text-[10px] font-bold text-[#5b3df5] hover:text-[#4d31db]">View All</button>
+          <button className="text-[10px] font-bold text-[#1B2F5E] hover:text-[#15254A]">View All</button>
         </div>
         
         <ul className="space-y-4">
           {activities.map((act, i) => (
             <li key={i} className="flex gap-2.5 items-start">
-              <div className="h-1.5 w-1.5 rounded-full bg-[#5b3df5] mt-1.5 shrink-0" />
+              <div className="h-1.5 w-1.5 rounded-full bg-[#1B2F5E] mt-1.5 shrink-0" />
               <div className="min-w-0">
                 <p className="text-xs font-semibold text-gray-700 leading-snug">
                   {act.text}

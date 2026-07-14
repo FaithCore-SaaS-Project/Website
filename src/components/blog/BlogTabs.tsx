@@ -32,7 +32,7 @@ export default function BlogTabs() {
               key={label}
               className="group cursor-pointer rounded-3xl border bg-white p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
             >
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#ede9fe] text-[#5B3DF5] group-hover:bg-[#5B3DF5] group-hover:text-white transition-colors">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#EEF2FB] text-[#1B2F5E] group-hover:bg-[#1B2F5E] group-hover:text-white transition-colors">
                 <Icon size={22} />
               </div>
               <h3 className="mt-4 text-xl font-bold text-gray-900">{label}</h3>

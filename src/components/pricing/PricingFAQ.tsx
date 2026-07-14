@@ -46,7 +46,7 @@ export default function PricingFAQ() {
 
         {/* Heading */}
         <div className="text-center">
-          <div className="inline-flex rounded-full bg-[#ede9fe] px-5 py-2 text-sm font-semibold text-[#5B3DF5]">
+          <div className="inline-flex rounded-full bg-[#EEF2FB] px-5 py-2 text-sm font-semibold text-[#1B2F5E]">
             FREQUENTLY ASKED QUESTIONS
           </div>
           <h2 className="mt-6 text-4xl font-extrabold text-[#111827] md:text-5xl">
@@ -86,7 +86,7 @@ export default function PricingFAQ() {
             Still have questions? Contact our support team and we&apos;ll be happy
             to help.
           </p>
-          <button className="mt-6 inline-flex items-center gap-2 rounded-2xl bg-[#5B3DF5] px-8 py-4 font-semibold text-white shadow-md shadow-[#5B3DF5]/30 transition-all duration-200 hover:bg-[#4c30d9] hover:-translate-y-0.5 active:translate-y-0">
+          <button className="mt-6 inline-flex items-center gap-2 rounded-2xl bg-[#1B2F5E] px-8 py-4 font-semibold text-white shadow-md shadow-[#1B2F5E]/30 transition-all duration-200 hover:bg-[#15254A] hover:-translate-y-0.5 active:translate-y-0">
             Contact Support
           </button>
         </div>

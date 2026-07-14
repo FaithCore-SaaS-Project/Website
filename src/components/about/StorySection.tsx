@@ -7,7 +7,7 @@ export default function StorySection() {
     <section className="py-20 bg-white/30 border-t border-b border-gray-100">
       <div className="mx-auto max-w-7xl px-6 grid lg:grid-cols-2 gap-12 items-center">
         <div>
-          <span className="inline-flex rounded-full bg-[#ede9fe] px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-[#5B3DF5]">
+          <span className="inline-flex rounded-full bg-[#EEF2FB] px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-[#1B2F5E]">
             Our Story
           </span>
           <h2 className="mt-5 text-4xl font-extrabold tracking-tight text-gray-900 md:text-5xl">
@@ -24,7 +24,7 @@ export default function StorySection() {
           <div className="mt-10">
             <Link
               href="/register"
-              className="inline-flex rounded-2xl border border-[#5B3DF5] px-8 py-4 text-[#5B3DF5] font-semibold hover:bg-[#5B3DF5] hover:text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 text-center"
+              className="inline-flex rounded-2xl border border-[#1B2F5E] px-8 py-4 text-[#1B2F5E] font-semibold hover:bg-[#1B2F5E] hover:text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 text-center"
             >
               Learn More About Our Journey
             </Link>

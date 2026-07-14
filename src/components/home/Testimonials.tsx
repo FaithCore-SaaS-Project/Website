@@ -51,9 +51,9 @@ const TESTIMONIALS: Testimonial[] = [
 
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
-    <div className="group relative flex flex-col gap-6 rounded-3xl border border-gray-100 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#5B3DF5]/10">
+    <div className="group relative flex flex-col gap-6 rounded-3xl border border-gray-100 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#1B2F5E]/10">
       {/* Quote icon */}
-      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#ede9fe] text-[#5B3DF5]">
+      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EEF2FB] text-[#1B2F5E]">
         <Quote size={18} />
       </div>
 
@@ -71,7 +71,7 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
 
       {/* Author */}
       <div className="flex items-center gap-4 border-t border-gray-100 pt-6">
-        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#5B3DF5] text-white text-sm font-bold">
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#1B2F5E] text-white text-sm font-bold">
           {testimonial.avatar}
         </div>
         <div>
@@ -94,7 +94,7 @@ export default function Testimonials() {
 
         {/* Header */}
         <div className="mb-16 text-center">
-          <div className="mb-4 inline-flex items-center rounded-full border border-[#5B3DF5]/20 bg-[#ede9fe]/70 px-4 py-1.5 text-sm font-medium text-[#5B3DF5]">
+          <div className="mb-4 inline-flex items-center rounded-full border border-[#1B2F5E]/20 bg-[#EEF2FB]/70 px-4 py-1.5 text-sm font-medium text-[#1B2F5E]">
             Customer Stories
           </div>
           <h2 className="text-4xl font-extrabold text-gray-900 md:text-5xl">

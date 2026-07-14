@@ -27,7 +27,7 @@ export default function PricingCTA() {
 
             {/* Right */}
             <div className="flex flex-wrap gap-4 lg:shrink-0">
-              <button className="group inline-flex items-center gap-3 rounded-2xl bg-white px-7 py-4 font-semibold text-[#5B3DF5] transition-all duration-200 hover:bg-gray-50 hover:-translate-y-0.5 active:translate-y-0">
+              <button className="group inline-flex items-center gap-3 rounded-2xl bg-white px-7 py-4 font-semibold text-[#1B2F5E] transition-all duration-200 hover:bg-gray-50 hover:-translate-y-0.5 active:translate-y-0">
                 <CalendarDays size={18} />
                 Schedule a Demo
               </button>

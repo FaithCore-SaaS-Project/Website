@@ -27,78 +27,99 @@ const PLANS: Plan[] = [
     button: "Start Free",
     highlighted: false,
     features: [
-      "Up to 100 Members",
-      "1 GB Storage",
-      "Member Management",
-      "Basic Reports",
-      "Community Support",
+      "Up to 50 Members",
+      "2 Admin Users",
+      "500 MB Storage",
+      "3 Departments limit",
+      "Basic Member Records & Families",
+      "Events & Documents Storage",
     ],
   },
   {
     name: "Basic",
-    monthlyPrice: "LKR 4,900",
-    annualPrice: "LKR 3,900",
+    monthlyPrice: "LKR 3,000",
+    annualPrice: "LKR 2,400",
     description: "Ideal for growing congregations.",
     button: "Choose Basic",
     highlighted: false,
     features: [
-      "Up to 500 Members",
-      "5 GB Storage",
-      "Family Management",
-      "Finance Tracking",
-      "Email Support",
+      "Up to 150 Members",
+      "5 Admin Users",
+      "2 GB Storage",
+      "5 Departments limit",
+      "Certificates & Letters PDF",
+      "Finance Charts & Online Giving (Mobile)",
+      "CSV Data Export",
     ],
   },
   {
     name: "Standard",
-    monthlyPrice: "LKR 9,900",
-    annualPrice: "LKR 7,900",
+    monthlyPrice: "LKR 5,500",
+    annualPrice: "LKR 4,400",
     description: "Most popular plan for active ministries.",
     button: "Choose Standard",
     highlighted: true,
     badge: "MOST POPULAR",
     features: [
-      "Up to 2,000 Members",
-      "10 GB Storage",
-      "Finance Module",
-      "Certificates & Letters",
-      "Events Management",
-      "Priority Support",
-      "AI Reports",
+      "Up to 400 Members",
+      "10 Admin Users",
+      "5 GB Storage",
+      "15 Departments limit",
+      "Bank Accounts & Budgets planning",
+      "E-Receipts (Email & Print Layout)",
+      "All 8 Report types & Attendance",
+      "Custom Roles & Permissions",
+      "Mobile Push Notifications",
     ],
   },
   {
     name: "Premium",
-    monthlyPrice: "LKR 19,900",
-    annualPrice: "LKR 15,900",
-    description: "Everything your ministry needs.",
+    monthlyPrice: "LKR 9,500",
+    annualPrice: "LKR 7,600",
+    description: "Everything your large ministry needs.",
     button: "Choose Premium",
     highlighted: false,
     features: [
-      "Unlimited Members",
-      "100 GB Storage",
-      "Desktop Application",
-      "Mobile Application",
-      "Advanced Analytics",
-      "Dedicated Support",
-      "Custom Branding",
+      "Up to 750 Members",
+      "20 Admin Users",
+      "15 GB Storage",
+      "30 Departments limit",
+      "Export Reports to CSV",
+      "Third-Party Integrations (Stripe/QB)",
+      "Data Backup & Restore",
+      "System Audit Logs",
+      "Priority Email & Phone Support",
     ],
   },
   {
-    name: "Enterprise",
+    name: "Pro",
+    monthlyPrice: "LKR 16,500",
+    annualPrice: "LKR 13,200",
+    description: "Built for large active multi-ministries.",
+    button: "Choose Pro",
+    highlighted: false,
+    features: [
+      "Up to 1,000 Members",
+      "30 Admin Users",
+      "30 GB Storage",
+      "50 Departments limit",
+      "Automated Backup Scheduling",
+      "Backup Storage Management",
+      "Dedicated Technical Support",
+    ],
+  },
+  {
+    name: "Unlimited",
     monthlyPrice: "Custom",
     annualPrice: "Custom",
-    description: "For large ministries and organizations.",
+    description: "For dioceses and denomination networks.",
     button: "Contact Sales",
     highlighted: false,
     features: [
-      "Unlimited Everything",
-      "Dedicated Infrastructure",
-      "Custom Integrations",
-      "Account Manager",
-      "On-Premise Options",
-      "SLA Guarantee",
-      "Priority Development",
+      "Unlimited Members & Users",
+      "Unlimited Storage & Departments",
+      "Dedicated Account Manager",
+      "Custom pricing agreements",
     ],
   },
 ];
@@ -120,34 +141,34 @@ function PricingCard({
 
   return (
     <div
-      className={`relative flex flex-col overflow-hidden rounded-[32px] border bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl ${
-        plan.highlighted ? "border-[#5B3DF5] ring-2 ring-[#5B3DF5]" : ""
+      className={`relative flex flex-col overflow-hidden rounded-[32px] border bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl ${
+        plan.highlighted ? "border-[#1B2F5E] ring-2 ring-[#1B2F5E]" : ""
       }`}
     >
       {/* Badge */}
       {plan.badge && (
-        <div className="absolute right-4 top-4 rounded-full bg-[#5B3DF5] px-3 py-1 text-[10px] font-bold text-white">
+        <div className="absolute right-4 top-4 rounded-full bg-[#1B2F5E] px-3 py-1 text-[10px] font-bold text-white">
           {plan.badge}
         </div>
       )}
 
       {/* Plan Name */}
-      <h3 className="text-2xl font-bold text-[#111827]">{plan.name}</h3>
+      <h3 className="text-xl font-bold text-[#111827]">{plan.name}</h3>
 
       {/* Description */}
-      <p className="mt-3 text-sm text-gray-500">{plan.description}</p>
+      <p className="mt-3 text-xs text-gray-500 min-h-[32px]">{plan.description}</p>
 
       {/* Price */}
-      <div className="mt-8">
-        <span className="text-4xl font-extrabold text-[#111827]">{price}</span>
+      <div className="mt-6">
+        <span className="text-2xl font-extrabold text-[#111827]">{price}</span>
         {!isCustom && !isFree && (
-          <span className="ml-2 text-sm text-gray-500">/month</span>
+          <span className="ml-1 text-xs text-gray-500">/month</span>
         )}
       </div>
 
       {/* Annual savings label */}
       {isAnnual && !isCustom && !isFree && (
-        <p className="mt-1 text-xs font-medium text-green-600">
+        <p className="mt-1 text-[10px] font-medium text-green-600">
           Billed annually — save 20%
         </p>
       )}
@@ -161,9 +182,9 @@ function PricingCard({
           }
           onSelectPlan(plan);
         }}
-        className={`mt-8 w-full rounded-2xl py-4 font-semibold transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 ${
+        className={`mt-6 w-full rounded-xl py-3 text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 ${
           plan.highlighted
-            ? "bg-[#5B3DF5] text-white shadow-md shadow-[#5B3DF5]/30 hover:bg-[#4c30d9]"
+            ? "bg-[#1B2F5E] text-white shadow-md shadow-[#1B2F5E]/30 hover:bg-[#15254A]"
             : "border border-gray-300 hover:bg-gray-50"
         }`}
       >
@@ -171,14 +192,14 @@ function PricingCard({
       </button>
 
       {/* Divider */}
-      <div className="my-8 border-t" />
+      <div className="my-6 border-t" />
 
       {/* Features */}
-      <ul className="flex-1 space-y-4">
+      <ul className="flex-1 space-y-3">
         {plan.features.map((feature) => (
-          <li key={feature} className="flex items-start gap-3">
-            <Check size={18} className="mt-0.5 shrink-0 text-green-500" />
-            <span className="text-sm text-gray-700">{feature}</span>
+          <li key={feature} className="flex items-start gap-2">
+            <Check size={14} className="mt-0.5 shrink-0 text-green-500" />
+            <span className="text-xs text-gray-700 leading-normal">{feature}</span>
           </li>
         ))}
       </ul>
@@ -285,7 +306,7 @@ function CheckoutModal({
         
         <h3 className="text-xl font-bold text-gray-900 mb-2">Checkout</h3>
         <p className="text-sm text-gray-500 mb-6">
-          You selected the <span className="font-bold text-[#5B3DF5]">{plan.name}</span> plan. How would you like to pay?
+          You selected the <span className="font-bold text-[#1B2F5E]">{plan.name}</span> plan. How would you like to pay?
         </p>
 
         <div className="space-y-4">
@@ -320,7 +341,7 @@ export default function PricingCards({ isAnnual }: { isAnnual: boolean }) {
   return (
     <section className="pb-20 relative">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="grid gap-6 lg:grid-cols-5">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
           {PLANS.map((plan) => (
             <PricingCard 
               key={plan.name} 

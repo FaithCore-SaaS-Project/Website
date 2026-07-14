@@ -47,7 +47,7 @@ export default function AdminDetailsPage() {
           
           {/* Header */}
           <div className="text-center">
-            <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-3xl bg-[#ede9fe] text-[#5B3DF5]">
+            <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-3xl bg-[#EEF2FB] text-[#1B2F5E]">
               <User size={36} />
             </div>
             <h1 className="mt-5 text-4xl font-extrabold tracking-tight text-gray-900 md:text-5xl">
@@ -130,7 +130,7 @@ export default function AdminDetailsPage() {
                 <label className="mb-2 block text-sm font-semibold text-gray-700">
                   Password
                 </label>
-                <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 focus-within:border-[#5B3DF5] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#5B3DF5]/10 transition-all">
+                <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 focus-within:border-[#1B2F5E] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1B2F5E]/10 transition-all">
                   <Lock size={18} className="text-gray-400 shrink-0" />
                   <input
                     type={showPassword ? "text" : "password"}
@@ -155,7 +155,7 @@ export default function AdminDetailsPage() {
                 <label className="mb-2 block text-sm font-semibold text-gray-700">
                   Confirm Password
                 </label>
-                <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 focus-within:border-[#5B3DF5] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#5B3DF5]/10 transition-all">
+                <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 focus-within:border-[#1B2F5E] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1B2F5E]/10 transition-all">
                   <Lock size={18} className="text-gray-400 shrink-0" />
                   <input
                     type={showConfirmPassword ? "text" : "password"}
@@ -179,7 +179,7 @@ export default function AdminDetailsPage() {
             {/* Security Notice */}
             <div className="rounded-2xl border border-gray-200 bg-[#faf9ff] p-5 shadow-sm">
               <div className="flex items-center gap-3">
-                <ShieldCheck size={24} className="text-[#5B3DF5] shrink-0" />
+                <ShieldCheck size={24} className="text-[#1B2F5E] shrink-0" />
                 <div>
                   <h4 className="font-bold text-sm text-gray-900">
                     Secure Administrator Account
@@ -202,7 +202,7 @@ export default function AdminDetailsPage() {
               </Link>
               <button
                 type="submit"
-                className="flex items-center justify-center gap-3 rounded-2xl bg-[#5B3DF5] px-10 py-4 font-bold text-white shadow-md shadow-[#5B3DF5]/30 hover:bg-[#4c30df] hover:shadow-lg hover:shadow-[#5B3DF5]/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+                className="flex items-center justify-center gap-3 rounded-2xl bg-[#1B2F5E] px-10 py-4 font-bold text-white shadow-md shadow-[#1B2F5E]/30 hover:bg-[#4c30df] hover:shadow-lg hover:shadow-[#1B2F5E]/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
               >
                 Continue
                 <ArrowRight size={18} />
@@ -231,7 +231,7 @@ function Step({
       <div
         className={`flex h-11 w-11 items-center justify-center rounded-full font-bold text-sm shadow-sm transition-all ${
           active
-            ? "bg-[#5B3DF5] text-white shadow-[#5B3DF5]/30"
+            ? "bg-[#1B2F5E] text-white shadow-[#1B2F5E]/30"
             : completed
             ? "bg-green-500 text-white shadow-green-500/30"
             : "border border-gray-200 bg-white text-gray-400"
@@ -239,7 +239,7 @@ function Step({
       >
         {number}
       </div>
-      <span className={`mt-2 hidden text-xs font-semibold md:block ${active ? "text-[#5B3DF5]" : completed ? "text-green-600" : "text-gray-400"}`}>
+      <span className={`mt-2 hidden text-xs font-semibold md:block ${active ? "text-[#1B2F5E]" : completed ? "text-green-600" : "text-gray-400"}`}>
         {title}
       </span>
     </div>
@@ -268,7 +268,7 @@ function Input({
       <label className="mb-2 block text-sm font-semibold text-gray-700">
         {label}
       </label>
-      <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 focus-within:border-[#5B3DF5] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#5B3DF5]/10 transition-all">
+      <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 focus-within:border-[#1B2F5E] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1B2F5E]/10 transition-all">
         {icon && <div className="text-gray-400 shrink-0">{icon}</div>}
         <input
           type={type}

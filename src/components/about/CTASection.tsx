@@ -6,7 +6,7 @@ export default function CTASection() {
   return (
     <section className="pb-20 bg-white">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="relative overflow-hidden rounded-[35px] bg-gradient-to-r from-[#5B3DF5] to-[#8066ff] p-10 md:p-14 text-white shadow-xl shadow-[#5B3DF5]/20">
+        <div className="relative overflow-hidden rounded-[35px] bg-gradient-to-r from-[#1B2F5E] to-[#8066ff] p-10 md:p-14 text-white shadow-xl shadow-[#1B2F5E]/20">
           
           {/* Abstract background shapes */}
           <div className="absolute right-0 top-0 h-96 w-96 rounded-full bg-white/5 blur-3xl" />
@@ -31,7 +31,7 @@ export default function CTASection() {
               </Link>
               <Link
                 href="/register"
-                className="rounded-2xl bg-white px-8 py-4 font-semibold text-[#5B3DF5] shadow-lg shadow-black/5 hover:bg-gray-50 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 text-center"
+                className="rounded-2xl bg-white px-8 py-4 font-semibold text-[#1B2F5E] shadow-lg shadow-black/5 hover:bg-gray-50 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 text-center"
               >
                 Get Started Free
               </Link>

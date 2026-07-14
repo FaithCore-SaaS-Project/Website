@@ -16,7 +16,7 @@ export default function Header() {
           <input
             type="text"
             placeholder="Search members, receipts, families..."
-            className="w-full bg-[#f8f9ff] text-sm text-gray-800 pl-11 pr-4 py-3 rounded-xl border border-transparent focus:border-[#5b3df5] focus:bg-white outline-none transition-all duration-200 placeholder-gray-400"
+            className="w-full bg-[#f8f9ff] text-sm text-gray-800 pl-11 pr-4 py-3 rounded-xl border border-transparent focus:border-[#1B2F5E] focus:bg-white outline-none transition-all duration-200 placeholder-gray-400"
           />
         </div>
       </div>
@@ -38,7 +38,7 @@ export default function Header() {
         <button className="flex items-center gap-2 text-gray-500 hover:text-gray-700 transition-all duration-200">
           <div className="relative">
             <Mail size={20} className="text-gray-500" />
-            <span className="absolute -top-1.5 -right-1.5 h-4 w-4 bg-[#5b3df5] text-[9px] font-bold text-white flex items-center justify-center rounded-full ring-2 ring-white">
+            <span className="absolute -top-1.5 -right-1.5 h-4 w-4 bg-[#1B2F5E] text-[9px] font-bold text-white flex items-center justify-center rounded-full ring-2 ring-white">
               4
             </span>
           </div>
@@ -50,7 +50,7 @@ export default function Header() {
 
         {/* User Info */}
         <div className="flex items-center gap-3 cursor-pointer group select-none">
-          <div className="relative h-10 w-10 rounded-full overflow-hidden border-2 border-transparent group-hover:border-[#5b3df5] transition-all duration-200">
+          <div className="relative h-10 w-10 rounded-full overflow-hidden border-2 border-transparent group-hover:border-[#1B2F5E] transition-all duration-200">
             <Image
               src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
               alt="Pastor John"

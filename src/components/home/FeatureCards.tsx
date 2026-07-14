@@ -26,8 +26,8 @@ const FEATURES: Feature[] = [
     title: "Member Directory",
     description:
       "Manage your entire congregation in one searchable, filterable directory. Track families, life groups, and ministry involvement.",
-    color: "text-[#5B3DF5]",
-    bgColor: "bg-[#ede9fe]",
+    color: "text-[#1B2F5E]",
+    bgColor: "bg-[#EEF2FB]",
   },
   {
     icon: <CalendarDays size={22} />,
@@ -98,7 +98,7 @@ export default function FeatureCards() {
 
         {/* Header */}
         <div className="mb-16 text-center">
-          <div className="mb-4 inline-flex items-center rounded-full border border-[#5B3DF5]/20 bg-[#ede9fe]/70 px-4 py-1.5 text-sm font-medium text-[#5B3DF5]">
+          <div className="mb-4 inline-flex items-center rounded-full border border-[#1B2F5E]/20 bg-[#EEF2FB]/70 px-4 py-1.5 text-sm font-medium text-[#1B2F5E]">
             Platform Features
           </div>
           <h2 className="text-4xl font-extrabold text-gray-900 md:text-5xl">

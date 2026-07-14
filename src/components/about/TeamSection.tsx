@@ -25,9 +25,9 @@ export default function TeamSection() {
           {team.map((member) => (
             <div
               key={member.name}
-              className="group rounded-[32px] border border-gray-100 bg-white p-6 text-center shadow-md shadow-gray-100/30 transition-all hover:-translate-y-2 hover:shadow-xl hover:border-[#5B3DF5]/30 duration-300"
+              className="group rounded-[32px] border border-gray-100 bg-white p-6 text-center shadow-md shadow-gray-100/30 transition-all hover:-translate-y-2 hover:shadow-xl hover:border-[#1B2F5E]/30 duration-300"
             >
-              <div className="relative mx-auto h-28 w-28 overflow-hidden rounded-full border-4 border-gray-50 group-hover:border-[#ede9fe] transition-colors duration-300">
+              <div className="relative mx-auto h-28 w-28 overflow-hidden rounded-full border-4 border-gray-50 group-hover:border-[#EEF2FB] transition-colors duration-300">
                 <img
                   src="/images/avatar.jpg"
                   alt={member.name}

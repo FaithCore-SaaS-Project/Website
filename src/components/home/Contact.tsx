@@ -20,7 +20,7 @@ export default function Contact() {
 
         {/* Header */}
         <div className="text-center">
-          <p className="font-semibold uppercase tracking-[0.2em] text-[#5B3DF5]">
+          <p className="font-semibold uppercase tracking-[0.2em] text-[#1B2F5E]">
             Contact Us
           </p>
           <h2 className="mt-4 text-5xl font-bold">We&apos;d Love To Hear From You</h2>
@@ -44,7 +44,7 @@ export default function Contact() {
               </p>
               <button
                 onClick={() => setSubmitted(false)}
-                className="mt-2 rounded-xl bg-[#5B3DF5] px-6 py-2.5 text-sm font-semibold text-white hover:bg-[#4d31db] transition-colors"
+                className="mt-2 rounded-xl bg-[#1B2F5E] px-6 py-2.5 text-sm font-semibold text-white hover:bg-[#15254A] transition-colors"
               >
                 Send Another
               </button>
@@ -61,7 +61,7 @@ export default function Contact() {
                     type="text"
                     placeholder="John"
                     required
-                    className="rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none focus:border-[#5B3DF5] focus:ring-2 focus:ring-[#5B3DF5]/20 transition-all"
+                    className="rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none focus:border-[#1B2F5E] focus:ring-2 focus:ring-[#1B2F5E]/20 transition-all"
                   />
                 </div>
                 <div className="flex flex-col gap-2">
@@ -70,7 +70,7 @@ export default function Contact() {
                     type="text"
                     placeholder="Doe"
                     required
-                    className="rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none focus:border-[#5B3DF5] focus:ring-2 focus:ring-[#5B3DF5]/20 transition-all"
+                    className="rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none focus:border-[#1B2F5E] focus:ring-2 focus:ring-[#1B2F5E]/20 transition-all"
                   />
                 </div>
               </div>
@@ -81,7 +81,7 @@ export default function Contact() {
                   type="email"
                   placeholder="john@church.org"
                   required
-                  className="rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none focus:border-[#5B3DF5] focus:ring-2 focus:ring-[#5B3DF5]/20 transition-all"
+                  className="rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none focus:border-[#1B2F5E] focus:ring-2 focus:ring-[#1B2F5E]/20 transition-all"
                 />
               </div>
 
@@ -90,7 +90,7 @@ export default function Contact() {
                 <input
                   type="text"
                   placeholder="Grace Community Church"
-                  className="rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none focus:border-[#5B3DF5] focus:ring-2 focus:ring-[#5B3DF5]/20 transition-all"
+                  className="rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none focus:border-[#1B2F5E] focus:ring-2 focus:ring-[#1B2F5E]/20 transition-all"
                 />
               </div>
 
@@ -100,13 +100,13 @@ export default function Contact() {
                   rows={4}
                   placeholder="Tell us how we can help..."
                   required
-                  className="rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none focus:border-[#5B3DF5] focus:ring-2 focus:ring-[#5B3DF5]/20 transition-all resize-none"
+                  className="rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none focus:border-[#1B2F5E] focus:ring-2 focus:ring-[#1B2F5E]/20 transition-all resize-none"
                 />
               </div>
 
               <button
                 type="submit"
-                className="rounded-2xl bg-[#5B3DF5] py-4 font-semibold text-white hover:bg-[#4d31db] transition-colors"
+                className="rounded-2xl bg-[#1B2F5E] py-4 font-semibold text-white hover:bg-[#15254A] transition-colors"
               >
                 Send Message
               </button>
@@ -138,9 +138,9 @@ export default function Contact() {
               <a
                 key={label}
                 href={href}
-                className="flex items-center gap-5 rounded-2xl border bg-white p-6 shadow-sm hover:border-[#5B3DF5]/30 hover:shadow-md transition-all"
+                className="flex items-center gap-5 rounded-2xl border bg-white p-6 shadow-sm hover:border-[#1B2F5E]/30 hover:shadow-md transition-all"
               >
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#ede9fe] text-[#5B3DF5]">
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#EEF2FB] text-[#1B2F5E]">
                   {icon}
                 </div>
                 <div>

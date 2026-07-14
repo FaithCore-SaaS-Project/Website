@@ -19,28 +19,28 @@ interface Plan {
 const PLANS: Plan[] = [
   {
     title: "Free",
-    monthlyPrice: "$0",
-    annualPrice: "$0",
-    features: ["100 Members", "1GB Storage", "Basic Features"],
+    monthlyPrice: "LKR 0",
+    annualPrice: "LKR 0",
+    features: ["50 Members limit", "500MB Storage", "Basic Records"],
+  },
+  {
+    title: "Basic",
+    monthlyPrice: "LKR 3,000",
+    annualPrice: "LKR 2,400",
+    features: ["150 Members limit", "2GB Storage", "Certificates & Letters"],
   },
   {
     title: "Standard",
-    monthlyPrice: "$69",
-    annualPrice: "$59",
-    features: ["2000 Members", "10GB Storage", "Priority Support"],
+    monthlyPrice: "LKR 5,500",
+    annualPrice: "LKR 4,400",
+    features: ["400 Members limit", "5GB Storage", "Budgets & E-Receipts", "Reports & Attendance"],
     active: true,
   },
   {
     title: "Premium",
-    monthlyPrice: "$119",
-    annualPrice: "$99",
-    features: ["Unlimited Members", "100GB Storage", "Mobile App Access"],
-  },
-  {
-    title: "Enterprise",
-    monthlyPrice: "Custom",
-    annualPrice: "Custom",
-    features: ["Dedicated Server", "AI Reporting", "Custom Integrations"],
+    monthlyPrice: "LKR 9,500",
+    annualPrice: "LKR 7,600",
+    features: ["750 Members limit", "15GB Storage", "Audit Logs & Backup", "Third-party integrations"],
   },
 ];
 
@@ -59,12 +59,12 @@ function PricingCard({
     <div
       className={`rounded-3xl border p-8 transition-all hover:-translate-y-1 hover:shadow-xl ${
         plan.active
-          ? "border-[#5B3DF5] bg-[#f8f5ff] shadow-xl"
+          ? "border-[#1B2F5E] bg-[#EEF2FB] shadow-xl"
           : "bg-white shadow-sm"
       }`}
     >
       {plan.active && (
-        <div className="mb-4 inline-block rounded-full bg-[#5B3DF5] px-3 py-1 text-xs font-bold text-white">
+        <div className="mb-4 inline-block rounded-full bg-[#1B2F5E] px-3 py-1 text-xs font-bold text-white">
           Most Popular
         </div>
       )}
@@ -72,8 +72,8 @@ function PricingCard({
       <h3 className="text-2xl font-bold">{plan.title}</h3>
 
       <div className="mt-5">
-        <span className="text-5xl font-extrabold">{price}</span>
-        {price !== "Custom" && price !== "$0" && (
+        <span className="text-4xl font-extrabold">{price}</span>
+        {price !== "Custom" && price !== "LKR 0" && (
           <span className="text-gray-500 text-sm ml-1">/mo</span>
         )}
       </div>
@@ -94,7 +94,7 @@ function PricingCard({
       <button
         className={`mt-10 w-full rounded-2xl py-4 font-semibold transition-colors ${
           plan.active
-            ? "bg-[#5B3DF5] text-white hover:bg-[#4d31db]"
+            ? "bg-[#1B2F5E] text-white hover:bg-[#15254A]"
             : "border border-gray-300 hover:bg-gray-50"
         }`}
       >
@@ -114,7 +114,7 @@ export default function PricingSection() {
       <div className="mx-auto max-w-7xl px-6">
         {/* Header */}
         <div className="text-center">
-          <p className="font-semibold uppercase tracking-[0.2em] text-[#5B3DF5]">
+          <p className="font-semibold uppercase tracking-[0.2em] text-[#1B2F5E]">
             Simple Pricing
           </p>
           <h2 className="mt-4 text-5xl font-bold">Choose Your Plan</h2>
@@ -128,7 +128,7 @@ export default function PricingSection() {
               onClick={() => setIsAnnual(false)}
               className={`rounded-xl px-6 py-2.5 text-sm font-semibold transition-all ${
                 !isAnnual
-                  ? "bg-[#5B3DF5] text-white shadow-md"
+                  ? "bg-[#1B2F5E] text-white shadow-md"
                   : "text-gray-500 hover:text-gray-700"
               }`}
             >
@@ -138,7 +138,7 @@ export default function PricingSection() {
               onClick={() => setIsAnnual(true)}
               className={`flex items-center gap-2 rounded-xl px-6 py-2.5 text-sm font-semibold transition-all ${
                 isAnnual
-                  ? "bg-[#5B3DF5] text-white shadow-md"
+                  ? "bg-[#1B2F5E] text-white shadow-md"
                   : "text-gray-500 hover:text-gray-700"
               }`}
             >
@@ -166,7 +166,7 @@ export default function PricingSection() {
           <Link
             href="/pricing"
             id="pricing-section-view-all"
-            className="group inline-flex items-center gap-2 rounded-2xl bg-[#5B3DF5] px-8 py-4 font-semibold text-white shadow-md shadow-[#5B3DF5]/30 transition-all duration-200 hover:bg-[#4d31db] hover:shadow-lg hover:shadow-[#5B3DF5]/40 hover:-translate-y-0.5 active:translate-y-0"
+            className="group inline-flex items-center gap-2 rounded-2xl bg-[#1B2F5E] px-8 py-4 font-semibold text-white shadow-md shadow-[#1B2F5E]/30 transition-all duration-200 hover:bg-[#15254A] hover:shadow-lg hover:shadow-[#1B2F5E]/40 hover:-translate-y-0.5 active:translate-y-0"
           >
             View All Plans
             <ArrowRight

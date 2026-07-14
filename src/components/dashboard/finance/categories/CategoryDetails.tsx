@@ -110,7 +110,7 @@ export default function CategoryDetails({ category }: CategoryDetailsProps) {
         </div>
 
         {/* Action Buttons */}
-        <button className="w-full mt-6 bg-[#5b3df5] hover:bg-[#4d31db] text-white py-3 rounded-xl flex items-center justify-center gap-2 text-sm font-bold shadow-md shadow-[#5b3df5]/10 hover:shadow-lg transition-all duration-200">
+        <button className="w-full mt-6 bg-[#1B2F5E] hover:bg-[#15254A] text-white py-3 rounded-xl flex items-center justify-center gap-2 text-sm font-bold shadow-md shadow-[#1B2F5E]/10 hover:shadow-lg transition-all duration-200">
           <Pencil size={14} />
           Edit Category
         </button>

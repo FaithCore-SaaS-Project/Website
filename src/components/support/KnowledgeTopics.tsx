@@ -32,7 +32,7 @@ export default function KnowledgeTopics() {
 
           {/* Left — Heading + CTA */}
           <div className="flex flex-col justify-center">
-            <p className="font-semibold uppercase tracking-[0.2em] text-[#5B3DF5]">
+            <p className="font-semibold uppercase tracking-[0.2em] text-[#1B2F5E]">
               Knowledge Base
             </p>
             <h2 className="mt-4 text-4xl font-extrabold text-gray-900 leading-tight md:text-5xl">
@@ -42,7 +42,7 @@ export default function KnowledgeTopics() {
               Browse our knowledge base organised by topic to quickly find
               what you&apos;re looking for.
             </p>
-            <button className="mt-8 w-fit rounded-2xl bg-[#5B3DF5] px-8 py-4 font-semibold text-white shadow-md shadow-[#5B3DF5]/30 hover:bg-[#4d31db] transition-all hover:-translate-y-0.5 active:translate-y-0">
+            <button className="mt-8 w-fit rounded-2xl bg-[#1B2F5E] px-8 py-4 font-semibold text-white shadow-md shadow-[#1B2F5E]/30 hover:bg-[#15254A] transition-all hover:-translate-y-0.5 active:translate-y-0">
               View All Articles
             </button>
           </div>
@@ -52,9 +52,9 @@ export default function KnowledgeTopics() {
             {topics.map(({ title, icon: Icon }) => (
               <button
                 key={title}
-                className="group flex flex-col items-center rounded-2xl border bg-white p-6 text-center shadow-sm transition-all hover:shadow-md hover:border-[#5B3DF5]/30 hover:-translate-y-0.5"
+                className="group flex flex-col items-center rounded-2xl border bg-white p-6 text-center shadow-sm transition-all hover:shadow-md hover:border-[#1B2F5E]/30 hover:-translate-y-0.5"
               >
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#ede9fe] text-[#5B3DF5] transition-colors duration-300 group-hover:bg-[#5B3DF5] group-hover:text-white">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#EEF2FB] text-[#1B2F5E] transition-colors duration-300 group-hover:bg-[#1B2F5E] group-hover:text-white">
                   <Icon size={26} />
                 </div>
                 <h3 className="mt-4 text-sm font-semibold text-gray-800 leading-snug">

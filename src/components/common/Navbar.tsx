@@ -15,33 +15,35 @@ export default function Navbar() {
 
         {/* ── Logo ───────────────────────────────────────── */}
         <div className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#5B3DF5] text-white font-bold text-xl">
-            FC
-          </div>
+          <img
+            src="/images/logo.jpg"
+            alt="FaithCore Logo"
+            className="h-10 w-10 rounded-xl object-contain border border-[#C9A84C]"
+          />
           <div>
-            <p className="text-xl font-bold text-gray-900">FaithCore</p>
-            <p className="text-sm text-gray-500">Church Management System</p>
+            <p className="text-lg font-bold text-gray-900 leading-tight">FaithCore</p>
+            <p className="text-xs text-gray-500">Church Management System</p>
           </div>
         </div>
 
         {/* ── Desktop Nav ─────────────────────────────────── */}
         <nav className="hidden items-center gap-8 lg:flex">
-          <a href="/" className="font-medium hover:text-[#5B3DF5] transition-colors">
+          <a href="/" className="font-medium hover:text-[#1B2F5E] transition-colors">
             Home
           </a>
-          <a href="/features" className="font-medium hover:text-[#5B3DF5] transition-colors">
+          <a href="/features" className="font-medium hover:text-[#1B2F5E] transition-colors">
             Features
           </a>
-          <a href="/pricing" className="font-medium hover:text-[#5B3DF5] transition-colors">
+          <a href="/pricing" className="font-medium hover:text-[#1B2F5E] transition-colors">
             Pricing
           </a>
-          <a href="/#about" className="font-medium hover:text-[#5B3DF5] transition-colors">
+          <a href="/#about" className="font-medium hover:text-[#1B2F5E] transition-colors">
             About
           </a>
-          <a href="/#support" className="font-medium hover:text-[#5B3DF5] transition-colors">
+          <a href="/#support" className="font-medium hover:text-[#1B2F5E] transition-colors">
             Support
           </a>
-          <a href="/#contact" className="font-medium hover:text-[#5B3DF5] transition-colors">
+          <a href="/#contact" className="font-medium hover:text-[#1B2F5E] transition-colors">
             Contact
           </a>
         </nav>
@@ -56,7 +58,7 @@ export default function Navbar() {
           </Link>
           <Link
             href="/register"
-            className="rounded-xl bg-[#5B3DF5] px-5 py-2.5 font-medium text-white hover:bg-[#4d31db] transition-colors text-center"
+            className="rounded-xl bg-[#1B2F5E] px-5 py-2.5 font-medium text-white hover:bg-[#15254A] transition-colors text-center"
           >
             Get Started
           </Link>
@@ -67,7 +69,7 @@ export default function Navbar() {
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen((prev) => !prev)}
-          className="lg:hidden text-gray-700 hover:text-[#5B3DF5] transition-colors"
+          className="lg:hidden text-gray-700 hover:text-[#1B2F5E] transition-colors"
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -79,42 +81,42 @@ export default function Navbar() {
           <a
             href="/"
             onClick={() => setMobileOpen(false)}
-            className="font-medium text-gray-700 hover:text-[#5B3DF5] transition-colors"
+            className="font-medium text-gray-700 hover:text-[#1B2F5E] transition-colors"
           >
             Home
           </a>
           <a
             href="/features"
             onClick={() => setMobileOpen(false)}
-            className="font-medium text-gray-700 hover:text-[#5B3DF5] transition-colors"
+            className="font-medium text-gray-700 hover:text-[#1B2F5E] transition-colors"
           >
             Features
           </a>
           <a
             href="/pricing"
             onClick={() => setMobileOpen(false)}
-            className="font-medium text-gray-700 hover:text-[#5B3DF5] transition-colors"
+            className="font-medium text-gray-700 hover:text-[#1B2F5E] transition-colors"
           >
             Pricing
           </a>
           <a
             href="/#about"
             onClick={() => setMobileOpen(false)}
-            className="font-medium text-gray-700 hover:text-[#5B3DF5] transition-colors"
+            className="font-medium text-gray-700 hover:text-[#1B2F5E] transition-colors"
           >
             About
           </a>
           <a
             href="/#support"
             onClick={() => setMobileOpen(false)}
-            className="font-medium text-gray-700 hover:text-[#5B3DF5] transition-colors"
+            className="font-medium text-gray-700 hover:text-[#1B2F5E] transition-colors"
           >
             Support
           </a>
           <a
             href="/#contact"
             onClick={() => setMobileOpen(false)}
-            className="font-medium text-gray-700 hover:text-[#5B3DF5] transition-colors"
+            className="font-medium text-gray-700 hover:text-[#1B2F5E] transition-colors"
           >
             Contact
           </a>
@@ -129,7 +131,7 @@ export default function Navbar() {
             <Link
               href="/register"
               onClick={() => setMobileOpen(false)}
-              className="rounded-xl bg-[#5B3DF5] px-5 py-3 font-medium text-white hover:bg-[#4d31db] transition-colors text-center"
+              className="rounded-xl bg-[#1B2F5E] px-5 py-3 font-medium text-white hover:bg-[#15254A] transition-colors text-center"
             >
               Get Started
             </Link>

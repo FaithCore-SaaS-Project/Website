@@ -49,7 +49,7 @@ export default function About() {
         {/* Header */}
         <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
           <div>
-            <p className="font-semibold uppercase tracking-[0.2em] text-[#5B3DF5]">
+            <p className="font-semibold uppercase tracking-[0.2em] text-[#1B2F5E]">
               About FaithCore
             </p>
             <h2 className="mt-4 text-5xl font-bold leading-tight">
@@ -71,7 +71,7 @@ export default function About() {
               <Link
                 href="/about"
                 id="home-about-section-view-more"
-                className="group inline-flex items-center gap-2 rounded-2xl bg-[#5B3DF5] px-8 py-4 font-semibold text-white shadow-md shadow-[#5B3DF5]/30 transition-all duration-200 hover:bg-[#4d31db] hover:shadow-lg hover:shadow-[#5B3DF5]/40 hover:-translate-y-0.5 active:translate-y-0"
+                className="group inline-flex items-center gap-2 rounded-2xl bg-[#1B2F5E] px-8 py-4 font-semibold text-white shadow-md shadow-[#1B2F5E]/30 transition-all duration-200 hover:bg-[#15254A] hover:shadow-lg hover:shadow-[#1B2F5E]/40 hover:-translate-y-0.5 active:translate-y-0"
               >
                 Read Our Full Story
                 <ArrowRight
@@ -90,7 +90,7 @@ export default function About() {
                 key={stat.label}
                 className="rounded-3xl border bg-[#f8f9ff] p-8 text-center"
               >
-                <p className="text-4xl font-extrabold text-[#5B3DF5]">
+                <p className="text-4xl font-extrabold text-[#1B2F5E]">
                   {stat.value}
                 </p>
                 <p className="mt-2 text-sm font-medium text-gray-500">
@@ -112,7 +112,7 @@ export default function About() {
                 key={v.title}
                 className="rounded-3xl border bg-[#f8f9ff] p-8 transition-all hover:-translate-y-1 hover:shadow-lg"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#ede9fe] text-[#5B3DF5]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#EEF2FB] text-[#1B2F5E]">
                   {v.icon}
                 </div>
                 <h4 className="mt-6 text-lg font-bold text-gray-900">

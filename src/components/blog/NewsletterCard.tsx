@@ -7,7 +7,7 @@ import { Mail } from "lucide-react";
 export default function NewsletterCard() {
   return (
     <div className="rounded-[30px] border bg-white p-8 shadow-sm">
-      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#ede9fe] text-[#5B3DF5]">
+      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#EEF2FB] text-[#1B2F5E]">
         <Mail size={24} />
       </div>
       <h3 className="mt-6 text-2xl font-bold text-gray-900">
@@ -20,9 +20,9 @@ export default function NewsletterCard() {
       <input
         type="email"
         placeholder="Enter your email"
-        className="mt-6 w-full rounded-xl border px-4 py-3 text-sm outline-none focus:border-[#5B3DF5] focus:ring-2 focus:ring-[#5B3DF5]/20 transition"
+        className="mt-6 w-full rounded-xl border px-4 py-3 text-sm outline-none focus:border-[#1B2F5E] focus:ring-2 focus:ring-[#1B2F5E]/20 transition"
       />
-      <button className="mt-4 w-full rounded-xl bg-[#5B3DF5] py-3 text-sm font-semibold text-white hover:bg-[#4d31db] transition-colors">
+      <button className="mt-4 w-full rounded-xl bg-[#1B2F5E] py-3 text-sm font-semibold text-white hover:bg-[#15254A] transition-colors">
         Subscribe
       </button>
     </div>

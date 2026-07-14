@@ -7,7 +7,7 @@ interface AccountSummaryProps {
 }
 
 const colors = [
-  "#5b3df5", // HNB - Violet
+  "#1B2F5E", // HNB - Violet
   "#00b4d8", // Commercial - Cyan
   "#10b981", // Peoples - Emerald
   "#f59e0b", // BOC - Orange/Amber

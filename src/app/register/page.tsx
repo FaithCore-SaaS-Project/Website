@@ -46,7 +46,7 @@ export default function RegisterPage() {
           
           {/* Logo & Header */}
           <div className="flex items-center gap-4">
-            <Link href="/" className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#5B3DF5] font-black text-white text-2xl shadow-lg shadow-[#5B3DF5]/30 hover:scale-105 transition-transform duration-200">
+            <Link href="/" className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#1B2F5E] font-black text-white text-2xl shadow-lg shadow-[#1B2F5E]/30 hover:scale-105 transition-transform duration-200">
               FC
             </Link>
             <div>
@@ -65,7 +65,7 @@ export default function RegisterPage() {
               Let&apos;s Get Your
               <br />
               Church Set Up
-              <span className="bg-gradient-to-r from-[#5B3DF5] to-[#8066ff] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#1B2F5E] to-[#8066ff] bg-clip-text text-transparent">
                 {" "}Together
               </span>
             </h1>
@@ -99,7 +99,7 @@ export default function RegisterPage() {
           </div>
 
           {/* Bottom Card */}
-          <div className="max-w-sm rounded-2xl bg-white/80 p-5 shadow-lg shadow-[#5b3df5]/5 backdrop-blur-md border border-white/50">
+          <div className="max-w-sm rounded-2xl bg-white/80 p-5 shadow-lg shadow-[#1B2F5E]/5 backdrop-blur-md border border-white/50">
             <div className="flex items-center gap-4">
               <div className="flex -space-x-3 shrink-0">
                 <div className="h-9 w-9 rounded-full bg-indigo-200 border-2 border-white flex items-center justify-center text-[10px] font-bold text-indigo-700">A</div>
@@ -124,7 +124,7 @@ export default function RegisterPage() {
             
             {/* Header */}
             <div className="text-center">
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-[#ede9fe] text-[#5B3DF5]">
+              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-[#EEF2FB] text-[#1B2F5E]">
                 <Building2 size={28} />
               </div>
               <h2 className="mt-5 text-4xl font-extrabold tracking-tight text-gray-900">
@@ -163,7 +163,7 @@ export default function RegisterPage() {
                   <label className="mb-2 block text-sm font-semibold text-gray-700">
                     Denomination
                   </label>
-                  <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 focus-within:border-[#5B3DF5] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#5B3DF5]/10 transition-all">
+                  <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 focus-within:border-[#1B2F5E] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1B2F5E]/10 transition-all">
                     <Building2 size={18} className="text-gray-400 shrink-0" />
                     <select
                       required
@@ -208,7 +208,7 @@ export default function RegisterPage() {
                   <label className="mb-2 block text-sm font-semibold text-gray-700">
                     Country
                   </label>
-                  <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 focus-within:border-[#5B3DF5] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#5B3DF5]/10 transition-all">
+                  <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 focus-within:border-[#1B2F5E] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1B2F5E]/10 transition-all">
                     <Globe size={18} className="text-gray-400 shrink-0" />
                     <select
                       required
@@ -282,7 +282,7 @@ export default function RegisterPage() {
               {/* Security Notice */}
               <div className="rounded-2xl border border-gray-200 bg-[#faf9ff] p-5 shadow-sm">
                 <div className="flex items-center gap-3">
-                  <ShieldCheck size={24} className="text-[#5B3DF5] shrink-0" />
+                  <ShieldCheck size={24} className="text-[#1B2F5E] shrink-0" />
                   <div>
                     <h4 className="font-bold text-sm text-gray-900">
                       Your data is safe with us
@@ -297,7 +297,7 @@ export default function RegisterPage() {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="group flex w-full items-center justify-center gap-2 rounded-2xl bg-[#5B3DF5] py-4 text-base font-semibold text-white shadow-md shadow-[#5B3DF5]/30 hover:bg-[#4b30df] hover:shadow-lg hover:shadow-[#5B3DF5]/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+                className="group flex w-full items-center justify-center gap-2 rounded-2xl bg-[#1B2F5E] py-4 text-base font-semibold text-white shadow-md shadow-[#1B2F5E]/30 hover:bg-[#4b30df] hover:shadow-lg hover:shadow-[#1B2F5E]/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
               >
                 Continue to Admin Details
                 <ArrowRight size={18} className="transition-transform duration-200 group-hover:translate-x-0.5" />
@@ -307,7 +307,7 @@ export default function RegisterPage() {
             {/* Back to Login Link */}
             <p className="mt-8 text-center text-sm text-gray-500">
               Already have an account?
-              <Link href="/login" className="ml-2 font-bold text-[#5B3DF5] hover:text-[#4b30df] hover:underline transition-all">
+              <Link href="/login" className="ml-2 font-bold text-[#1B2F5E] hover:text-[#4b30df] hover:underline transition-all">
                 Sign In
               </Link>
             </p>
@@ -329,7 +329,7 @@ function Feature({
 }) {
   return (
     <div className="flex gap-4">
-      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#ede9fe] text-[#5B3DF5] shadow-sm">
+      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#EEF2FB] text-[#1B2F5E] shadow-sm">
         {icon}
       </div>
       <div>
@@ -354,13 +354,13 @@ function Step({
       <div
         className={`flex h-10 w-10 items-center justify-center rounded-full font-bold text-sm shadow-sm transition-all ${
           active
-            ? "bg-[#5B3DF5] text-white shadow-[#5B3DF5]/30"
+            ? "bg-[#1B2F5E] text-white shadow-[#1B2F5E]/30"
             : "border border-gray-200 bg-white text-gray-400"
         }`}
       >
         {number}
       </div>
-      <span className={`mt-2 hidden text-xs font-semibold md:block ${active ? "text-[#5B3DF5]" : "text-gray-400"}`}>
+      <span className={`mt-2 hidden text-xs font-semibold md:block ${active ? "text-[#1B2F5E]" : "text-gray-400"}`}>
         {title}
       </span>
     </div>
@@ -389,7 +389,7 @@ function Input({
       <label className="mb-2 block text-sm font-semibold text-gray-700">
         {label}
       </label>
-      <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 focus-within:border-[#5B3DF5] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#5B3DF5]/10 transition-all">
+      <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 focus-within:border-[#1B2F5E] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1B2F5E]/10 transition-all">
         {icon && <div className="text-gray-400 shrink-0">{icon}</div>}
         <input
           type={type}
