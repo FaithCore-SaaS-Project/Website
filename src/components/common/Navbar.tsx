@@ -15,11 +15,13 @@ export default function Navbar() {
 
         {/* ── Logo ───────────────────────────────────────── */}
         <div className="flex items-center gap-3">
-          <img
-            src="/images/logo.jpg"
-            alt="FaithCore Logo"
-            className="h-10 w-10 rounded-xl object-contain border border-[#C9A84C]"
-          />
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white border border-[#C9A84C] overflow-hidden p-1">
+            <img
+              src="/images/logo.jpg"
+              alt="FaithCore Logo"
+              className="h-full w-full object-contain"
+            />
+          </div>
           <div>
             <p className="text-lg font-bold text-gray-900 leading-tight">FaithCore</p>
             <p className="text-xs text-gray-500">Church Management System</p>

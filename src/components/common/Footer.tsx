@@ -15,11 +15,13 @@ export default function Footer() {
           <div>
             {/* Logo */}
             <div className="flex items-center gap-3">
-              <img
-                src="/images/logo.jpg"
-                alt="FaithCore Logo"
-                className="h-9 w-9 rounded-lg object-contain border border-[#C9A84C]"
-              />
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-white border border-[#C9A84C] overflow-hidden p-0.5">
+                <img
+                  src="/images/logo.jpg"
+                  alt="FaithCore Logo"
+                  className="h-full w-full object-contain"
+                />
+              </div>
               <div>
                 <p className="text-base font-bold text-white leading-tight">FaithCore</p>
                 <p className="text-xs text-gray-400">Church Management System</p>
