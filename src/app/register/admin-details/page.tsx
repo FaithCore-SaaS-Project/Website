@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
@@ -30,12 +30,49 @@ export default function AdminDetailsPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+  // Load from sessionStorage on mount
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const saved = sessionStorage.getItem("register_admin_info");
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          if (parsed.firstName) setFirstName(parsed.firstName);
+          if (parsed.lastName) setLastName(parsed.lastName);
+          if (parsed.email) setEmail(parsed.email);
+          if (parsed.phone) setPhone(parsed.phone);
+          if (parsed.username) setUsername(parsed.username);
+          if (parsed.password) setPassword(parsed.password);
+          if (parsed.confirmPassword) setConfirmPassword(parsed.confirmPassword);
+        } catch (e) {
+          console.error("Failed to parse admin info", e);
+        }
+      }
+    }
+  }, []);
+
   const handleNextStep = (e: React.FormEvent) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
+
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem(
+        "register_admin_info",
+        JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          phone,
+          username,
+          password,
+          confirmPassword,
+        })
+      );
+    }
+
     // Navigate to Step 3: Review Details
     router.push("/register/review");
   };

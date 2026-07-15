@@ -567,7 +567,7 @@ export default function FeaturesPage() {
       {/* ════════════════════════════════════════
           DESKTOP APP
       ════════════════════════════════════════ */}
-      <section className="py-24">
+      <section id="download" className="py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid items-center gap-12 rounded-[40px] bg-gradient-to-br from-[#1B2F5E] via-[#6a4fff] to-[#7c5cff] px-10 py-16 text-white shadow-2xl shadow-[#1B2F5E]/30 lg:grid-cols-2">
 

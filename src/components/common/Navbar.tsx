@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 import Link from "next/link";
 
 // ─── Navbar ───────────────────────────────────────────────────────────────────
@@ -26,7 +26,6 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* ── Desktop Nav ─────────────────────────────────── */}
         <nav className="hidden items-center gap-8 lg:flex">
           <a href="/" className="font-medium hover:text-[#1B2F5E] transition-colors">
             Home
@@ -50,6 +49,13 @@ export default function Navbar() {
 
         {/* ── Desktop Actions ─────────────────────────────── */}
         <div className="hidden items-center gap-4 lg:flex">
+          <Link
+            href="/features#download"
+            className="rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white font-semibold shadow-md shadow-indigo-100/50 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2 px-5 py-2.5 transition-all duration-200 text-center"
+          >
+            <Download size={16} />
+            Download App
+          </Link>
           <Link
             href="/login"
             className="rounded-xl border border-gray-300 px-5 py-2.5 font-medium hover:bg-gray-100 transition-colors text-center"
@@ -121,6 +127,14 @@ export default function Navbar() {
             Contact
           </a>
           <div className="mt-2 flex flex-col gap-3 border-t pt-5">
+            <Link
+              href="/features#download"
+              onClick={() => setMobileOpen(false)}
+              className="rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white font-semibold shadow-md flex items-center justify-center gap-2 px-5 py-3 transition-colors text-center"
+            >
+              <Download size={18} />
+              Download App
+            </Link>
             <Link
               href="/login"
               onClick={() => setMobileOpen(false)}

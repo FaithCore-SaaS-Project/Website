@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
@@ -10,6 +10,7 @@ import {
   ArrowLeft,
   ShieldCheck,
   Check,
+  AlertCircle
 } from "lucide-react";
 
 export default function ReviewCreatePage() {
@@ -17,8 +18,44 @@ export default function ReviewCreatePage() {
   const [agreed, setAgreed] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [activationCode, setActivationCode] = useState("");
+  const [error, setError] = useState("");
 
-  const handleCreateAccount = (e: React.FormEvent) => {
+  const [churchInfo, setChurchInfo] = useState<any>({
+    churchName: "Faith Community Church",
+    denomination: "Pentecostal",
+    address: "123 Main Street",
+    city: "Colombo",
+    country: "Sri Lanka",
+    province: "Western Province",
+    phoneNumber: "+94 71 234 5678",
+    email: "info@church.com",
+    website: "",
+  });
+
+  const [adminInfo, setAdminInfo] = useState<any>({
+    firstName: "Pastor John",
+    lastName: "Smith",
+    email: "john@church.com",
+    phone: "+94 71 123 4567",
+    username: "johnsmith",
+    password: "",
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedChurch = sessionStorage.getItem("register_church_info");
+      const savedAdmin = sessionStorage.getItem("register_admin_info");
+      if (savedChurch) {
+        try { setChurchInfo(JSON.parse(savedChurch)); } catch(e) {}
+      }
+      if (savedAdmin) {
+        try { setAdminInfo(JSON.parse(savedAdmin)); } catch(e) {}
+      }
+    }
+  }, []);
+
+  const handleCreateAccount = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!agreed) {
       alert("Please agree to the Terms of Service and Privacy Policy.");
@@ -26,21 +63,63 @@ export default function ReviewCreatePage() {
     }
     
     setIsSubmitting(true);
-    // Simulate API registration delay
-    setTimeout(() => {
+    setError("");
+
+    try {
+      const apiHost = process.env.NEXT_PUBLIC_API_URL || "https://api.faithcore.org";
+      const response = await fetch(`${apiHost}/api/register`, {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          church_name: churchInfo.churchName,
+          denomination: churchInfo.denomination,
+          address: churchInfo.address,
+          city: churchInfo.city,
+          country: churchInfo.country,
+          church_phone: churchInfo.phoneNumber,
+          church_email: churchInfo.email,
+          first_name: adminInfo.firstName,
+          last_name: adminInfo.lastName,
+          email: adminInfo.email,
+          phone: adminInfo.phone,
+          password: adminInfo.password,
+          plan_name: "Standard",
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Registration failed. Please check details and try again.");
+      }
+
+      setActivationCode(data.church?.registration_no || "FC-XXXXXX");
+
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("username", adminInfo.firstName + " " + adminInfo.lastName);
+        localStorage.setItem("tenantId", data.church?.id);
+        localStorage.setItem("churchName", data.church?.church_name);
+      }
+
+      sessionStorage.removeItem("register_church_info");
+      sessionStorage.removeItem("register_admin_info");
+
       setIsSubmitting(false);
       setShowSuccess(true);
-      // Wait for success animation then navigate to dashboard
-      setTimeout(() => {
-        router.push("/dashboard");
-      }, 2500);
-    }, 1500);
+    } catch (err: any) {
+      setError(err.message || "Something went wrong. Please try again.");
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <main className="min-h-screen bg-[#f7f5ff] text-[#111827]">
       
-      {/* ── Simulated Success Modal Overlay ───────────────────────────── */}
+      {/* ── Success Modal Overlay ───────────────────────────── */}
       {showSuccess && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-md transition-all duration-300">
           <div className="w-full max-w-md rounded-3xl bg-white p-8 text-center shadow-2xl animate-in scale-in duration-300">
@@ -51,11 +130,24 @@ export default function ReviewCreatePage() {
               Account Created!
             </h2>
             <p className="mt-3 text-sm text-gray-500 leading-relaxed">
-              Your FaithCore organization tenant and administrator accounts have been initialized successfully. Redirecting you to your admin dashboard...
+              Your FaithCore organization tenant and administrator accounts have been initialized successfully.
             </p>
-            <div className="mt-8 flex justify-center">
-              <div className="h-6 w-6 animate-spin rounded-full border-2 border-[#1B2F5E] border-t-transparent" />
+            
+            {/* Activation ID Section */}
+            <div className="mt-6 p-4 rounded-2xl bg-indigo-50 border border-indigo-100/80 text-center">
+              <span className="text-xs font-bold text-indigo-400 uppercase tracking-widest block">YOUR CHURCH ACTIVATION ID</span>
+              <strong className="text-2xl font-mono text-[#1B2F5E] mt-1.5 block tracking-widest">{activationCode}</strong>
+              <p className="text-[10px] text-indigo-500/80 mt-1 leading-normal">
+                Use this ID to activate your Desktop Software and invite your members in the Mobile App!
+              </p>
             </div>
+
+            <button
+              onClick={() => router.push("/dashboard")}
+              className="mt-8 w-full py-4 bg-[#1B2F5E] text-white font-bold rounded-2xl shadow-lg shadow-[#1B2F5E]/20 hover:bg-[#4b30df] hover:shadow-xl transition-all duration-200"
+            >
+              Go to Dashboard
+            </button>
           </div>
         </div>
       )}
@@ -87,6 +179,12 @@ export default function ReviewCreatePage() {
 
           {/* Review Details Container */}
           <div className="mt-12 space-y-8">
+            {error && (
+              <div className="rounded-2xl border border-red-200 bg-red-50 p-4 flex items-center gap-3 text-red-700 animate-in fade-in">
+                <AlertCircle className="shrink-0" size={24} />
+                <p className="text-sm font-semibold">{error}</p>
+              </div>
+            )}
             
             {/* Church Information review block */}
             <div className="rounded-3xl border border-gray-200 bg-white p-6 md:p-8 shadow-sm">
@@ -97,14 +195,14 @@ export default function ReviewCreatePage() {
                 </h2>
               </div>
               <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-                <InfoItem label="Church Name" value="Faith Community Church" />
-                <InfoItem label="Denomination" value="Pentecostal" />
-                <InfoItem label="Address" value="123 Main Street" />
-                <InfoItem label="City" value="Colombo" />
-                <InfoItem label="Country" value="Sri Lanka" />
-                <InfoItem label="Province / State" value="Western Province" />
-                <InfoItem label="Phone Number" value="+94 71 234 5678" />
-                <InfoItem label="Church Email" value="info@church.com" />
+                <InfoItem label="Church Name" value={churchInfo.churchName} />
+                <InfoItem label="Denomination" value={churchInfo.denomination} />
+                <InfoItem label="Address" value={churchInfo.address} />
+                <InfoItem label="City" value={churchInfo.city} />
+                <InfoItem label="Country" value={churchInfo.country} />
+                <InfoItem label="Province / State" value={churchInfo.province} />
+                <InfoItem label="Phone Number" value={churchInfo.phoneNumber} />
+                <InfoItem label="Church Email" value={churchInfo.email} />
               </div>
             </div>
 
@@ -117,10 +215,10 @@ export default function ReviewCreatePage() {
                 </h2>
               </div>
               <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-                <InfoItem label="Full Name" value="Pastor John Smith" />
-                <InfoItem label="Username" value="johnsmith" />
-                <InfoItem label="Email Address" value="john@church.com" />
-                <InfoItem label="Phone Number" value="+94 71 123 4567" />
+                <InfoItem label="Full Name" value={`${adminInfo.firstName} ${adminInfo.lastName}`} />
+                <InfoItem label="Username" value={adminInfo.username} />
+                <InfoItem label="Email Address" value={adminInfo.email} />
+                <InfoItem label="Phone Number" value={adminInfo.phone} />
               </div>
             </div>
 

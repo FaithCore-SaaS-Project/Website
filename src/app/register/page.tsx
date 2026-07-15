@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
@@ -31,8 +31,51 @@ export default function RegisterPage() {
   const [email, setEmail] = useState("");
   const [website, setWebsite] = useState("");
 
+  // Load from sessionStorage on mount
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const saved = sessionStorage.getItem("register_church_info");
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          if (parsed.churchName) setChurchName(parsed.churchName);
+          if (parsed.denomination) setDenomination(parsed.denomination);
+          if (parsed.address) setAddress(parsed.address);
+          if (parsed.city) setCity(parsed.city);
+          if (parsed.country) setCountry(parsed.country);
+          if (parsed.province) setProvince(parsed.province);
+          if (parsed.postalCode) setPostalCode(parsed.postalCode);
+          if (parsed.phoneNumber) setPhoneNumber(parsed.phoneNumber);
+          if (parsed.email) setEmail(parsed.email);
+          if (parsed.website) setWebsite(parsed.website);
+        } catch (e) {
+          console.error("Failed to parse church info", e);
+        }
+      }
+    }
+  }, []);
+
   const handleNextStep = (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem(
+        "register_church_info",
+        JSON.stringify({
+          churchName,
+          denomination,
+          address,
+          city,
+          country,
+          province,
+          postalCode,
+          phoneNumber,
+          email,
+          website,
+        })
+      );
+    }
+
     // Navigate to Step 2: Admin Details
     router.push("/register/admin-details");
   };
