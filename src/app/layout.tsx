@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   },
   description:
     "FaithCore helps churches streamline members, finances, certificates, events, and communications — all in one secure ecosystem.",
+  icons: {
+    icon: "/images/logo.jpg",
+    shortcut: "/images/logo.jpg",
+    apple: "/images/logo.jpg",
+  },
 };
 
 export default function RootLayout({
