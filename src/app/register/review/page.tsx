@@ -20,6 +20,7 @@ export default function ReviewCreatePage() {
   const [showSuccess, setShowSuccess] = useState(false);
   const [activationCode, setActivationCode] = useState("");
   const [error, setError] = useState("");
+  const [selectedPlan, setSelectedPlan] = useState("Free");
 
   const [churchInfo, setChurchInfo] = useState<any>({
     churchName: "Faith Community Church",
@@ -46,11 +47,15 @@ export default function ReviewCreatePage() {
     if (typeof window !== "undefined") {
       const savedChurch = sessionStorage.getItem("register_church_info");
       const savedAdmin = sessionStorage.getItem("register_admin_info");
+      const savedPlan = sessionStorage.getItem("selected_plan");
       if (savedChurch) {
         try { setChurchInfo(JSON.parse(savedChurch)); } catch(e) {}
       }
       if (savedAdmin) {
         try { setAdminInfo(JSON.parse(savedAdmin)); } catch(e) {}
+      }
+      if (savedPlan) {
+        setSelectedPlan(savedPlan);
       }
     }
   }, []);
@@ -86,7 +91,7 @@ export default function ReviewCreatePage() {
           email: adminInfo.email,
           phone: adminInfo.phone,
           password: adminInfo.password,
-          plan_name: "Standard",
+          plan_name: selectedPlan,
         })
       });
 
@@ -129,28 +134,52 @@ export default function ReviewCreatePage() {
             <h2 className="mt-6 text-3xl font-black text-gray-900">
               Account Created!
             </h2>
-            <p className="mt-3 text-sm text-gray-500 leading-relaxed">
-              Your FaithCore organization tenant and administrator accounts have been initialized successfully.
-            </p>
             
-            {/* Activation ID Section */}
-            <div className="mt-6 p-4 rounded-2xl bg-indigo-50 border border-indigo-100/80 text-center">
-              <span className="text-xs font-bold text-indigo-400 uppercase tracking-widest block">YOUR CHURCH ACTIVATION ID</span>
-              <strong className="text-2xl font-mono text-[#1B2F5E] mt-1.5 block tracking-widest">{activationCode}</strong>
-              <p className="text-[10px] text-indigo-500/80 mt-1 leading-normal">
-                Use this ID to activate your Desktop Software and invite your members in the Mobile App!
-              </p>
-            </div>
-
-            <button
-              onClick={() => router.push("/features#download")}
-              className="mt-8 w-full py-4 bg-[#1B2F5E] text-white font-bold rounded-2xl shadow-lg shadow-[#1B2F5E]/20 hover:bg-[#15254A] hover:shadow-xl transition-all duration-200"
-            >
-              Download Desktop App
-            </button>
-            <p className="mt-4 text-xs text-gray-400">
-              Install the desktop app to log in and manage your church using your Activation ID.
-            </p>
+            {selectedPlan !== "Free" ? (
+              <>
+                <p className="mt-3 text-sm text-gray-500 leading-relaxed">
+                  Your account has been initialized on the <span className="font-bold text-[#1B2F5E]">{selectedPlan} Plan</span>. To activate your paid plan features, please proceed to checkout.
+                </p>
+                <div className="mt-6 p-4 rounded-2xl bg-indigo-50 border border-indigo-100/80 text-center">
+                  <span className="text-xs font-bold text-indigo-400 uppercase tracking-widest block">YOUR CHURCH ACTIVATION ID</span>
+                  <strong className="text-2xl font-mono text-[#1B2F5E] mt-1.5 block tracking-widest">{activationCode}</strong>
+                  <p className="text-[10px] text-indigo-500/80 mt-1 leading-normal">
+                    Save this ID. You will need it to log in to the Desktop App.
+                  </p>
+                </div>
+                <button
+                  onClick={() => router.push("/pricing")}
+                  className="mt-8 w-full py-4 bg-green-600 text-white font-bold rounded-2xl shadow-lg shadow-green-600/20 hover:bg-green-700 hover:shadow-xl transition-all duration-200"
+                >
+                  Proceed to Payment
+                </button>
+                <p className="mt-4 text-xs text-gray-400">
+                  Complete your checkout to activate your subscription.
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="mt-3 text-sm text-gray-500 leading-relaxed">
+                  Your FaithCore organization tenant and administrator accounts have been initialized successfully on the Free Plan.
+                </p>
+                <div className="mt-6 p-4 rounded-2xl bg-indigo-50 border border-indigo-100/80 text-center">
+                  <span className="text-xs font-bold text-indigo-400 uppercase tracking-widest block">YOUR CHURCH ACTIVATION ID</span>
+                  <strong className="text-2xl font-mono text-[#1B2F5E] mt-1.5 block tracking-widest">{activationCode}</strong>
+                  <p className="text-[10px] text-indigo-500/80 mt-1 leading-normal">
+                    Use this ID to activate your Desktop Software and invite your members in the Mobile App!
+                  </p>
+                </div>
+                <button
+                  onClick={() => router.push("/features#download")}
+                  className="mt-8 w-full py-4 bg-[#1B2F5E] text-white font-bold rounded-2xl shadow-lg shadow-[#1B2F5E]/20 hover:bg-[#15254A] hover:shadow-xl transition-all duration-200"
+                >
+                  Download Desktop App
+                </button>
+                <p className="mt-4 text-xs text-gray-400">
+                  Install the desktop app to log in and manage your church using your Activation ID.
+                </p>
+              </>
+            )}
           </div>
         </div>
       )}

@@ -176,8 +176,9 @@ function PricingCard({
       {/* CTA Button */}
       <button
         onClick={() => {
-          if (isFree || isCustom) {
-            window.location.href = "/register";
+          const hasToken = typeof window !== "undefined" && !!localStorage.getItem("token");
+          if (isFree || isCustom || !hasToken) {
+            window.location.href = `/register?plan=${plan.name}`;
             return;
           }
           onSelectPlan(plan);

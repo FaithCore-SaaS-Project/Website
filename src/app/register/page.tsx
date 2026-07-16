@@ -34,6 +34,14 @@ export default function RegisterPage() {
   // Load from sessionStorage on mount
   useEffect(() => {
     if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const planParam = params.get("plan");
+      if (planParam) {
+        sessionStorage.setItem("selected_plan", planParam);
+      } else if (!sessionStorage.getItem("selected_plan")) {
+        sessionStorage.setItem("selected_plan", "Free");
+      }
+
       const saved = sessionStorage.getItem("register_church_info");
       if (saved) {
         try {
