@@ -59,13 +59,7 @@ export default function Navbar() {
             Download App
           </Link>
           <Link
-            href="/login"
-            className="rounded-xl border border-gray-300 px-5 py-2.5 font-medium hover:bg-gray-100 transition-colors text-center"
-          >
-            Login
-          </Link>
-          <Link
-            href="/register"
+            href="/pricing"
             className="rounded-xl bg-[#1B2F5E] px-5 py-2.5 font-medium text-white hover:bg-[#15254A] transition-colors text-center"
           >
             Get Started
@@ -138,14 +132,7 @@ export default function Navbar() {
               Download App
             </Link>
             <Link
-              href="/login"
-              onClick={() => setMobileOpen(false)}
-              className="rounded-xl border border-gray-300 px-5 py-3 font-medium hover:bg-gray-100 transition-colors text-center"
-            >
-              Login
-            </Link>
-            <Link
-              href="/register"
+              href="/pricing"
               onClick={() => setMobileOpen(false)}
               className="rounded-xl bg-[#1B2F5E] px-5 py-3 font-medium text-white hover:bg-[#15254A] transition-colors text-center"
             >
