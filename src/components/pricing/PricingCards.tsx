@@ -225,8 +225,9 @@ function CheckoutModal({
 
   const handlePaypal = async () => {
     setLoadingPaypal(true);
+    const apiHost = process.env.NEXT_PUBLIC_API_URL || "https://api.faithcore.org";
     try {
-      const response = await fetch("https://api.faithcore.org/api/checkout/paypal", {
+      const response = await fetch(`${apiHost}/api/checkout/paypal`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -252,8 +253,9 @@ function CheckoutModal({
 
   const handlePayhere = async () => {
     setLoadingPayhere(true);
+    const apiHost = process.env.NEXT_PUBLIC_API_URL || "https://api.faithcore.org";
     try {
-      const response = await fetch("https://api.faithcore.org/api/checkout/payhere", {
+      const response = await fetch(`${apiHost}/api/checkout/payhere`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
