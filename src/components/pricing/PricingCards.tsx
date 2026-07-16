@@ -230,7 +230,10 @@ function CheckoutModal({
     try {
       const response = await fetch(`${apiHost}/api/checkout/paypal`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem("token")}`
+        },
         body: JSON.stringify({
           plan_name: plan.name,
           is_annual: isAnnual,
@@ -258,7 +261,10 @@ function CheckoutModal({
     try {
       const response = await fetch(`${apiHost}/api/checkout/payhere`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem("token")}`
+        },
         body: JSON.stringify({
           plan_name: plan.name,
           is_annual: isAnnual,
