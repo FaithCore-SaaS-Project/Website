@@ -143,11 +143,14 @@ export default function ReviewCreatePage() {
             </div>
 
             <button
-              onClick={() => router.push("/dashboard")}
-              className="mt-8 w-full py-4 bg-[#1B2F5E] text-white font-bold rounded-2xl shadow-lg shadow-[#1B2F5E]/20 hover:bg-[#4b30df] hover:shadow-xl transition-all duration-200"
+              onClick={() => router.push("/features#download")}
+              className="mt-8 w-full py-4 bg-[#1B2F5E] text-white font-bold rounded-2xl shadow-lg shadow-[#1B2F5E]/20 hover:bg-[#15254A] hover:shadow-xl transition-all duration-200"
             >
-              Go to Dashboard
+              Download Desktop App
             </button>
+            <p className="mt-4 text-xs text-gray-400">
+              Install the desktop app to log in and manage your church using your Activation ID.
+            </p>
           </div>
         </div>
       )}
