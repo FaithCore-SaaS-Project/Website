@@ -108,6 +108,7 @@ export default function ReviewCreatePage() {
         localStorage.setItem("username", adminInfo.firstName + " " + adminInfo.lastName);
         localStorage.setItem("tenantId", data.church?.id);
         localStorage.setItem("churchName", data.church?.church_name);
+        localStorage.setItem("activationCode", data.church?.registration_no || "FC-XXXXXX");
       }
 
       sessionStorage.removeItem("register_church_info");

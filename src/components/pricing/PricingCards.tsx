@@ -237,7 +237,7 @@ function CheckoutModal({
         body: JSON.stringify({
           plan_name: plan.name,
           is_annual: isAnnual,
-          success_url: window.location.origin + "/dashboard?payment=success",
+          success_url: window.location.origin + "/register/success",
           cancel_url: window.location.origin + "/pricing?payment=cancel"
         })
       });
@@ -268,7 +268,7 @@ function CheckoutModal({
         body: JSON.stringify({
           plan_name: plan.name,
           is_annual: isAnnual,
-          success_url: window.location.origin + "/dashboard?payment=success",
+          success_url: window.location.origin + "/register/success",
           cancel_url: window.location.origin + "/pricing?payment=cancel"
         })
       });
