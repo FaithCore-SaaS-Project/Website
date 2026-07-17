@@ -25,11 +25,47 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [churchCode, setChurchCode] = useState("");
   const [passcode, setPasscode] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSignIn = (e: React.FormEvent) => {
+  const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate successful login and redirect to the dashboard
-    router.push("/dashboard");
+    setLoading(true);
+    setError("");
+
+    const apiHost = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+
+    try {
+      const response = await fetch(`${apiHost}/api/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          church_id: churchCode,
+          email: email,
+          password: password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Invalid credentials. Please try again.");
+      }
+
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("username", data.user?.first_name + " " + data.user?.last_name);
+        localStorage.setItem("tenantId", data.church?.id);
+        localStorage.setItem("churchName", data.church?.church_name);
+        localStorage.setItem("activationCode", data.church?.registration_no || churchCode);
+      }
+
+      router.push("/register/success");
+    } catch (err: any) {
+      setError(err.message || "Connection error. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -131,128 +167,77 @@ export default function LoginPage() {
               </p>
             </div>
 
-            {/* Billing / Auth Tabs */}
-            <div className="mt-8 grid grid-cols-2 border-b">
-              <button
-                onClick={() => setLoginMethod("email")}
-                className={`pb-4 font-semibold text-sm transition-all duration-200 border-b-2 ${
-                  loginMethod === "email"
-                    ? "border-[#1B2F5E] text-[#1B2F5E]"
-                    : "border-transparent text-gray-400 hover:text-gray-600"
-                }`}
-              >
-                Login
-              </button>
-              <button
-                onClick={() => setLoginMethod("code")}
-                className={`pb-4 font-semibold text-sm transition-all duration-200 border-b-2 ${
-                  loginMethod === "code"
-                    ? "border-[#1B2F5E] text-[#1B2F5E]"
-                    : "border-transparent text-gray-400 hover:text-gray-600"
-                }`}
-              >
-                Login with Church Code
-              </button>
-            </div>
+            {/* Error Alert */}
+            {error && (
+              <div className="mt-6 rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-600 font-semibold animate-in fade-in duration-200">
+                {error}
+              </div>
+            )}
 
             <form onSubmit={handleSignIn} className="mt-8 space-y-5">
-              {loginMethod === "email" ? (
-                <>
-                  {/* Email Field */}
-                  <div>
-                    <label className="mb-2.5 block text-sm font-semibold text-gray-700">
-                      Email Address
-                    </label>
-                    <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 focus-within:border-[#1B2F5E] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1B2F5E]/10 transition-all">
-                      <Mail size={18} className="text-gray-400 shrink-0" />
-                      <input
-                        type="email"
-                        required
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Enter your email address"
-                        className="ml-3 w-full bg-transparent text-sm text-gray-900 placeholder-gray-400 outline-none"
-                      />
-                    </div>
-                  </div>
+              {/* Church Activation ID Field */}
+              <div>
+                <label className="mb-2.5 block text-sm font-semibold text-gray-700">
+                  Church Activation ID
+                </label>
+                <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 focus-within:border-[#1B2F5E] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1B2F5E]/10 transition-all">
+                  <Hash size={18} className="text-gray-400 shrink-0" />
+                  <input
+                    type="text"
+                    required
+                    value={churchCode}
+                    onChange={(e) => setChurchCode(e.target.value)}
+                    placeholder="e.g. FC-123456"
+                    className="ml-3 w-full bg-transparent text-sm text-gray-900 placeholder-gray-400 outline-none"
+                  />
+                </div>
+              </div>
 
-                  {/* Password Field */}
-                  <div>
-                    <div className="mb-2.5 flex justify-between">
-                      <label className="text-sm font-semibold text-gray-700">
-                        Password
-                      </label>
-                      <button type="button" className="text-xs font-semibold text-[#1B2F5E] hover:text-[#4b30df] transition-colors">
-                        Forgot Password?
-                      </button>
-                    </div>
-                    <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 focus-within:border-[#1B2F5E] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1B2F5E]/10 transition-all">
-                      <Lock size={18} className="text-gray-400 shrink-0" />
-                      <input
-                        type={showPassword ? "text" : "password"}
-                        required
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        placeholder="Enter your password"
-                        className="ml-3 w-full bg-transparent text-sm text-gray-900 placeholder-gray-400 outline-none"
-                      />
-                      <button
-                        type="button"
-                        onClick={() => setShowPassword(!showPassword)}
-                        className="text-gray-400 hover:text-gray-600 shrink-0 transition-colors"
-                        aria-label="Toggle password visibility"
-                      >
-                        {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                      </button>
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <>
-                  {/* Church Code Field */}
-                  <div>
-                    <label className="mb-2.5 block text-sm font-semibold text-gray-700">
-                      Church Code
-                    </label>
-                    <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 focus-within:border-[#1B2F5E] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1B2F5E]/10 transition-all">
-                      <Hash size={18} className="text-gray-400 shrink-0" />
-                      <input
-                        type="text"
-                        required
-                        value={churchCode}
-                        onChange={(e) => setChurchCode(e.target.value)}
-                        placeholder="e.g. FC-10029"
-                        className="ml-3 w-full bg-transparent text-sm text-gray-900 placeholder-gray-400 outline-none"
-                      />
-                    </div>
-                  </div>
+              {/* Email Field */}
+              <div>
+                <label className="mb-2.5 block text-sm font-semibold text-gray-700">
+                  Email Address
+                </label>
+                <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 focus-within:border-[#1B2F5E] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1B2F5E]/10 transition-all">
+                  <Mail size={18} className="text-gray-400 shrink-0" />
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email address"
+                    className="ml-3 w-full bg-transparent text-sm text-gray-900 placeholder-gray-400 outline-none"
+                  />
+                </div>
+              </div>
 
-                  {/* Passcode Field */}
-                  <div>
-                    <label className="mb-2.5 block text-sm font-semibold text-gray-700">
-                      Passcode
-                    </label>
-                    <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 focus-within:border-[#1B2F5E] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1B2F5E]/10 transition-all">
-                      <Lock size={18} className="text-gray-400 shrink-0" />
-                      <input
-                        type={showPassword ? "text" : "password"}
-                        required
-                        value={passcode}
-                        onChange={(e) => setPasscode(e.target.value)}
-                        placeholder="Enter admin passcode"
-                        className="ml-3 w-full bg-transparent text-sm text-gray-900 placeholder-gray-400 outline-none"
-                      />
-                      <button
-                        type="button"
-                        onClick={() => setShowPassword(!showPassword)}
-                        className="text-gray-400 hover:text-gray-600 shrink-0 transition-colors"
-                      >
-                        {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                      </button>
-                    </div>
-                  </div>
-                </>
-              )}
+              {/* Password Field */}
+              <div>
+                <div className="mb-2.5 flex justify-between">
+                  <label className="text-sm font-semibold text-gray-700">
+                    Password
+                  </label>
+                </div>
+                <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 focus-within:border-[#1B2F5E] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1B2F5E]/10 transition-all">
+                  <Lock size={18} className="text-gray-400 shrink-0" />
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Enter your password"
+                    className="ml-3 w-full bg-transparent text-sm text-gray-900 placeholder-gray-400 outline-none"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="text-gray-400 hover:text-gray-600 shrink-0 transition-colors"
+                    aria-label="Toggle password visibility"
+                  >
+                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                  </button>
+                </div>
+              </div>
 
               {/* Remember Options */}
               <div className="flex items-center justify-between pt-1">
@@ -271,9 +256,10 @@ export default function LoginPage() {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="group flex w-full items-center justify-center gap-2 rounded-2xl bg-[#1B2F5E] py-4 text-base font-semibold text-white shadow-md shadow-[#1B2F5E]/30 hover:bg-[#4b30df] hover:shadow-lg hover:shadow-[#1B2F5E]/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+                disabled={loading}
+                className="group flex w-full items-center justify-center gap-2 rounded-2xl bg-[#1B2F5E] py-4 text-base font-semibold text-white shadow-md shadow-[#1B2F5E]/30 hover:bg-[#4b30df] hover:shadow-lg hover:shadow-[#1B2F5E]/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Sign In
+                {loading ? "Signing In..." : "Sign In"}
                 <ArrowRight size={18} className="transition-transform duration-200 group-hover:translate-x-0.5" />
               </button>
             </form>
