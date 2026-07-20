@@ -33,7 +33,7 @@ export default function LoginPage() {
     setLoading(true);
     setError("");
 
-    const apiHost = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+    const apiHost = process.env.NEXT_PUBLIC_API_URL || "https://api.faithcore.org";
 
     try {
       const response = await fetch(`${apiHost}/api/login`, {
