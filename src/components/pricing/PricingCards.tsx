@@ -367,6 +367,50 @@ export default function PricingCards({ isAnnual }: { isAnnual: boolean }) {
         </div>
       </div>
 
+      {/* SMS Top-up Section */}
+      <div className="mx-auto max-w-4xl px-6 mt-20">
+        <div className="rounded-3xl bg-gradient-to-br from-[#1B2F5E] to-[#203a7a] p-8 sm:p-10 shadow-2xl relative overflow-hidden text-white flex flex-col md:flex-row items-center gap-8">
+          {/* Background decoration */}
+          <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-white/5 blur-3xl" />
+          <div className="absolute -left-10 -bottom-10 h-40 w-40 rounded-full bg-blue-400/10 blur-2xl" />
+          
+          <div className="flex-1 relative z-10 text-center md:text-left">
+            <h3 className="text-2xl font-black mb-2 flex items-center justify-center md:justify-start gap-3">
+              <span className="bg-white/10 p-2 rounded-xl border border-white/20">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-blue-300"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </span>
+              Need more SMS?
+            </h3>
+            <p className="text-blue-100 text-sm mt-3 leading-relaxed">
+              If you run out of your monthly free SMS allocation, you can easily purchase top-up credits from your dashboard. <strong className="text-white">Credits never expire!</strong>
+            </p>
+          </div>
+          
+          <div className="w-full md:w-auto relative z-10">
+            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 w-full">
+              <div className="grid grid-cols-2 gap-x-8 gap-y-3">
+                <div className="flex justify-between items-center gap-4 border-b border-white/10 pb-2">
+                  <span className="font-bold">500 <span className="text-blue-200 text-xs font-normal">SMS</span></span>
+                  <span className="font-bold text-blue-200">Rs. 500</span>
+                </div>
+                <div className="flex justify-between items-center gap-4 border-b border-white/10 pb-2">
+                  <span className="font-bold">1,000 <span className="text-blue-200 text-xs font-normal">SMS</span></span>
+                  <span className="font-bold text-blue-200">Rs. 1,000</span>
+                </div>
+                <div className="flex justify-between items-center gap-4 pt-1">
+                  <span className="font-bold">2,000 <span className="text-blue-200 text-xs font-normal">SMS</span></span>
+                  <span className="font-bold text-blue-200">Rs. 2,000</span>
+                </div>
+                <div className="flex justify-between items-center gap-4 pt-1">
+                  <span className="font-bold">5,000 <span className="text-blue-200 text-xs font-normal">SMS</span></span>
+                  <span className="font-bold text-blue-200">Rs. 5,000</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <CheckoutModal 
         plan={selectedPlan} 
         isAnnual={isAnnual} 
