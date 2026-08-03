@@ -92,6 +92,7 @@ export default function Footer() {
             <ul className="mt-5 space-y-3 text-sm">
               {[
                 { label: "Blog / Updates", href: "/blog", highlight: true },
+                { label: "FAQ", href: "/faq" },
                 { label: "Help Center", href: "#" },
                 { label: "Guides", href: "#" },
                 { label: "Videos", href: "#" },
@@ -119,7 +120,7 @@ export default function Footer() {
               {[
                 { label: "About Us", href: "/about" },
                 { label: "Contact Us", href: "#" },
-                { label: "Privacy Policy", href: "#" },
+                { label: "Privacy Policy", href: "/privacy" },
                 { label: "Terms of Service", href: "#" },
               ].map((link) => (
                 <li key={link.label}>
