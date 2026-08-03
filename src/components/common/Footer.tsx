@@ -78,9 +78,9 @@ export default function Footer() {
                 { label: "Updates", href: "#" },
               ].map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} className="hover:text-white transition-colors">
+                  <Link href={link.href} className="hover:text-white transition-colors">
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -91,7 +91,7 @@ export default function Footer() {
             <h3 className="font-semibold text-white">Resources</h3>
             <ul className="mt-5 space-y-3 text-sm">
               {[
-                { label: "Blog / Updates", href: "/blog", highlight: true },
+                { label: "Blog / Updates", href: "/blog" },
                 { label: "FAQ", href: "/faq" },
                 { label: "Help Center", href: "#" },
                 { label: "Guides", href: "#" },
@@ -101,10 +101,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className={`transition-colors ${link.highlight
-                        ? "text-[#C9A84C] hover:text-[#E2B056]"
-                        : "hover:text-white"
-                      }`}
+                    className="hover:text-white transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -124,9 +121,9 @@ export default function Footer() {
                 { label: "Terms of Service", href: "#" },
               ].map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} className="hover:text-white transition-colors">
+                  <Link href={link.href} className="hover:text-white transition-colors">
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
