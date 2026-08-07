@@ -313,9 +313,9 @@ const AppleIcon = ({ className = "h-5 w-5" }: { className?: string }) => (
   </svg>
 );
 
-const DOWNLOAD_LINKS = {
+const FALLBACK_DOWNLOAD_LINKS = {
   win64: "https://github.com/FaithCore-SaaS-Project/faithcore-desktop-releases/releases/download/v1.0.0/FC.Desktop.Setup.1.0.0.exe",
-  win32: "https://github.com/FaithCore-SaaS-Project/faithcore-desktop-releases/releases/download/v1.0.0/FC.Desktop.Setup.1.0.0.exe", // Fallback to same installer
+  win32: "https://github.com/FaithCore-SaaS-Project/faithcore-desktop-releases/releases/download/v1.0.0/FC.Desktop.Setup.1.0.0.exe",
   macArm64: "https://github.com/FaithCore-SaaS-Project/faithcore-desktop-releases/releases/download/v1.0.0/FC-Desktop-1.0.0-universal.dmg",
   macX64: "https://github.com/FaithCore-SaaS-Project/faithcore-desktop-releases/releases/download/v1.0.0/FC-Desktop-1.0.0-universal.dmg",
   macUniversal: "https://github.com/FaithCore-SaaS-Project/faithcore-desktop-releases/releases/download/v1.0.0/FC-Desktop-1.0.0-universal.dmg",
@@ -324,10 +324,11 @@ const DOWNLOAD_LINKS = {
 function DesktopDownloadButton() {
   const [mounted, setMounted] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [links, setLinks] = useState(FALLBACK_DOWNLOAD_LINKS);
   const [downloadInfo, setDownloadInfo] = useState({
     os: "unknown",
     label: "Download Desktop App",
-    url: DOWNLOAD_LINKS.win64,
+    url: FALLBACK_DOWNLOAD_LINKS.win64,
   });
 
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -338,24 +339,52 @@ function DesktopDownloadButton() {
     const userAgent = window.navigator.userAgent.toLowerCase();
     let os = "unknown";
     let label = "Download Desktop App";
-    let url = DOWNLOAD_LINKS.win64;
+    let url = FALLBACK_DOWNLOAD_LINKS.win64;
 
-    if (userAgent.includes("win")) {
-      os = "windows";
-      if (userAgent.includes("wow64") || userAgent.includes("win64") || userAgent.includes("x64")) {
-        label = "Download for Windows (64-bit)";
-        url = DOWNLOAD_LINKS.win64;
-      } else {
-        label = "Download for Windows (32-bit)";
-        url = DOWNLOAD_LINKS.win32;
+    const determineInfo = (currentLinks: typeof FALLBACK_DOWNLOAD_LINKS) => {
+      if (userAgent.includes("win")) {
+        os = "windows";
+        if (userAgent.includes("wow64") || userAgent.includes("win64") || userAgent.includes("x64")) {
+          label = "Download for Windows (64-bit)";
+          url = currentLinks.win64;
+        } else {
+          label = "Download for Windows (32-bit)";
+          url = currentLinks.win32;
+        }
+      } else if (userAgent.includes("mac")) {
+        os = "mac";
+        label = "Download for macOS (Universal)";
+        url = currentLinks.macUniversal;
       }
-    } else if (userAgent.includes("mac")) {
-      os = "mac";
-      label = "Download for macOS (Universal)";
-      url = DOWNLOAD_LINKS.macUniversal;
-    }
+      return { os, label, url };
+    };
 
-    setDownloadInfo({ os, label, url });
+    setDownloadInfo(determineInfo(FALLBACK_DOWNLOAD_LINKS));
+
+    // Fetch latest release
+    fetch("https://api.github.com/repos/FaithCore-SaaS-Project/faithcore-desktop-releases/releases/latest")
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.assets) {
+          const exeAsset = data.assets.find((a: any) => a.name.endsWith('.exe') && !a.name.includes('blockmap'));
+          const dmgAsset = data.assets.find((a: any) => a.name.endsWith('.dmg') && !a.name.includes('blockmap'));
+          
+          const newLinks = { ...FALLBACK_DOWNLOAD_LINKS };
+          if (exeAsset) {
+            newLinks.win64 = exeAsset.browser_download_url;
+            newLinks.win32 = exeAsset.browser_download_url; 
+          }
+          if (dmgAsset) {
+            newLinks.macUniversal = dmgAsset.browser_download_url;
+            newLinks.macArm64 = dmgAsset.browser_download_url;
+            newLinks.macX64 = dmgAsset.browser_download_url;
+          }
+          
+          setLinks(newLinks);
+          setDownloadInfo(determineInfo(newLinks));
+        }
+      })
+      .catch(err => console.error("Failed to fetch latest release", err));
 
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -371,7 +400,7 @@ function DesktopDownloadButton() {
   if (!mounted) {
     return (
       <a
-        href={DOWNLOAD_LINKS.win64}
+        href={FALLBACK_DOWNLOAD_LINKS.win64}
         className="group inline-flex items-center gap-2 rounded-2xl bg-white px-7 py-3.5 font-semibold text-[#1B2F5E] shadow-md transition-all duration-200 hover:bg-gray-50 hover:-translate-y-0.5 active:translate-y-0"
       >
         <Download size={18} />
@@ -412,7 +441,7 @@ function DesktopDownloadButton() {
           
           <div className="mt-1 space-y-0.5">
             <a
-              href={DOWNLOAD_LINKS.win64}
+              href={links.win64}
               className="flex items-center gap-3 rounded-xl px-3 py-2 hover:bg-gray-50 transition-colors text-left text-gray-700 hover:text-gray-900"
               onClick={() => setDropdownOpen(false)}
             >
@@ -423,7 +452,7 @@ function DesktopDownloadButton() {
               </div>
             </a>
             <a
-              href={DOWNLOAD_LINKS.win32}
+              href={links.win32}
               className="flex items-center gap-3 rounded-xl px-3 py-2 hover:bg-gray-50 transition-colors text-left text-gray-700 hover:text-gray-900"
               onClick={() => setDropdownOpen(false)}
             >
@@ -439,7 +468,7 @@ function DesktopDownloadButton() {
 
           <div className="space-y-0.5">
             <a
-              href={DOWNLOAD_LINKS.macArm64}
+              href={links.macArm64}
               className="flex items-center gap-3 rounded-xl px-3 py-2 hover:bg-gray-50 transition-colors text-left text-gray-700 hover:text-gray-900"
               onClick={() => setDropdownOpen(false)}
             >
@@ -450,7 +479,7 @@ function DesktopDownloadButton() {
               </div>
             </a>
             <a
-              href={DOWNLOAD_LINKS.macX64}
+              href={links.macX64}
               className="flex items-center gap-3 rounded-xl px-3 py-2 hover:bg-gray-50 transition-colors text-left text-gray-700 hover:text-gray-900"
               onClick={() => setDropdownOpen(false)}
             >
@@ -461,7 +490,7 @@ function DesktopDownloadButton() {
               </div>
             </a>
             <a
-              href={DOWNLOAD_LINKS.macUniversal}
+              href={links.macUniversal}
               className="flex items-center gap-3 rounded-xl px-3 py-2 hover:bg-gray-50 transition-colors text-left text-gray-700 hover:text-gray-900"
               onClick={() => setDropdownOpen(false)}
             >
