@@ -38,7 +38,7 @@ const PLANS: Plan[] = [
   {
     name: "Basic",
     monthlyPrice: "LKR 3,300",
-    annualPrice: "LKR 2,640",
+    annualPrice: "LKR 2,970",
     description: "Ideal for growing congregations.",
     button: "Choose Basic",
     highlighted: false,
@@ -56,7 +56,7 @@ const PLANS: Plan[] = [
   {
     name: "Standard",
     monthlyPrice: "LKR 6,300",
-    annualPrice: "LKR 5,040",
+    annualPrice: "LKR 5,670",
     description: "Most popular plan for active ministries.",
     button: "Choose Standard",
     highlighted: true,
@@ -77,7 +77,7 @@ const PLANS: Plan[] = [
   {
     name: "Premium",
     monthlyPrice: "LKR 11,000",
-    annualPrice: "LKR 8,800",
+    annualPrice: "LKR 9,900",
     description: "Everything your large ministry needs.",
     button: "Choose Premium",
     highlighted: false,
@@ -97,7 +97,7 @@ const PLANS: Plan[] = [
   {
     name: "Pro",
     monthlyPrice: "LKR 18,500",
-    annualPrice: "LKR 14,800",
+    annualPrice: "LKR 16,650",
     description: "Built for large active multi-ministries.",
     button: "Choose Pro",
     highlighted: false,
@@ -174,7 +174,7 @@ function PricingCard({
       {/* Annual savings label */}
       {isAnnual && !isCustom && !isFree && (
         <p className="mt-1 text-[10px] font-medium text-green-600">
-          Billed annually — save 20%
+          Billed annually — save 10%
         </p>
       )}
 

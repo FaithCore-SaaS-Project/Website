@@ -76,7 +76,7 @@ export default function PricingPage() {
                           : "bg-green-100 text-green-600"
                       }`}
                     >
-                      Save 20%
+                      Save 10%
                     </span>
                   </div>
                 </button>
