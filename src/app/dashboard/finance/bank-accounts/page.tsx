@@ -9,103 +9,60 @@ import BankAccountsTable from "@/components/dashboard/finance/bank-accounts/Bank
 import BankAccountDetails from "@/components/dashboard/finance/bank-accounts/BankAccountDetails";
 import AccountSummary from "@/components/dashboard/finance/bank-accounts/AccountSummary";
 
-// Mock data matching the screenshot details exactly
-const mockBankAccounts: BankAccount[] = [
-  {
-    id: "CAT-HNB-001",
-    bankName: "Hatton National Bank",
-    accountName: "Main Church Account",
-    accountNumber: "1210 1200 1234 567",
-    accountType: "Current",
-    balance: 2145600,
-    currency: "LKR",
-    branch: "Kandy City Branch",
-    ledgerBalance: 2145600,
-    lastStatementDate: "20 May 2025",
-    addedOn: "15 Jan 2024",
-    addedBy: "Pastor John",
-    status: "Active",
-    logoKey: "hnb",
-  },
-  {
-    id: "CAT-COM-002",
-    bankName: "Commercial Bank",
-    accountName: "Building Fund Account",
-    accountNumber: "8001 0012 3456",
-    accountType: "Savings",
-    balance: 1250000,
-    currency: "LKR",
-    branch: "Kandy City Branch",
-    ledgerBalance: 1250000,
-    lastStatementDate: "20 May 2025",
-    addedOn: "15 Jan 2024",
-    addedBy: "Pastor John",
-    status: "Active",
-    logoKey: "commercial",
-  },
-  {
-    id: "CAT-PEO-003",
-    bankName: "People's Bank",
-    accountName: "Mission Fund Account",
-    accountNumber: "1632 1000 7890",
-    accountType: "Savings",
-    balance: 480750,
-    currency: "LKR",
-    branch: "Kandy City Branch",
-    ledgerBalance: 480750,
-    lastStatementDate: "20 May 2025",
-    addedOn: "15 Jan 2024",
-    addedBy: "Pastor John",
-    status: "Active",
-    logoKey: "peoples",
-  },
-  {
-    id: "CAT-BOC-004",
-    bankName: "Bank of Ceylon",
-    accountName: "Salary Account",
-    accountNumber: "0001 2345 6789",
-    accountType: "Current",
-    balance: 199400,
-    currency: "LKR",
-    branch: "Kandy City Branch",
-    ledgerBalance: 199400,
-    lastStatementDate: "20 May 2025",
-    addedOn: "15 Jan 2024",
-    addedBy: "Pastor John",
-    status: "Active",
-    logoKey: "boc",
-  },
-  {
-    id: "CAT-NTB-005",
-    bankName: "Nations Trust Bank",
-    accountName: "Youth Ministry Account",
-    accountNumber: "3000 9876 5432",
-    accountType: "Savings",
-    balance: 50000,
-    currency: "LKR",
-    branch: "Kandy City Branch",
-    ledgerBalance: 50000,
-    lastStatementDate: "20 May 2025",
-    addedOn: "15 Jan 2024",
-    addedBy: "Pastor John",
-    status: "Active",
-    logoKey: "ntb",
-  },
-];
+import { useEffect } from "react";
+import { fetchApi } from "@/lib/api";
 
 export default function BankAccountsPage() {
   // Filtering states
+  const [bankAccountsData, setBankAccountsData] = useState<BankAccount[]>([]);
+  const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [typeFilter, setTypeFilter] = useState("All Account Types");
   const [statusFilter, setStatusFilter] = useState("All Status");
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedAccountId, setSelectedAccountId] = useState<string | null>("CAT-HNB-001");
+  const [selectedAccountId, setSelectedAccountId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const data = await fetchApi('/api/bank-accounts');
+        const formatted = data.map((d: any) => ({
+          id: d.id.toString(),
+          bankName: d.bank_name,
+          accountName: d.account_name,
+          accountNumber: d.account_number,
+          accountType: d.account_type,
+          balance: parseFloat(d.balance),
+          currency: d.currency || 'LKR',
+          branch: d.branch || 'Main Branch',
+          ledgerBalance: parseFloat(d.ledger_balance || d.balance),
+          lastStatementDate: d.last_statement_date ? new Date(d.last_statement_date).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : 'N/A',
+          addedOn: d.created_on ? new Date(d.created_on).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : 'N/A',
+          addedBy: d.created_by || 'Admin',
+          status: d.status || 'Active',
+          logoKey: d.bank_name.toLowerCase().includes('hatton') ? 'hnb' : 
+                   d.bank_name.toLowerCase().includes('commercial') ? 'commercial' :
+                   d.bank_name.toLowerCase().includes('people') ? 'peoples' :
+                   d.bank_name.toLowerCase().includes('ceylon') ? 'boc' : 'ntb',
+        }));
+        setBankAccountsData(formatted);
+        if (formatted.length > 0) {
+          setSelectedAccountId(formatted[0].id);
+        }
+      } catch (err) {
+        console.error("Failed to fetch bank accounts", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadData();
+  }, []);
 
   const pageSize = 10;
 
   // Filtered Accounts
   const filteredAccounts = useMemo(() => {
-    return mockBankAccounts.filter((item) => {
+    return bankAccountsData.filter((item) => {
       const matchesSearch =
         item.bankName.toLowerCase().includes(searchQuery.toLowerCase()) ||
         item.accountName.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -126,8 +83,8 @@ export default function BankAccountsPage() {
 
   // Selected Account details object
   const selectedAccount = useMemo(() => {
-    return mockBankAccounts.find((item) => item.id === selectedAccountId) || null;
-  }, [selectedAccountId]);
+    return bankAccountsData.find((item) => item.id === selectedAccountId) || null;
+  }, [bankAccountsData, selectedAccountId]);
 
   return (
     <div className="flex flex-col gap-6">
@@ -182,7 +139,7 @@ export default function BankAccountsPage() {
 
       {/* Bottom Full-Width Account Summary chart details */}
       <div className="mt-2">
-        <AccountSummary accounts={mockBankAccounts} />
+        <AccountSummary accounts={bankAccountsData} />
       </div>
     </div>
   );

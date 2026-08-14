@@ -8,128 +8,51 @@ import ReceiptFilters from "@/components/dashboard/e-receipts/ReceiptFilters";
 import ReceiptTable from "@/components/dashboard/e-receipts/ReceiptTable";
 import ReceiptPreview from "@/components/dashboard/e-receipts/ReceiptPreview";
 
-// Mock Data matching the screenshot exactly
-const mockReceipts: Receipt[] = [
-  {
-    id: "RCP-2025-1082",
-    date: "24 May 2025",
-    member: { name: "Saman Perera", email: "saman@email.com", phone: "+94 77 123 4567" },
-    category: "Tithes",
-    amount: 25000,
-    paymentMethod: "Cash",
-    status: "Emailed",
-    description: "Tithes - May 2025",
-    receivedBy: "Pastor John",
-  },
-  {
-    id: "RCP-2025-1081",
-    date: "24 May 2025",
-    member: { name: "Kumara Family", email: "kumara@email.com", phone: "+94 77 987 6543" },
-    category: "Offerings",
-    amount: 15000,
-    paymentMethod: "Cash",
-    status: "Emailed",
-    description: "Offerings - Sunday Service",
-    receivedBy: "Pastor John",
-  },
-  {
-    id: "RCP-2025-1080",
-    date: "24 May 2025",
-    member: { name: "Nadeesha Fernando", email: "nadeesha@email.com", phone: "+94 71 222 3344" },
-    category: "Donations",
-    amount: 50000,
-    paymentMethod: "Bank Transfer",
-    status: "Emailed",
-    description: "Donation for Church Building Fund",
-    receivedBy: "Pastor John",
-  },
-  {
-    id: "RCP-2025-1079",
-    date: "23 May 2025",
-    member: { name: "Isuru Jayasinghe", email: "isuru@email.com", phone: "+94 76 555 4433" },
-    category: "Tithes",
-    amount: 20000,
-    paymentMethod: "Bank Transfer",
-    status: "Emailed",
-    description: "Tithes - May 2025",
-    receivedBy: "Pastor John",
-  },
-  {
-    id: "RCP-2025-1078",
-    date: "23 May 2025",
-    member: { name: "De Silva Family", email: "desilva@email.com", phone: "+94 77 444 5566" },
-    category: "Thanksgiving",
-    amount: 12000,
-    paymentMethod: "Cash",
-    status: "Printed",
-    description: "Thanksgiving Offering",
-    receivedBy: "Pastor John",
-  },
-  {
-    id: "RCP-2025-1077",
-    date: "22 May 2025",
-    member: { name: "Shenal Perera", email: "shenal@email.com", phone: "+94 70 888 9900" },
-    category: "Offerings",
-    amount: 10000,
-    paymentMethod: "Cash",
-    status: "Emailed",
-    description: "Sunday Weekly Offering",
-    receivedBy: "Pastor John",
-  },
-  {
-    id: "RCP-2025-1076",
-    date: "22 May 2025",
-    member: { name: "Anonymous", email: "anonymous", phone: "N/A" },
-    category: "Donations",
-    amount: 30000,
-    paymentMethod: "Bank Transfer",
-    status: "Emailed",
-    description: "General Donation",
-    receivedBy: "Pastor John",
-  },
-  {
-    id: "RCP-2025-1075",
-    date: "21 May 2025",
-    member: { name: "Fernando Family", email: "fernando@email.com", phone: "+94 77 111 2233" },
-    category: "Other Income",
-    amount: 25000,
-    paymentMethod: "Cash",
-    status: "Emailed",
-    description: "Hall Renting Income",
-    receivedBy: "Pastor John",
-  },
-  {
-    id: "RCP-2025-1074",
-    date: "21 May 2025",
-    member: { name: "Perera Family", email: "perera@email.com", phone: "+94 72 333 4455" },
-    category: "Tithes",
-    amount: 18000,
-    paymentMethod: "Cash",
-    status: "Printed",
-    description: "Tithes - Mid Month",
-    receivedBy: "Pastor John",
-  },
-  {
-    id: "RCP-2025-1073",
-    date: "20 May 2025",
-    member: { name: "Youth Group", email: "youthgroup@email.com", phone: "+94 75 777 8899" },
-    category: "Event",
-    amount: 8000,
-    paymentMethod: "Cash",
-    status: "Emailed",
-    description: "Youth Fellowship Event Ticket Sale",
-    receivedBy: "Pastor John",
-  },
-];
+import { useEffect } from "react";
+import { fetchApi } from "@/lib/api";
 
 export default function EReceiptsPage() {
   // Page states
+  const [receiptsData, setReceiptsData] = useState<Receipt[]>([]);
+  const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("All Categories");
   const [methodFilter, setMethodFilter] = useState("All Payment Methods");
   const [dateFilter, setDateFilter] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedReceiptId, setSelectedReceiptId] = useState<string | null>("RCP-2025-1082");
+  const [selectedReceiptId, setSelectedReceiptId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const data = await fetchApi('/api/receipts');
+        const formatted = data.map((d: any) => ({
+          id: d.receipt_no,
+          date: new Date(d.receipt_date).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+          member: {
+            name: d.member_name,
+            email: d.member_email || 'N/A',
+            phone: d.member_phone || 'N/A'
+          },
+          category: d.category,
+          amount: parseFloat(d.amount),
+          paymentMethod: d.method,
+          status: d.status,
+          description: d.description || '',
+          receivedBy: d.received_by
+        }));
+        setReceiptsData(formatted);
+        if (formatted.length > 0) {
+          setSelectedReceiptId(formatted[0].id);
+        }
+      } catch (err) {
+        console.error("Failed to fetch receipts", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadData();
+  }, []);
 
   const pageSize = 10;
 
@@ -160,7 +83,7 @@ export default function EReceiptsPage() {
 
   // Filtered receipts
   const filteredReceipts = useMemo(() => {
-    return mockReceipts.filter((item) => {
+    return receiptsData.filter((item) => {
       const matchesSearch =
         item.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
         item.member.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -186,8 +109,8 @@ export default function EReceiptsPage() {
 
   // Selected receipt detail
   const selectedReceipt = useMemo(() => {
-    return mockReceipts.find((item) => item.id === selectedReceiptId) || null;
-  }, [selectedReceiptId]);
+    return receiptsData.find((item) => item.id === selectedReceiptId) || null;
+  }, [receiptsData, selectedReceiptId]);
 
   return (
     <div className="flex flex-col gap-6">

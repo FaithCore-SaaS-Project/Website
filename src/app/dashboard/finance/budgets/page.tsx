@@ -8,127 +8,57 @@ import BudgetFilters from "@/components/dashboard/finance/budgets/BudgetFilters"
 import BudgetsTable from "@/components/dashboard/finance/budgets/BudgetsTable";
 import BudgetSidebar from "@/components/dashboard/finance/budgets/BudgetSidebar";
 
-// Mock data matching the screenshot exactly
-const mockBudgets: Budget[] = [
-  {
-    id: "BGT-001",
-    name: "Ministry Operations",
-    description: "General ministry expenses",
-    type: "Operating",
-    startDate: "01 Jan 2025",
-    endDate: "31 Dec 2025",
-    totalBudget: 800000,
-    spent: 520000,
-    progress: 65,
-    status: "In Progress",
-    iconColorKey: "violet",
-  },
-  {
-    id: "BGT-002",
-    name: "Building Maintenance",
-    description: "Church building upkeep",
-    type: "Capital",
-    startDate: "01 Jan 2025",
-    endDate: "31 Dec 2025",
-    totalBudget: 600000,
-    spent: 310000,
-    progress: 52,
-    status: "In Progress",
-    iconColorKey: "emerald",
-  },
-  {
-    id: "BGT-003",
-    name: "Outreach Programs",
-    description: "Community outreach expenses",
-    type: "Ministry",
-    startDate: "01 Jan 2025",
-    endDate: "31 Dec 2025",
-    totalBudget: 400000,
-    spent: 280000,
-    progress: 70,
-    status: "In Progress",
-    iconColorKey: "orange",
-  },
-  {
-    id: "BGT-004",
-    name: "Worship Ministry",
-    description: "Worship and music expenses",
-    type: "Ministry",
-    startDate: "01 Jan 2025",
-    endDate: "31 Dec 2025",
-    totalBudget: 300000,
-    spent: 195000,
-    progress: 65,
-    status: "In Progress",
-    iconColorKey: "blue",
-  },
-  {
-    id: "BGT-005",
-    name: "Youth Ministry",
-    description: "Youth programs and activities",
-    type: "Ministry",
-    startDate: "01 Jan 2025",
-    endDate: "31 Dec 2025",
-    totalBudget: 250000,
-    spent: 120750,
-    progress: 48,
-    status: "In Progress",
-    iconColorKey: "purple",
-  },
-  {
-    id: "BGT-006",
-    name: "Staff Salaries",
-    description: "Staff salaries and benefits",
-    type: "Operating",
-    startDate: "01 Jan 2025",
-    endDate: "31 Dec 2025",
-    totalBudget: 900000,
-    spent: 900000,
-    progress: 100,
-    status: "Completed",
-    iconColorKey: "red",
-  },
-  {
-    id: "BGT-007",
-    name: "Utilities",
-    description: "Electricity, Water, Internet etc.",
-    type: "Operating",
-    startDate: "01 Jan 2025",
-    endDate: "31 Dec 2025",
-    totalBudget: 150000,
-    spent: 104000,
-    progress: 69,
-    status: "In Progress",
-    iconColorKey: "cyan",
-  },
-  {
-    id: "BGT-008",
-    name: "Education Ministry",
-    description: "Sunday School & Training",
-    type: "Ministry",
-    startDate: "01 Jan 2025",
-    endDate: "31 Dec 2025",
-    totalBudget: 200000,
-    spent: 89000,
-    progress: 45,
-    status: "In Progress",
-    iconColorKey: "yellow",
-  },
-];
+import { useEffect } from "react";
+import { fetchApi } from "@/lib/api";
 
 export default function BudgetsPage() {
   // Page filtering states
+  const [budgetsData, setBudgetsData] = useState<Budget[]>([]);
+  const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [yearFilter, setYearFilter] = useState("2025");
   const [typeFilter, setTypeFilter] = useState("All Budget Types");
   const [statusFilter, setStatusFilter] = useState("All Status");
   const [currentPage, setCurrentPage] = useState(1);
 
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const data = await fetchApi('/api/budgets');
+        const formatted = data.map((d: any) => {
+          const total = parseFloat(d.budget_amount) || 0;
+          const spent = parseFloat(d.spent_amount) || 0;
+          const progress = total > 0 ? Math.round((spent / total) * 100) : 0;
+          
+          return {
+            id: d.id.toString(),
+            name: d.name,
+            description: d.description || '',
+            type: d.type,
+            startDate: d.period_start ? new Date(d.period_start).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : 'N/A',
+            endDate: d.period_end ? new Date(d.period_end).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : 'N/A',
+            totalBudget: total,
+            spent: spent,
+            progress: progress,
+            status: d.status || 'In Progress',
+            iconColorKey: d.type === 'Operating' ? 'violet' : d.type === 'Capital' ? 'emerald' : 'orange',
+          };
+        });
+        setBudgetsData(formatted);
+      } catch (err) {
+        console.error("Failed to fetch budgets", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadData();
+  }, []);
+
   const pageSize = 10;
 
   // Filtered Budgets
   const filteredBudgets = useMemo(() => {
-    return mockBudgets.filter((item) => {
+    return budgetsData.filter((item) => {
       const matchesSearch =
         item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         item.description.toLowerCase().includes(searchQuery.toLowerCase());

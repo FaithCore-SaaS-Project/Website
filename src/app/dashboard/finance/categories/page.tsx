@@ -8,153 +8,54 @@ import CategoriesFilters from "@/components/dashboard/finance/categories/Categor
 import CategoriesTable from "@/components/dashboard/finance/categories/CategoriesTable";
 import CategoryDetails from "@/components/dashboard/finance/categories/CategoryDetails";
 
-// Full mockup data matching screenshot exactly
-const mockCategories: Category[] = [
-  {
-    id: "CAT-001",
-    name: "Tithes",
-    type: "Income",
-    description: "Tithes received from members",
-    status: "Active",
-    date: "10 Feb 2025",
-    createdTime: "09:30 AM",
-    createdBy: "Pastor John",
-    transactions: 156,
-    totalAmount: 2450000,
-    iconName: "tithes",
-  },
-  {
-    id: "CAT-002",
-    name: "Offerings",
-    type: "Income",
-    description: "Offerings and thanksgiving gifts",
-    status: "Active",
-    date: "10 Feb 2025",
-    createdTime: "10:15 AM",
-    createdBy: "Pastor John",
-    transactions: 320,
-    totalAmount: 1845000,
-    iconName: "offerings",
-  },
-  {
-    id: "CAT-003",
-    name: "Donations",
-    type: "Income",
-    description: "General donations",
-    status: "Active",
-    date: "11 Feb 2025",
-    createdTime: "02:20 PM",
-    createdBy: "Pastor John",
-    transactions: 84,
-    totalAmount: 1250000,
-    iconName: "donations",
-  },
-  {
-    id: "CAT-004",
-    name: "Event Income",
-    type: "Income",
-    description: "Income from church events",
-    status: "Active",
-    date: "12 Feb 2025",
-    createdTime: "11:00 AM",
-    createdBy: "Pastor John",
-    transactions: 42,
-    totalAmount: 850000,
-    iconName: "event",
-  },
-  {
-    id: "CAT-005",
-    name: "Hall Rent",
-    type: "Income",
-    description: "Income from hall rentals",
-    status: "Active",
-    date: "12 Feb 2025",
-    createdTime: "04:30 PM",
-    createdBy: "Pastor John",
-    transactions: 18,
-    totalAmount: 450000,
-    iconName: "hall-rent",
-  },
-  {
-    id: "CAT-006",
-    name: "Ministry Expenses",
-    type: "Expense",
-    description: "Expenses related to ministries",
-    status: "Active",
-    date: "10 Feb 2025",
-    createdTime: "09:00 AM",
-    createdBy: "Pastor John",
-    transactions: 98,
-    totalAmount: 680000,
-    iconName: "ministry",
-  },
-  {
-    id: "CAT-007",
-    name: "Utilities",
-    type: "Expense",
-    description: "Electricity, Water, Internet etc.",
-    status: "Active",
-    date: "10 Feb 2025",
-    createdTime: "11:30 AM",
-    createdBy: "Pastor John",
-    transactions: 45,
-    totalAmount: 240000,
-    iconName: "utilities",
-  },
-  {
-    id: "CAT-008",
-    name: "Salaries",
-    type: "Expense",
-    description: "Staff salaries and allowances",
-    status: "Active",
-    date: "11 Feb 2025",
-    createdTime: "09:00 AM",
-    createdBy: "Pastor John",
-    transactions: 24,
-    totalAmount: 950000,
-    iconName: "salaries",
-  },
-  {
-    id: "CAT-009",
-    name: "Maintenance",
-    type: "Expense",
-    description: "Building and equipment maintenance",
-    status: "Active",
-    date: "11 Feb 2025",
-    createdTime: "03:00 PM",
-    createdBy: "Pastor John",
-    transactions: 37,
-    totalAmount: 380000,
-    iconName: "maintenance",
-  },
-  {
-    id: "CAT-010",
-    name: "Office Expenses",
-    type: "Expense",
-    description: "Stationery and office expenses",
-    status: "Active",
-    date: "12 Feb 2025",
-    createdTime: "10:00 AM",
-    createdBy: "Pastor John",
-    transactions: 112,
-    totalAmount: 154000,
-    iconName: "office",
-  },
-];
+import { useEffect } from "react";
+import { fetchApi } from "@/lib/api";
 
 export default function CategoriesPage() {
   // Page Filtering States
+  const [categoriesData, setCategoriesData] = useState<Category[]>([]);
+  const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [typeFilter, setTypeFilter] = useState("All Types");
   const [statusFilter, setStatusFilter] = useState("All Status");
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>("CAT-001");
+  const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const data = await fetchApi('/api/finance-categories');
+        const formatted = data.map((d: any) => ({
+          id: d.id.toString(),
+          name: d.name,
+          type: d.type,
+          description: d.description || '',
+          status: d.status || 'Active',
+          date: d.created_on ? new Date(d.created_on).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : 'N/A',
+          createdTime: '', // Not strictly required, backend stores created_at
+          createdBy: d.created_by || 'Admin',
+          transactions: 0, // In a real app this would be an aggregation
+          totalAmount: 0,
+          iconName: d.type === 'Income' ? 'donations' : 'utilities',
+        }));
+        setCategoriesData(formatted);
+        if (formatted.length > 0) {
+          setSelectedCategoryId(formatted[0].id);
+        }
+      } catch (err) {
+        console.error("Failed to fetch finance categories", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadData();
+  }, []);
 
   const pageSize = 10;
 
   // Filtered Categories logic
   const filteredCategories = useMemo(() => {
-    return mockCategories.filter((item) => {
+    return categoriesData.filter((item) => {
       const matchesSearch =
         item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         item.type.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -175,8 +76,8 @@ export default function CategoriesPage() {
 
   // Active Category selection preview
   const selectedCategory = useMemo(() => {
-    return mockCategories.find((item) => item.id === selectedCategoryId) || null;
-  }, [selectedCategoryId]);
+    return categoriesData.find((item) => item.id === selectedCategoryId) || null;
+  }, [categoriesData, selectedCategoryId]);
 
   return (
     <div className="flex flex-col gap-6">
