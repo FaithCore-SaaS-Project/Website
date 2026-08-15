@@ -314,11 +314,11 @@ const AppleIcon = ({ className = "h-5 w-5" }: { className?: string }) => (
 );
 
 const FALLBACK_DOWNLOAD_LINKS = {
-  win64: "https://github.com/FaithCore-SaaS-Project/faithcore-desktop-releases/releases/download/v1.0.0/FC.Desktop.Setup.1.0.0.exe",
-  win32: "https://github.com/FaithCore-SaaS-Project/faithcore-desktop-releases/releases/download/v1.0.0/FC.Desktop.Setup.1.0.0.exe",
-  macArm64: "https://github.com/FaithCore-SaaS-Project/faithcore-desktop-releases/releases/download/v1.0.0/FC-Desktop-1.0.0-universal.dmg",
-  macX64: "https://github.com/FaithCore-SaaS-Project/faithcore-desktop-releases/releases/download/v1.0.0/FC-Desktop-1.0.0-universal.dmg",
-  macUniversal: "https://github.com/FaithCore-SaaS-Project/faithcore-desktop-releases/releases/download/v1.0.0/FC-Desktop-1.0.0-universal.dmg",
+  win64: "https://github.com/FaithCore-SaaS-Project/faithcore-desktop-releases/releases/download/v1.0.2/FC.Desktop.Setup.1.0.2.exe",
+  win32: "https://github.com/FaithCore-SaaS-Project/faithcore-desktop-releases/releases/download/v1.0.2/FC.Desktop.Setup.1.0.2.exe",
+  macArm64: "https://github.com/FaithCore-SaaS-Project/faithcore-desktop-releases/releases/download/v1.0.2/FC-Desktop-1.0.2-universal.dmg",
+  macX64: "https://github.com/FaithCore-SaaS-Project/faithcore-desktop-releases/releases/download/v1.0.2/FC-Desktop-1.0.2-universal.dmg",
+  macUniversal: "https://github.com/FaithCore-SaaS-Project/faithcore-desktop-releases/releases/download/v1.0.2/FC-Desktop-1.0.2-universal.dmg",
 };
 
 function DesktopDownloadButton() {
