@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X, Download } from "lucide-react";
+import { Menu, X, Download, Globe } from "lucide-react";
 import Link from "next/link";
 
 // ─── Navbar ───────────────────────────────────────────────────────────────────
@@ -51,16 +51,25 @@ export default function Navbar() {
 
         {/* ── Desktop Actions ─────────────────────────────── */}
         <div className="hidden items-center gap-4 lg:flex">
+          <a
+            href="https://app.faithcore.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 text-gray-700 hover:text-[#1B2F5E] font-semibold px-4 py-2.5 transition-all text-center flex items-center gap-2 text-sm shadow-sm"
+          >
+            <Globe size={16} className="text-[#5B3DF5]" />
+            Web Portal
+          </a>
           <Link
             href="/features#download"
-            className="rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white font-semibold shadow-md shadow-indigo-100/50 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2 px-5 py-2.5 transition-all duration-200 text-center"
+            className="rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white font-semibold shadow-md shadow-indigo-100/50 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2 px-5 py-2.5 transition-all duration-200 text-center text-sm"
           >
             <Download size={16} />
             Download App
           </Link>
           <Link
             href="/pricing"
-            className="rounded-xl bg-[#1B2F5E] px-5 py-2.5 font-medium text-white hover:bg-[#15254A] transition-colors text-center"
+            className="rounded-xl bg-[#1B2F5E] px-5 py-2.5 font-medium text-white hover:bg-[#15254A] transition-colors text-center text-sm"
           >
             Get Started
           </Link>
@@ -123,10 +132,20 @@ export default function Navbar() {
             Contact
           </a>
           <div className="mt-2 flex flex-col gap-3 border-t pt-5">
+            <a
+              href="https://app.faithcore.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileOpen(false)}
+              className="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 text-gray-700 hover:text-[#1B2F5E] font-semibold px-5 py-3 transition-colors text-center flex items-center justify-center gap-2 text-sm shadow-sm"
+            >
+              <Globe size={18} className="text-[#5B3DF5]" />
+              Web Portal (iPad / Web)
+            </a>
             <Link
               href="/features#download"
               onClick={() => setMobileOpen(false)}
-              className="rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white font-semibold shadow-md flex items-center justify-center gap-2 px-5 py-3 transition-colors text-center"
+              className="rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white font-semibold shadow-md flex items-center justify-center gap-2 px-5 py-3 transition-colors text-center text-sm"
             >
               <Download size={18} />
               Download App
@@ -134,7 +153,7 @@ export default function Navbar() {
             <Link
               href="/pricing"
               onClick={() => setMobileOpen(false)}
-              className="rounded-xl bg-[#1B2F5E] px-5 py-3 font-medium text-white hover:bg-[#15254A] transition-colors text-center"
+              className="rounded-xl bg-[#1B2F5E] px-5 py-3 font-medium text-white hover:bg-[#15254A] transition-colors text-center text-sm"
             >
               Get Started
             </Link>

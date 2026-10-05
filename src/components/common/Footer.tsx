@@ -74,8 +74,8 @@ export default function Footer() {
               {[
                 { label: "Features", href: "/features" },
                 { label: "Pricing", href: "/pricing" },
-                { label: "Download", href: "#" },
-                { label: "Updates", href: "#" },
+                { label: "Download Desktop App", href: "/features#download" },
+                { label: "Web Portal (iPad / Web)", href: "https://app.faithcore.org" },
               ].map((link) => (
                 <li key={link.label}>
                   <Link href={link.href} className="hover:text-white transition-colors">
