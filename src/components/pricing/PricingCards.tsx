@@ -224,41 +224,10 @@ function CheckoutModal({
   isAnnual: boolean;
   onClose: () => void;
 }) {
-  const [loadingPaypal, setLoadingPaypal] = useState(false);
+  const [region, setRegion] = useState<"srilanka" | "international">("srilanka");
   const [loadingPayhere, setLoadingPayhere] = useState(false);
 
   if (!plan) return null;
-
-  const handlePaypal = async () => {
-    setLoadingPaypal(true);
-    const apiHost = process.env.NEXT_PUBLIC_API_URL || "https://api.faithcore.org";
-    try {
-      const response = await fetch(`${apiHost}/api/checkout/paypal`, {
-        method: "POST",
-        headers: { 
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${localStorage.getItem("token")}`
-        },
-        body: JSON.stringify({
-          plan_name: plan.name,
-          is_annual: isAnnual,
-          success_url: window.location.origin + "/register/success",
-          cancel_url: window.location.origin + "/pricing?payment=cancel"
-        })
-      });
-      const data = await response.json();
-      if (data.url) {
-        window.location.href = data.url;
-      } else {
-        alert("PayPal Checkout failed. Please try again.");
-        setLoadingPaypal(false);
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Error connecting to payment server.");
-      setLoadingPaypal(false);
-    }
-  };
 
   const handlePayhere = async () => {
     setLoadingPayhere(true);
@@ -309,38 +278,104 @@ function CheckoutModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 animate-fade-in">
-      <div className="bg-white rounded-3xl p-8 max-w-sm w-full shadow-2xl relative">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
+      <div className="bg-white rounded-[32px] p-6 sm:p-8 max-w-md w-full shadow-2xl relative border border-gray-100">
         <button 
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
+          className="absolute top-5 right-5 h-8 w-8 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 hover:text-gray-800 flex items-center justify-center transition-colors"
         >
           ✕
         </button>
         
-        <h3 className="text-xl font-bold text-gray-900 mb-2">Checkout</h3>
-        <p className="text-sm text-gray-500 mb-6">
-          You selected the <span className="font-bold text-[#1B2F5E]">{plan.name}</span> plan. How would you like to pay?
-        </p>
+        <div className="text-center sm:text-left">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-[#1B2F5E] bg-[#EEF2FB] px-3 py-1 rounded-full inline-block mb-2">
+            Secure Checkout
+          </span>
+          <h3 className="text-2xl font-black text-gray-900">
+            {plan.name} Plan
+          </h3>
+          <p className="text-sm text-gray-500 mt-1">
+            Choose your billing region to proceed with payment.
+          </p>
+        </div>
 
-        <div className="space-y-4">
+        {/* Region Selector Tabs */}
+        <div className="mt-6 grid grid-cols-2 gap-2 bg-gray-100 p-1.5 rounded-2xl">
           <button
-            onClick={handlePayhere}
-            disabled={loadingPaypal || loadingPayhere}
-            className="w-full flex items-center justify-center gap-2 bg-[#2D3192] hover:bg-[#20236a] text-white py-4 rounded-xl font-bold transition-all disabled:opacity-50"
+            type="button"
+            onClick={() => setRegion("srilanka")}
+            className={`py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all ${
+              region === "srilanka"
+                ? "bg-white text-[#1B2F5E] shadow-sm"
+                : "text-gray-500 hover:text-gray-800"
+            }`}
           >
-            {loadingPayhere ? "Processing..." : "Pay with PayHere"}
-            <span className="text-[10px] font-normal bg-white/20 px-2 py-0.5 rounded-full ml-1">Sri Lanka</span>
+            <span>🇱🇰</span>
+            <span>Sri Lanka</span>
           </button>
+          <button
+            type="button"
+            onClick={() => setRegion("international")}
+            className={`py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all ${
+              region === "international"
+                ? "bg-white text-[#1B2F5E] shadow-sm"
+                : "text-gray-500 hover:text-gray-800"
+            }`}
+          >
+            <span>🌍</span>
+            <span>International</span>
+          </button>
+        </div>
 
-          <button
-            onClick={handlePaypal}
-            disabled={loadingPaypal || loadingPayhere}
-            className="w-full flex items-center justify-center gap-2 bg-[#0070BA] hover:bg-[#005ea6] text-white py-4 rounded-xl font-bold transition-all disabled:opacity-50"
-          >
-            {loadingPaypal ? "Processing..." : "Pay with PayPal"}
-            <span className="text-[10px] font-normal bg-white/20 px-2 py-0.5 rounded-full ml-1">International</span>
-          </button>
+        {/* Region Content */}
+        <div className="mt-6">
+          {region === "srilanka" ? (
+            <div className="space-y-4">
+              <div className="rounded-2xl border border-gray-100 bg-[#faf9ff] p-4 text-xs text-gray-600">
+                <div className="flex justify-between items-center mb-1">
+                  <span className="text-gray-500">Plan Amount:</span>
+                  <span className="font-bold text-gray-900 text-sm">
+                    {isAnnual ? plan.annualPrice : plan.monthlyPrice}
+                  </span>
+                </div>
+                <div className="flex justify-between items-center text-[11px] text-gray-400">
+                  <span>Billing Cycle:</span>
+                  <span>{isAnnual ? "Annual (Save 10%)" : "Monthly"}</span>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={handlePayhere}
+                disabled={loadingPayhere}
+                className="w-full flex items-center justify-center gap-2 bg-[#1B2F5E] hover:bg-[#15254A] active:scale-[0.98] text-white py-4 rounded-2xl font-bold shadow-lg shadow-[#1B2F5E]/20 transition-all disabled:opacity-50"
+              >
+                {loadingPayhere ? "Connecting to PayHere..." : "Pay with Card / PayHere"}
+              </button>
+
+              <div className="flex items-center justify-center gap-3 pt-2 text-gray-400">
+                <span className="text-[10px] uppercase font-semibold tracking-wider">Accepted:</span>
+                <span className="text-xs font-bold text-gray-600">Visa</span>
+                <span className="text-xs font-bold text-gray-600">MasterCard</span>
+                <span className="text-xs font-bold text-gray-600">Genie / Frimi</span>
+              </div>
+            </div>
+          ) : (
+            <div className="text-center py-6 px-4 rounded-2xl border border-dashed border-gray-200 bg-gray-50/70">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-amber-100 text-amber-600 mb-3">
+                <span className="text-xl">⏳</span>
+              </div>
+              <span className="inline-block px-3 py-1 bg-amber-100 text-amber-700 text-[10px] font-extrabold uppercase tracking-wider rounded-full mb-2">
+                Coming Soon
+              </span>
+              <h4 className="text-base font-bold text-gray-900">
+                International Payments
+              </h4>
+              <p className="text-xs text-gray-500 mt-2 max-w-xs mx-auto leading-relaxed">
+                Direct international card and PayPal checkouts will be available shortly. For now, we are prioritizing churches in Sri Lanka.
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>
