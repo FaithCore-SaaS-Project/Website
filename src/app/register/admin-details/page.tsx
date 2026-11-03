@@ -167,7 +167,7 @@ export default function AdminDetailsPage() {
                 <label className="mb-2 block text-sm font-semibold text-gray-700">
                   Password
                 </label>
-                <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 focus-within:border-[#1B2F5E] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1B2F5E]/10 transition-all">
+                <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-2 focus-within:border-[#1B2F5E] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1B2F5E]/10 transition-all">
                   <Lock size={18} className="text-gray-400 shrink-0" />
                   <input
                     type={showPassword ? "text" : "password"}
@@ -175,12 +175,17 @@ export default function AdminDetailsPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Create a strong password"
-                    className="ml-3 w-full bg-transparent text-sm text-gray-900 placeholder-gray-400 outline-none"
+                    className="ml-3 w-full bg-transparent py-2 text-sm text-gray-900 placeholder-gray-400 outline-none"
                   />
                   <button
                     type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="text-gray-400 hover:text-gray-600 shrink-0 transition-colors"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setShowPassword((prev) => !prev);
+                    }}
+                    title={showPassword ? "Hide password" : "Show password"}
+                    aria-label={showPassword ? "Hide password" : "Show password"}
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-gray-400 hover:bg-gray-200/60 hover:text-gray-700 active:scale-95 transition-all touch-manipulation cursor-pointer"
                   >
                     {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                   </button>
@@ -192,7 +197,7 @@ export default function AdminDetailsPage() {
                 <label className="mb-2 block text-sm font-semibold text-gray-700">
                   Confirm Password
                 </label>
-                <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 focus-within:border-[#1B2F5E] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1B2F5E]/10 transition-all">
+                <div className="flex items-center rounded-2xl border border-gray-200 bg-gray-50 px-4 py-2 focus-within:border-[#1B2F5E] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1B2F5E]/10 transition-all">
                   <Lock size={18} className="text-gray-400 shrink-0" />
                   <input
                     type={showConfirmPassword ? "text" : "password"}
@@ -200,12 +205,17 @@ export default function AdminDetailsPage() {
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     placeholder="Confirm admin password"
-                    className="ml-3 w-full bg-transparent text-sm text-gray-900 placeholder-gray-400 outline-none"
+                    className="ml-3 w-full bg-transparent py-2 text-sm text-gray-900 placeholder-gray-400 outline-none"
                   />
                   <button
                     type="button"
-                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="text-gray-400 hover:text-gray-600 shrink-0 transition-colors"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setShowConfirmPassword((prev) => !prev);
+                    }}
+                    title={showConfirmPassword ? "Hide password" : "Show password"}
+                    aria-label={showConfirmPassword ? "Hide password" : "Show password"}
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-gray-400 hover:bg-gray-200/60 hover:text-gray-700 active:scale-95 transition-all touch-manipulation cursor-pointer"
                   >
                     {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                   </button>

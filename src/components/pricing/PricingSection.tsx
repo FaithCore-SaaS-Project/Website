@@ -25,21 +25,21 @@ const PLANS: Plan[] = [
   },
   {
     title: "Basic",
-    monthlyPrice: "LKR 3,000",
-    annualPrice: "LKR 2,400",
+    monthlyPrice: "LKR 3,300",
+    annualPrice: "LKR 2,970",
     features: ["150 Members limit", "2GB Storage", "Certificates & Letters"],
   },
   {
     title: "Standard",
-    monthlyPrice: "LKR 5,500",
-    annualPrice: "LKR 4,400",
+    monthlyPrice: "LKR 6,300",
+    annualPrice: "LKR 5,670",
     features: ["400 Members limit", "5GB Storage", "Budgets & E-Receipts", "Reports & Attendance"],
     active: true,
   },
   {
     title: "Premium",
-    monthlyPrice: "LKR 9,500",
-    annualPrice: "LKR 7,600",
+    monthlyPrice: "LKR 11,000",
+    annualPrice: "LKR 9,900",
     features: ["750 Members limit", "15GB Storage", "Audit Logs & Backup", "Third-party integrations"],
   },
 ];
@@ -148,7 +148,7 @@ export default function PricingSection() {
                   isAnnual ? "bg-white/20 text-white" : "bg-green-100 text-green-700"
                 }`}
               >
-                Save 15%
+                Save 10%
               </span>
             </button>
           </div>
