@@ -1,158 +1,144 @@
-// ─── Footer ───────────────────────────────────────────────────────────────────
-
 import Link from "next/link";
-import { FaFacebookF, FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
+import { FaFacebookF, FaTwitter, FaYoutube, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { ShieldCheck, Heart } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0d0d2b] py-16 text-gray-400">
+    <footer className="border-t border-slate-200 bg-slate-950 text-slate-400 py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-6">
 
         {/* ── Main Grid ──────────────────────────────────────── */}
-        <div className="grid gap-12 lg:grid-cols-[2fr_1fr_1fr_1fr_2fr]">
+        <div className="grid gap-12 lg:grid-cols-5">
 
-          {/* ── Brand ──────────────────────────────────────────── */}
-          <div>
-            {/* Logo */}
+          {/* ── Brand column ──────────────────────────────────── */}
+          <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-white border border-[#C9A84C] overflow-hidden p-0.5">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-900 border border-slate-800 p-1">
                 <img
                   src="/images/logo.jpg"
                   alt="FaithCore Logo"
-                  className="h-full w-full object-contain"
+                  className="h-full w-full object-contain rounded-md"
                 />
               </div>
               <div>
-                <p className="text-base font-bold text-white leading-tight">FaithCore</p>
-                <p className="text-xs text-gray-400">Church Management System</p>
+                <span className="text-base font-bold text-white tracking-tight">FaithCore</span>
+                <span className="text-[10px] block font-medium uppercase tracking-wider text-indigo-400">
+                  Church Operating System
+                </span>
               </div>
             </div>
 
-            {/* Tagline */}
-            <p className="mt-5 text-sm leading-7">
-              Empowering churches to manage their ministry, connect with people,
-              and impact more lives through technology.
+            <p className="text-xs text-slate-400 max-w-sm leading-relaxed">
+              Equipping ministries with dependable software for member engagement, transparent accounting, official letters, and global fellowship growth.
             </p>
 
-            {/* Social Icons */}
-            <div className="mt-6 flex gap-4">
-              <a
-                href="#"
-                aria-label="Facebook"
-                className="flex h-9 w-9 items-center justify-center rounded-full text-gray-400 transition-colors hover:text-white hover:bg-white/10"
-              >
-                <FaFacebookF size={16} />
+            <div className="pt-2 flex gap-3 text-slate-400">
+              <a href="#" aria-label="Facebook" className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-900 hover:text-white hover:bg-slate-800 transition-colors">
+                <FaFacebookF size={13} />
               </a>
-              <a
-                href="#"
-                aria-label="Twitter"
-                className="flex h-9 w-9 items-center justify-center rounded-full text-gray-400 transition-colors hover:text-white hover:bg-white/10"
-              >
-                <FaTwitter size={16} />
+              <a href="#" aria-label="Twitter" className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-900 hover:text-white hover:bg-slate-800 transition-colors">
+                <FaTwitter size={13} />
               </a>
-              <a
-                href="#"
-                aria-label="YouTube"
-                className="flex h-9 w-9 items-center justify-center rounded-full text-gray-400 transition-colors hover:text-white hover:bg-white/10"
-              >
-                <FaYoutube size={16} />
+              <a href="#" aria-label="LinkedIn" className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-900 hover:text-white hover:bg-slate-800 transition-colors">
+                <FaLinkedinIn size={13} />
               </a>
-              <a
-                href="#"
-                aria-label="Instagram"
-                className="flex h-9 w-9 items-center justify-center rounded-full text-gray-400 transition-colors hover:text-white hover:bg-white/10"
-              >
-                <FaInstagram size={16} />
+              <a href="#" aria-label="YouTube" className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-900 hover:text-white hover:bg-slate-800 transition-colors">
+                <FaYoutube size={13} />
               </a>
             </div>
           </div>
 
-          {/* ── Product ────────────────────────────────────────── */}
+          {/* ── Product links ─────────────────────────────────── */}
           <div>
-            <h3 className="font-semibold text-white">Product</h3>
-            <ul className="mt-5 space-y-3 text-sm">
-              {[
-                { label: "Features", href: "/features" },
-                { label: "Pricing", href: "/pricing" },
-                { label: "Download Desktop App", href: "/features#download" },
-                { label: "Web Portal (iPad / Web)", href: "https://app.faithcore.org" },
-              ].map((link) => (
-                <li key={link.label}>
-                  <Link href={link.href} className="hover:text-white transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200">Product</h4>
+            <ul className="mt-4 space-y-2.5 text-xs">
+              <li>
+                <Link href="/features" className="hover:text-white transition-colors">
+                  Features & Architecture
+                </Link>
+              </li>
+              <li>
+                <Link href="/pricing" className="hover:text-white transition-colors">
+                  Subscription Plans
+                </Link>
+              </li>
+              <li>
+                <Link href="/features#download" className="hover:text-white transition-colors">
+                  Desktop Pro (Windows/Mac)
+                </Link>
+              </li>
+              <li>
+                <a href="https://app.faithcore.org" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                  Web Portal Kiosk
+                </a>
+              </li>
             </ul>
           </div>
 
-          {/* ── Resources ──────────────────────────────────────── */}
+          {/* ── Ministry Resources ─────────────────────────────── */}
           <div>
-            <h3 className="font-semibold text-white">Resources</h3>
-            <ul className="mt-5 space-y-3 text-sm">
-              {[
-                { label: "Blog / Updates", href: "/blog" },
-                { label: "FAQ", href: "/faq" },
-                { label: "Help Center", href: "#" },
-                { label: "Guides", href: "#" },
-                { label: "Videos", href: "#" },
-                { label: "System Requirements", href: "#" },
-              ].map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="hover:text-white transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200">Resources</h4>
+            <ul className="mt-4 space-y-2.5 text-xs">
+              <li>
+                <Link href="/about" className="hover:text-white transition-colors">
+                  About Our Ministry Mission
+                </Link>
+              </li>
+              <li>
+                <Link href="/#support" className="hover:text-white transition-colors">
+                  Knowledge Base & Docs
+                </Link>
+              </li>
+              <li>
+                <Link href="/faq" className="hover:text-white transition-colors">
+                  Frequently Asked Questions
+                </Link>
+              </li>
+              <li>
+                <Link href="/support" className="hover:text-white transition-colors">
+                  Helpdesk & Live Ticket
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* ── Company ────────────────────────────────────────── */}
+          {/* ── Compliance & Legal ─────────────────────────────── */}
           <div>
-            <h3 className="font-semibold text-white">Company</h3>
-            <ul className="mt-5 space-y-3 text-sm">
-              {[
-                { label: "About Us", href: "/about" },
-                { label: "Contact Us", href: "#" },
-                { label: "Privacy Policy", href: "/privacy" },
-                { label: "Terms & Conditions", href: "/terms" },
-                { label: "Refund Policy", href: "/refund" },
-              ].map((link) => (
-                <li key={link.label}>
-                  <Link href={link.href} className="hover:text-white transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200">Security & Legal</h4>
+            <ul className="mt-4 space-y-2.5 text-xs">
+              <li>
+                <Link href="/privacy" className="hover:text-white transition-colors">
+                  Privacy Policy (GDPR)
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms" className="hover:text-white transition-colors">
+                  Terms of Service
+                </Link>
+              </li>
+              <li>
+                <Link href="/refund" className="hover:text-white transition-colors">
+                  Refund & Guarantee Policy
+                </Link>
+              </li>
+              <li className="pt-2">
+                <span className="inline-flex items-center gap-1.5 rounded-md bg-slate-900 border border-slate-800 px-2.5 py-1 text-[10px] text-emerald-400">
+                  <ShieldCheck size={13} /> 256-Bit SSL Encrypted
+                </span>
+              </li>
             </ul>
           </div>
 
-          {/* ── Stay Connected ─────────────────────────────────── */}
-          <div>
-            <h3 className="font-semibold text-white">Stay Connected</h3>
-            <p className="mt-5 text-sm leading-6">
-              Get the latest updates and tips for your ministry.
-            </p>
-            <div className="mt-4 flex overflow-hidden rounded-lg border border-white/10">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="w-full bg-transparent px-4 py-3 text-sm text-white placeholder-gray-500 outline-none"
-              />
-              <button className="bg-[#1B2F5E] px-5 text-sm font-medium text-white whitespace-nowrap hover:bg-[#15254A] transition-colors">
-                Subscribe
-              </button>
-            </div>
-          </div>
         </div>
 
-        {/* ── Bottom Bar ─────────────────────────────────────────── */}
-        <div className="mt-16 border-t border-white/10 pt-8 text-center text-sm">
-          © {new Date().getFullYear()} FaithCore. All rights reserved.
+        {/* ── Bottom Bar ──────────────────────────────────────── */}
+        <div className="mt-14 pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
+          <p>© {new Date().getFullYear()} FaithCore Technologies. All rights reserved.</p>
+          <p className="flex items-center gap-1">
+            Engineered with devotion for church administrative excellence.
+          </p>
         </div>
+
       </div>
     </footer>
   );

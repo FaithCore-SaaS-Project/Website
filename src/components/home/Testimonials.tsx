@@ -1,117 +1,118 @@
-import { Star, Quote } from "lucide-react";
-
-// ─── Types ────────────────────────────────────────────────────────────────────
+import { Star, Quote, CheckCircle } from "lucide-react";
 
 interface Testimonial {
   id: number;
   name: string;
   role: string;
   church: string;
-  avatar: string;
+  location: string;
+  avatarText: string;
   rating: number;
+  metric: string;
   quote: string;
 }
-
-// ─── Data ─────────────────────────────────────────────────────────────────────
 
 const TESTIMONIALS: Testimonial[] = [
   {
     id: 1,
-    name: "Pastor Michael Grant",
+    name: "Rev. Michael Grant",
     role: "Senior Pastor",
     church: "Grace Community Church",
-    avatar: "MG",
+    location: "Colombo, Sri Lanka",
+    avatarText: "MG",
     rating: 5,
+    metric: "12 hrs saved / week",
     quote:
-      "FaithCore transformed how we run our church operations. Tracking tithes, managing our 800-member directory, and scheduling ministry teams is now effortless. It's the single best investment we've made.",
+      "FaithCore transformed how we manage church contributions and member records. The instant SMS e-receipts gave our congregation 100% financial transparency. It's the most dependable tool our council has ever adopted.",
   },
   {
     id: 2,
     name: "Rev. Sarah Okafor",
     role: "Administrative Director",
-    church: "Bethel Ministries",
-    avatar: "SO",
+    church: "Bethel Assemblies",
+    location: "Kandy, Sri Lanka",
+    avatarText: "SO",
     rating: 5,
+    metric: "40% faster certificate issuance",
     quote:
-      "The onboarding was seamless and the support team was incredible. We migrated 10 years of member data without a single issue. Our staff productivity has increased by 40%.",
+      "Generating baptism and marriage certificates used to take days of searching through paper files. With FaithCore, we generate authenticated certificates with QR validation in under two minutes.",
   },
   {
     id: 3,
     name: "Deacon James Ruiz",
-    role: "Operations Lead",
-    church: "Living Word Chapel",
-    avatar: "JR",
+    role: "Finance & Operations Lead",
+    church: "Living Word Fellowship",
+    location: "Negombo, Sri Lanka",
+    avatarText: "JR",
     rating: 5,
+    metric: "Zero budget discrepancy",
     quote:
-      "We tried three other platforms before FaithCore. Nothing compares. The event management and donation reporting tools alone were worth the switch. Highly recommend to any growing church.",
+      "The budget vs. actual analytics and multi-bank reconciliations made our annual church auditing effortless. Our treasurer and audit team won't work without it.",
   },
 ];
 
-// ─── TestimonialCard ──────────────────────────────────────────────────────────
-
-function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
-  return (
-    <div className="group relative flex flex-col gap-6 rounded-3xl border border-gray-100 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#1B2F5E]/10">
-      {/* Quote icon */}
-      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EEF2FB] text-[#1B2F5E]">
-        <Quote size={18} />
-      </div>
-
-      {/* Stars */}
-      <div className="flex text-amber-400">
-        {[...Array(testimonial.rating)].map((_, i) => (
-          <Star key={i} size={14} fill="currentColor" />
-        ))}
-      </div>
-
-      {/* Quote text */}
-      <blockquote className="flex-1 text-gray-600 leading-7 text-sm">
-        &ldquo;{testimonial.quote}&rdquo;
-      </blockquote>
-
-      {/* Author */}
-      <div className="flex items-center gap-4 border-t border-gray-100 pt-6">
-        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#1B2F5E] text-white text-sm font-bold">
-          {testimonial.avatar}
-        </div>
-        <div>
-          <p className="font-bold text-gray-900 text-sm">{testimonial.name}</p>
-          <p className="text-xs text-gray-500">
-            {testimonial.role} · {testimonial.church}
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// ─── Testimonials ─────────────────────────────────────────────────────────────
-
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="bg-gradient-to-b from-white to-[#f8f9ff] py-24">
+    <section className="relative py-24 sm:py-32 bg-white">
       <div className="mx-auto max-w-7xl px-6">
-
+        
         {/* Header */}
-        <div className="mb-16 text-center">
-          <div className="mb-4 inline-flex items-center rounded-full border border-[#1B2F5E]/20 bg-[#EEF2FB]/70 px-4 py-1.5 text-sm font-medium text-[#1B2F5E]">
-            Customer Stories
-          </div>
-          <h2 className="text-4xl font-extrabold text-gray-900 md:text-5xl">
-            Loved by Church Leaders
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-xs font-bold uppercase tracking-wider text-indigo-600">
+            Real Ministry Impact
+          </p>
+          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+            Loved by Pastors, Treasurers & Administrators
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-lg text-gray-600">
-            See how churches of all sizes are using FaithCore to streamline
-            operations and grow their ministries.
+          <p className="mt-3 text-base text-slate-600">
+            Discover why ministry leaders rely on FaithCore every week for smooth administrative stewardship.
           </p>
         </div>
 
-        {/* Grid */}
-        <div className="grid gap-6 md:grid-cols-3">
-          {TESTIMONIALS.map((t) => (
-            <TestimonialCard key={t.id} testimonial={t} />
+        {/* Cards Grid */}
+        <div className="mt-16 grid gap-8 lg:grid-cols-3 md:grid-cols-2">
+          {TESTIMONIALS.map((item) => (
+            <div
+              key={item.id}
+              className="relative flex flex-col justify-between rounded-2xl border border-slate-200/90 bg-slate-50/40 p-8 shadow-sm transition-all duration-300 hover:border-slate-300 hover:bg-white hover:shadow-lg hover:-translate-y-1"
+            >
+              <div>
+                {/* Metric Pill & Stars */}
+                <div className="flex items-center justify-between border-b border-slate-100 pb-5">
+                  <div className="flex text-amber-400 gap-1">
+                    {[...Array(item.rating)].map((_, i) => (
+                      <Star key={i} size={15} fill="currentColor" />
+                    ))}
+                  </div>
+                  <span className="rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/60 px-2.5 py-0.5 text-[11px] font-semibold">
+                    {item.metric}
+                  </span>
+                </div>
+
+                {/* Quote */}
+                <p className="mt-5 text-sm text-slate-700 leading-relaxed italic">
+                  &ldquo;{item.quote}&rdquo;
+                </p>
+              </div>
+
+              {/* Author Info */}
+              <div className="mt-8 flex items-center gap-3.5 border-t border-slate-100 pt-5">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-slate-900 text-white font-bold text-xs shadow-sm">
+                  {item.avatarText}
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-slate-900 leading-snug">
+                    {item.name}
+                  </h4>
+                  <p className="text-xs text-slate-500">
+                    {item.role} • <span className="font-medium text-slate-700">{item.church}</span>
+                  </p>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
+
       </div>
     </section>
   );

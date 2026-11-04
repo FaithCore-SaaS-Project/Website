@@ -1,164 +1,139 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X, Download, Globe } from "lucide-react";
+import { Menu, X, Download, Globe, ArrowRight } from "lucide-react";
 import Link from "next/link";
-
-// ─── Navbar ───────────────────────────────────────────────────────────────────
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b bg-white/90 backdrop-blur">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
+    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/80 backdrop-blur-md">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
 
-        {/* ── Logo ───────────────────────────────────────── */}
-        <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white border border-[#C9A84C] overflow-hidden p-1">
+        {/* ── Brand Logo ───────────────────────────────────────── */}
+        <Link href="/" className="flex items-center gap-3 group">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 border border-slate-800 shadow-sm overflow-hidden p-1.5 transition-transform group-hover:scale-105">
             <img
               src="/images/logo.jpg"
               alt="FaithCore Logo"
-              className="h-full w-full object-contain"
+              className="h-full w-full object-contain rounded-md"
             />
           </div>
           <div>
-            <p className="text-lg font-bold text-gray-900 leading-tight">FaithCore</p>
-            <p className="text-xs text-gray-500">Church Management System</p>
+            <span className="text-lg font-extrabold tracking-tight text-slate-900 leading-tight block">
+              FaithCore
+            </span>
+            <span className="text-[10px] font-medium tracking-wide uppercase text-indigo-600 block">
+              Church Operating Suite
+            </span>
           </div>
-        </div>
+        </Link>
 
-        <nav className="hidden items-center gap-8 lg:flex">
-          <a href="/" className="font-medium hover:text-[#1B2F5E] transition-colors">
-            Home
-          </a>
-          <a href="/features" className="font-medium hover:text-[#1B2F5E] transition-colors">
+        {/* ── Desktop Navigation Links ─────────────────────────── */}
+        <nav className="hidden items-center gap-7 lg:flex text-xs font-semibold text-slate-600">
+          <Link href="/" className="hover:text-indigo-600 transition-colors">
+            Overview
+          </Link>
+          <Link href="/features" className="hover:text-indigo-600 transition-colors">
             Features
-          </a>
-          <a href="/pricing" className="font-medium hover:text-[#1B2F5E] transition-colors">
+          </Link>
+          <Link href="/pricing" className="hover:text-indigo-600 transition-colors">
             Pricing
-          </a>
-          <a href="/#about" className="font-medium hover:text-[#1B2F5E] transition-colors">
-            About
-          </a>
-          <a href="/#support" className="font-medium hover:text-[#1B2F5E] transition-colors">
+          </Link>
+          <Link href="/about" className="hover:text-indigo-600 transition-colors">
+            About Us
+          </Link>
+          <Link href="/#support" className="hover:text-indigo-600 transition-colors">
             Support
-          </a>
-          <a href="/#contact" className="font-medium hover:text-[#1B2F5E] transition-colors">
+          </Link>
+          <Link href="/#contact" className="hover:text-indigo-600 transition-colors">
             Contact
-          </a>
+          </Link>
         </nav>
 
-        {/* ── Desktop Actions ─────────────────────────────── */}
-        <div className="hidden items-center gap-4 lg:flex">
+        {/* ── Desktop Action CTAs ─────────────────────────────── */}
+        <div className="hidden items-center gap-3 lg:flex">
           <a
             href="https://app.faithcore.org"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 text-gray-700 hover:text-[#1B2F5E] font-semibold px-4 py-2.5 transition-all text-center flex items-center gap-2 text-sm shadow-sm"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200/80 bg-white px-3.5 py-2 text-xs font-semibold text-slate-700 shadow-sm hover:bg-slate-50 hover:text-slate-900 transition-all"
           >
-            <Globe size={16} className="text-[#5B3DF5]" />
+            <Globe size={14} className="text-indigo-600" />
             Web Portal
           </a>
+
           <Link
             href="/features#download"
-            className="rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white font-semibold shadow-md shadow-indigo-100/50 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2 px-5 py-2.5 transition-all duration-200 text-center text-sm"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-slate-100 px-3.5 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-200 hover:text-slate-900 transition-all"
           >
-            <Download size={16} />
-            Download App
+            <Download size={14} />
+            Desktop App
           </Link>
+
           <Link
             href="/pricing"
-            className="rounded-xl bg-[#1B2F5E] px-5 py-2.5 font-medium text-white hover:bg-[#15254A] transition-colors text-center text-sm"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-indigo-600 px-4 py-2 text-xs font-semibold text-white shadow-sm shadow-indigo-600/30 hover:bg-indigo-500 transition-all"
           >
             Get Started
+            <ArrowRight size={13} />
           </Link>
         </div>
 
-        {/* ── Mobile Toggle ───────────────────────────────── */}
+        {/* ── Mobile Menu Toggle ──────────────────────────────── */}
         <button
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          aria-expanded={mobileOpen}
-          onClick={() => setMobileOpen((prev) => !prev)}
-          className="lg:hidden text-gray-700 hover:text-[#1B2F5E] transition-colors"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-100 lg:hidden"
         >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          {mobileOpen ? <X size={18} /> : <Menu size={18} />}
         </button>
       </div>
 
-      {/* ── Mobile Menu Drawer ───────────────────────────── */}
+      {/* ── Mobile Nav Dropdown ─────────────────────────────── */}
       {mobileOpen && (
-        <nav className="lg:hidden border-t bg-white px-6 py-6 flex flex-col gap-5 shadow-lg">
-          <a
-            href="/"
-            onClick={() => setMobileOpen(false)}
-            className="font-medium text-gray-700 hover:text-[#1B2F5E] transition-colors"
-          >
-            Home
-          </a>
-          <a
-            href="/features"
-            onClick={() => setMobileOpen(false)}
-            className="font-medium text-gray-700 hover:text-[#1B2F5E] transition-colors"
-          >
-            Features
-          </a>
-          <a
-            href="/pricing"
-            onClick={() => setMobileOpen(false)}
-            className="font-medium text-gray-700 hover:text-[#1B2F5E] transition-colors"
-          >
-            Pricing
-          </a>
-          <a
-            href="/#about"
-            onClick={() => setMobileOpen(false)}
-            className="font-medium text-gray-700 hover:text-[#1B2F5E] transition-colors"
-          >
-            About
-          </a>
-          <a
-            href="/#support"
-            onClick={() => setMobileOpen(false)}
-            className="font-medium text-gray-700 hover:text-[#1B2F5E] transition-colors"
-          >
-            Support
-          </a>
-          <a
-            href="/#contact"
-            onClick={() => setMobileOpen(false)}
-            className="font-medium text-gray-700 hover:text-[#1B2F5E] transition-colors"
-          >
-            Contact
-          </a>
-          <div className="mt-2 flex flex-col gap-3 border-t pt-5">
+        <div className="border-t border-slate-100 bg-white px-6 py-6 shadow-xl lg:hidden">
+          <nav className="flex flex-col gap-4 text-sm font-semibold text-slate-700">
+            <Link href="/" onClick={() => setMobileOpen(false)} className="hover:text-indigo-600">
+              Overview
+            </Link>
+            <Link href="/features" onClick={() => setMobileOpen(false)} className="hover:text-indigo-600">
+              Features
+            </Link>
+            <Link href="/pricing" onClick={() => setMobileOpen(false)} className="hover:text-indigo-600">
+              Pricing
+            </Link>
+            <Link href="/about" onClick={() => setMobileOpen(false)} className="hover:text-indigo-600">
+              About Us
+            </Link>
+            <Link href="/#support" onClick={() => setMobileOpen(false)} className="hover:text-indigo-600">
+              Support
+            </Link>
+            <Link href="/#contact" onClick={() => setMobileOpen(false)} className="hover:text-indigo-600">
+              Contact
+            </Link>
+          </nav>
+
+          <div className="mt-6 flex flex-col gap-3 pt-6 border-t border-slate-100">
             <a
               href="https://app.faithcore.org"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => setMobileOpen(false)}
-              className="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 text-gray-700 hover:text-[#1B2F5E] font-semibold px-5 py-3 transition-colors text-center flex items-center justify-center gap-2 text-sm shadow-sm"
+              className="flex items-center justify-center gap-2 rounded-xl border border-slate-200 py-2.5 text-xs font-semibold text-slate-700"
             >
-              <Globe size={18} className="text-[#5B3DF5]" />
-              Web Portal (iPad / Web)
+              <Globe size={15} className="text-indigo-600" />
+              Web Portal Login
             </a>
-            <Link
-              href="/features#download"
-              onClick={() => setMobileOpen(false)}
-              className="rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white font-semibold shadow-md flex items-center justify-center gap-2 px-5 py-3 transition-colors text-center text-sm"
-            >
-              <Download size={18} />
-              Download App
-            </Link>
             <Link
               href="/pricing"
               onClick={() => setMobileOpen(false)}
-              className="rounded-xl bg-[#1B2F5E] px-5 py-3 font-medium text-white hover:bg-[#15254A] transition-colors text-center text-sm"
+              className="flex items-center justify-center gap-2 rounded-xl bg-indigo-600 py-2.5 text-xs font-semibold text-white shadow-md shadow-indigo-600/30"
             >
-              Get Started
+              Get Started Free
             </Link>
           </div>
-        </nav>
+        </div>
       )}
     </header>
   );
