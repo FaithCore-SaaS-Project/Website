@@ -232,12 +232,21 @@ function CheckoutModal({
   const handlePayhere = async () => {
     setLoadingPayhere(true);
     const apiHost = process.env.NEXT_PUBLIC_API_URL || "https://api.faithcore.org";
+    const token = typeof window !== "undefined" ? localStorage.getItem("token") : null;
+    if (!token) {
+      alert("Please register or log in to your account first before proceeding to checkout.");
+      window.location.href = `/register?plan=${plan.name}`;
+      setLoadingPayhere(false);
+      return;
+    }
+
     try {
       const response = await fetch(`${apiHost}/api/checkout/payhere`, {
         method: "POST",
         headers: { 
+          "Accept": "application/json",
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${localStorage.getItem("token")}`
+          "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify({
           plan_name: plan.name,
@@ -248,7 +257,7 @@ function CheckoutModal({
       });
       const data = await response.json();
       
-      if (data.payhere_url) {
+      if (response.ok && data.payhere_url) {
         // Create hidden form to submit to PayHere
         const form = document.createElement("form");
         form.method = "POST";
@@ -267,7 +276,12 @@ function CheckoutModal({
         document.body.appendChild(form);
         form.submit();
       } else {
-        alert("PayHere Checkout failed. Please try again.");
+        if (response.status === 401) {
+          alert("Your session has expired. Please sign in or register to complete payment.");
+          window.location.href = `/register?plan=${plan.name}`;
+        } else {
+          alert(data.message || data.error || "PayHere Checkout failed. Please try again.");
+        }
         setLoadingPayhere(false);
       }
     } catch (err) {
